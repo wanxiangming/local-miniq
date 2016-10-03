@@ -1,0 +1,1926 @@
+2016/09/27 11:26:17 [error] [php] date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. (D:\local-web-server\www\miniq\protected\views\layouts\main.php:51)
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\widgets\CContentDecorator.php(76): SiteController->renderFile()
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\widgets\CContentDecorator.php(54): CContentDecorator->decorate()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\web\widgets\COutputProcessor.php(44): CContentDecorator->processOutput()
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CBaseController.php(214): CContentDecorator->run()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CBaseController.php(308): SiteController->endWidget()
+#6 D:\local-web-server\www\miniq\protected\views\layouts\column1.php(6): SiteController->endContent()
+#7 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CBaseController.php(126): require()
+#8 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#9 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(784): SiteController->renderFile()
+#10 D:\local-web-server\www\miniq\protected\controllers\SiteController.php(32): SiteController->render()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams()
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): SiteController->runAction()
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): SiteController->run()
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#17 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 D:\local-web-server\www\miniq\index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in D:\local-web-server\www\miniq\protected\views\layouts\main.php (51)
+in D:\local-web-server\www\miniq\protected\views\layouts\column1.php (6)
+in D:\local-web-server\www\miniq\protected\controllers\SiteController.php (32)
+2016/09/27 20:13:08 [error] [exception.CException] exception 'CException' with message 'SiteController cannot find the requested view "index".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:878
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(782): CController->renderPartial('index', NULL, true)
+#1 D:\local-web-server\www\miniq\protected\controllers\SiteController.php(32): CController->render('index')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('index')
+#7 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('site/index')
+#8 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php?r=site/index
+HTTP_REFERER=http://localhost/index.php?r=site/page&view=about
+---
+2016/09/27 20:14:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/index".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('site/index')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=site/index
+HTTP_REFERER=http://localhost/index.php?r=site/page&view=about
+---
+2016/09/27 20:20:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "SetLocalCookie".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('SetLocalCookie')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('SetLocalCookie')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/SetLocalC...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/SetLocalCookie
+---
+2016/09/27 20:20:40 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 20:23:06 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 20:31:29 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 20:31:40 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 20:33:52 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 20:36:52 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 20:40:25 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 20:40:54 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 20:46:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "Main/Main".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Main/Main')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/?r=Main/Main
+HTTP_REFERER=http://localhost/
+---
+2016/09/27 20:46:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "Main/Main".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Main/Main')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/?r=Main/Main
+HTTP_REFERER=http://localhost/
+---
+2016/09/27 20:46:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "Main/Main".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Main/Main')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/?r=Main/Main
+HTTP_REFERER=http://localhost/
+---
+2016/09/27 20:46:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "Main/Main".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Main/Main')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/?r=Main/Main
+HTTP_REFERER=http://localhost/
+---
+2016/09/27 20:47:58 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 20:48:18 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 20:53:31 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 20:53:47 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 20:53:53 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 21:39:07 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 21:39:17 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 21:39:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "LoginCheck".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('LoginCheck')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('LoginCheck')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/LoginChec...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/LoginCheck
+---
+2016/09/27 21:40:32 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 22:22:11 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 22:24:59 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 22:26:24 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 22:26:39 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 22:26:46 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 22:27:37 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 22:27:40 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 22:28:09 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 22:32:54 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 22:33:19 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 22:33:28 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 22:36:35 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 22:40:22 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 22:40:29 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 22:45:43 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 22:46:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "LoginCheck".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('LoginCheck')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('LoginCheck')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/LoginChec...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/LoginCheck
+---
+2016/09/27 22:46:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "LoginCheck".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('LoginCheck')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('LoginCheck')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/LoginChec...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/LoginCheck
+---
+2016/09/27 22:46:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "LoginCheck".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('LoginCheck')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('LoginCheck')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/LoginChec...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/LoginCheck
+---
+2016/09/27 22:46:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "LoginCheck".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('LoginCheck')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('LoginCheck')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/LoginChec...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/LoginCheck
+---
+2016/09/27 22:46:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "LoginCheck".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('LoginCheck')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('LoginCheck')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/LoginChec...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/LoginCheck
+---
+2016/09/27 22:46:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "LoginCheck".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('LoginCheck')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('LoginCheck')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/LoginChec...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/LoginCheck
+---
+2016/09/27 22:46:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "LoginCheck".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('LoginCheck')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('LoginCheck')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/LoginChec...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/LoginCheck
+---
+2016/09/27 22:46:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "LoginCheck".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('LoginCheck')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('LoginCheck')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/LoginChec...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/LoginCheck
+---
+2016/09/27 22:46:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "LoginCheck".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('LoginCheck')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('LoginCheck')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/LoginChec...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/LoginCheck
+---
+2016/09/27 22:46:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "LoginCheck".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('LoginCheck')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('LoginCheck')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/LoginChec...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/LoginCheck
+---
+2016/09/27 22:46:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "LoginCheck".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('LoginCheck')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('LoginCheck')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/LoginChec...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/LoginCheck
+---
+2016/09/27 22:46:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "LoginCheck".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('LoginCheck')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('LoginCheck')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/LoginChec...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/LoginCheck
+---
+2016/09/27 22:46:49 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 22:46:58 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 22:46:59 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 22:47:14 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 22:47:20 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 22:47:20 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 22:47:21 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:00:33 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:00:36 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:00:37 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:01:21 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:01:54 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(36): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:09:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "LocalSetCookie".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('LocalSetCookie')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('LocalSetCookie')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/LocalSetC...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/LocalSetCookie
+---
+2016/09/27 23:10:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "LocalSetCookie".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('LocalSetCookie')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('LocalSetCookie')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/LocalSetC...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/LocalSetCookie
+---
+2016/09/27 23:10:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "LocalSetCookie".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('LocalSetCookie')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('LocalSetCookie')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/LocalSetC...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/LocalSetCookie
+---
+2016/09/27 23:10:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "LocalSetCookie".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('LocalSetCookie')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('LocalSetCookie')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/LocalSetC...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/LocalSetCookie
+---
+2016/09/27 23:10:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "LocalSetCookie".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('LocalSetCookie')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('LocalSetCookie')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/LocalSetC...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/LocalSetCookie
+---
+2016/09/27 23:10:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "LocalSetCookie".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php:483
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(270): CController->missingAction('LocalSetCookie')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('LocalSetCookie')
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/LocalSetC...')
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=Login/LocalSetCookie
+---
+2016/09/27 23:12:53 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 23:13:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/27 23:13:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/page".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('site/page')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=site/page&view=about
+HTTP_REFERER=http://localhost/index.php?r=site/contact
+---
+2016/09/27 23:13:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/contact".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('site/contact')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=site/contact
+HTTP_REFERER=http://localhost/index.php?r=site/login
+---
+2016/09/27 23:14:10 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:14:39 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:14:40 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:14:50 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:15:14 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:15:16 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:15:16 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:15:27 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:15:28 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:15:34 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:15:35 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:15:47 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:15:48 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:16:55 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/27 23:17:25 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php:399
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CModule.php(394): CDbConnection->init()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(670): CActiveRecord->getDbConnection()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1460): CActiveRecord->getCommandBuilder()
+#7 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(49): CActiveRecord->find(Object(CDbCriteria))
+#8 D:\local-web-server\www\miniq\protected\models\util\TableUser.php(8): TableUser->findByOpenId()
+#9 D:\local-web-server\www\miniq\protected\controllers\LoginController.php(44): TableUser->__construct('67EB8F9DA303F18...')
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): LoginController->actionCheckCookie()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('CheckCookie')
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Login/CheckCook...')
+#16 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/?r=Login/CheckCookie
+---
+2016/09/28 16:11:29 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aliyun.miniq_backlomainline' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `miniq_backloMainLine`.
+in D:\local-web-server\www\miniq\protected\models\util\TableMainLine.php (74)
+in D:\local-web-server\www\miniq\protected\models\util\TableMainLine.php (61)
+in D:\local-web-server\www\miniq\protected\controllers\MysqlBacklogController.php (71)
+2016/09/28 16:11:29 [error] [exception.CDbException] exception 'CDbException' with message 'The table "{{backloMainLine}}" for active record class "MysqlMainLine" cannot be found in the database.' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php:2387
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(MysqlMainLine))
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(661): CActiveRecord->getMetaData()
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1355): CActiveRecord->getTableSchema()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1461): CActiveRecord->query(Object(CDbCriteria))
+#4 D:\local-web-server\www\miniq\protected\models\util\TableMainLine.php(74): CActiveRecord->find(Object(CDbCriteria))
+#5 D:\local-web-server\www\miniq\protected\models\util\TableMainLine.php(61): TableMainLine->findOneInUse()
+#6 D:\local-web-server\www\miniq\protected\controllers\MysqlBacklogController.php(71): TableMainLine->getInUse()
+#7 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): MysqlBacklogController->actionGetInfoInUseMainLineAndUncompletedBacklog()
+#8 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('GetInfoInUseMai...')
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('MysqlBacklog/Ge...')
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/?r=MysqlBacklog/GetInfoInUseMainLineAndUncompletedBacklog
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/28 16:13:07 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aliyun.miniq_transaction' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `miniq_transaction`.
+in D:\local-web-server\www\miniq\protected\models\util\TableTransaction.php (33)
+in D:\local-web-server\www\miniq\protected\models\util\TableTransaction.php (10)
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTransactionController.php (22)
+2016/09/28 16:13:07 [error] [exception.CDbException] exception 'CDbException' with message 'The table "{{transaction}}" for active record class "MysqlTransaction" cannot be found in the database.' in D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php:2387
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(MysqlTransaction))
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(661): CActiveRecord->getMetaData()
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1355): CActiveRecord->getTableSchema()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1475): CActiveRecord->query(Object(CDbCriteria), true)
+#4 D:\local-web-server\www\miniq\protected\models\util\TableTransaction.php(33): CActiveRecord->findAll(Object(CDbCriteria))
+#5 D:\local-web-server\www\miniq\protected\models\util\TableTransaction.php(10): TableTransaction->findByTableIdAndTime('1005', 1474992000000, 1)
+#6 D:\local-web-server\www\miniq\protected\controllers\MysqlTransactionController.php(22): TableTransaction->getInfoByTableIdAndTime('1005', 1474992000000, 1)
+#7 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): MysqlTransactionController->actionGetTransactionByTimeAry()
+#8 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): CController->run('GetTransactionB...')
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('MysqlTransactio...')
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/?r=MysqlTransaction/GetTransactionByTimeAry
+HTTP_REFERER=http://localhost/?r=Main/Main
+---
+2016/09/30 17:30:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "table/inherit".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('table/inherit')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/?r=table/inherit&childTableId=1000&parentTableId=1050
+---
+2016/09/30 17:40:06 [error] [php] Object of class MysqlTableInherit could not be converted to string (D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbCommand.php:275)
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\schema\CDbCommandBuilder.php(100): CMysqlCommandBuilder->bindValues()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1355): CMysqlCommandBuilder->createFindCommand()
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1475): MysqlTableInherit->query()
+#3 D:\local-web-server\www\miniq\protected\models\util\TableTableInherit.php(107): MysqlTableInherit->findAll()
+#4 D:\local-web-server\www\miniq\protected\models\util\TableTableInherit.php(99): TableTableInherit->findAllByChildTableId()
+#5 D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php(243): TableTableInherit->getAllParentTableId()
+#6 D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php(233): MysqlTableController->getParentTableId()
+#7 D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php(235): MysqlTableController->getAllParentTableId()
+#8 D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php(226): MysqlTableController->getAllParentTableId()
+#9 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): MysqlTableController->actionGetAllParentTableId()
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): MysqlTableController->runAction()
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): MysqlTableController->runActionWithFilters()
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): MysqlTableController->run()
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#16 D:\local-web-server\www\miniq\index.php(14): CWebApplication->run()
+REQUEST_URI=/?r=MysqlTable/GetAllParentTableId&childTableId=1000&parentTableId=1053
+in D:\local-web-server\www\miniq\protected\models\util\TableTableInherit.php (107)
+in D:\local-web-server\www\miniq\protected\models\util\TableTableInherit.php (99)
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (243)
+2016/09/30 17:43:59 [error] [php] Object of class MysqlTableInherit could not be converted to string (D:\local-web-server\yii-1.1.17.467ff50\framework\db\CDbCommand.php:275)
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\db\schema\CDbCommandBuilder.php(100): CMysqlCommandBuilder->bindValues()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1355): CMysqlCommandBuilder->createFindCommand()
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\db\ar\CActiveRecord.php(1475): MysqlTableInherit->query()
+#3 D:\local-web-server\www\miniq\protected\models\util\TableTableInherit.php(107): MysqlTableInherit->findAll()
+#4 D:\local-web-server\www\miniq\protected\models\util\TableTableInherit.php(99): TableTableInherit->findAllByChildTableId()
+#5 D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php(244): TableTableInherit->getAllParentTableId()
+#6 D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php(234): MysqlTableController->getParentTableId()
+#7 D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php(236): MysqlTableController->getAllParentTableId()
+#8 D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php(226): MysqlTableController->getAllParentTableId()
+#9 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): MysqlTableController->actionGetAllParentTableId()
+#10 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): MysqlTableController->runAction()
+#12 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): MysqlTableController->runActionWithFilters()
+#13 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): MysqlTableController->run()
+#14 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#16 D:\local-web-server\www\miniq\index.php(14): CWebApplication->run()
+REQUEST_URI=/?r=MysqlTable/GetAllParentTableId&childTableId=1000&parentTableId=1053
+in D:\local-web-server\www\miniq\protected\models\util\TableTableInherit.php (107)
+in D:\local-web-server\www\miniq\protected\models\util\TableTableInherit.php (99)
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (244)
+2016/09/30 17:55:46 [error] [php] Undefined variable: print_r (D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php:245)
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): MysqlTableController->actionGetAllParentTableId()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): MysqlTableController->runAction()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): MysqlTableController->runActionWithFilters()
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): MysqlTableController->run()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 D:\local-web-server\www\miniq\index.php(14): CWebApplication->run()
+REQUEST_URI=/?r=MysqlTable/GetAllParentTableId&childTableId=1000&parentTableId=1053
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (245)
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (234)
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (226)
+2016/09/30 20:02:22 [error] [php] Undefined variable: result (D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php:236)
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): MysqlTableController->runAction()
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): MysqlTableController->runActionWithFilters()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): MysqlTableController->run()
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 D:\local-web-server\www\miniq\index.php(14): CWebApplication->run()
+REQUEST_URI=/?r=MysqlTable/GetAllParentTableId&childTableId=1000&parentTableId=1055
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (236)
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (227)
+in D:\local-web-server\www\miniq\index.php (14)
+2016/09/30 21:43:28 [error] [php] array_merge(): Argument #1 is not an array (D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php:245)
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): MysqlTableController->actionGetAllParentTableId()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): MysqlTableController->runAction()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): MysqlTableController->runActionWithFilters()
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): MysqlTableController->run()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 D:\local-web-server\www\miniq\index.php(14): CWebApplication->run()
+REQUEST_URI=/?r=MysqlTable/GetAllParentTableId&childTableId=1050&parentTableId=1055
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (245)
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (227)
+in D:\local-web-server\www\miniq\index.php (14)
+2016/09/30 21:44:14 [error] [php] Undefined variable: noEndAry (D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php:245)
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): MysqlTableController->runAction()
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): MysqlTableController->runActionWithFilters()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): MysqlTableController->run()
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 D:\local-web-server\www\miniq\index.php(14): CWebApplication->run()
+REQUEST_URI=/?r=MysqlTable/GetAllParentTableId&childTableId=1050&parentTableId=1055
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (245)
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (227)
+in D:\local-web-server\www\miniq\index.php (14)
+2016/09/30 21:54:35 [error] [php] array_merge(): Argument #1 is not an array (D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php:249)
+Stack trace:
+#0 D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php(226): MysqlTableController->getAllParentTableId()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): MysqlTableController->actionGetAllParentTableId()
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): MysqlTableController->runAction()
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): MysqlTableController->runActionWithFilters()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): MysqlTableController->run()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#8 D:\local-web-server\www\miniq\index.php(14): CWebApplication->run()
+REQUEST_URI=/?r=MysqlTable/GetAllParentTableId&childTableId=1000&parentTableId=1055
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (249)
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (233)
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (226)
+2016/09/30 21:54:56 [error] [php] Undefined offset: 1000 (D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php:235)
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): MysqlTableController->runAction()
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): MysqlTableController->runActionWithFilters()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): MysqlTableController->run()
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 D:\local-web-server\www\miniq\index.php(14): CWebApplication->run()
+REQUEST_URI=/?r=MysqlTable/GetAllParentTableId&childTableId=1000&parentTableId=1055
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (235)
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (226)
+in D:\local-web-server\www\miniq\index.php (14)
+2016/09/30 22:43:57 [error] [php] Missing argument 1 for TableTableInherit::getAllParentTableId(), called in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php on line 268 and defined (D:\local-web-server\www\miniq\protected\models\util\TableTableInherit.php:105)
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): MysqlTableController->runAction()
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): MysqlTableController->runActionWithFilters()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): MysqlTableController->run()
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 D:\local-web-server\www\miniq\index.php(14): CWebApplication->run()
+REQUEST_URI=/?r=MysqlTable/GetAllParentTableId&childTableId=1000&parentTableId=1055
+in D:\local-web-server\www\miniq\protected\models\util\TableTableInherit.php (105)
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (268)
+in D:\local-web-server\www\miniq\index.php (14)
+2016/10/01 11:38:40 [error] [php] Array to string conversion (D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php:233)
+Stack trace:
+#0 D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php(229): MysqlTableController->getAllParentTableId()
+#1 D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php(220): MysqlTableController->getAllParentTableId()
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): MysqlTableController->actionGetParentInheritLink()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): MysqlTableController->runAction()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): MysqlTableController->runActionWithFilters()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): MysqlTableController->run()
+#7 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 D:\local-web-server\www\miniq\index.php(14): CWebApplication->run()
+REQUEST_URI=/?r=MysqlTable/GetParentInheritLink&childTableId=1000&parentTableId=1055
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (233)
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (229)
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (229)

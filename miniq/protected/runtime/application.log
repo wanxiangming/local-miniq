@@ -1924,3 +1924,25 @@ REQUEST_URI=/?r=MysqlTable/GetParentInheritLink&childTableId=1000&parentTableId=
 in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (233)
 in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (229)
 in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (229)
+2016/10/06 11:33:23 [error] [php] Undefined variable: childTableId (D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php:126)
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): MysqlTableController->runAction()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): MysqlTableController->runActionWithFilters()
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): MysqlTableController->run()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 D:\local-web-server\www\miniq\index.php(14): CWebApplication->run()
+REQUEST_URI=/?r=MysqlTable/GetAttentonTableInfo&childTableId=1000&parentTableId=1055
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTableController.php (126)
+in D:\local-web-server\www\miniq\index.php (14)
+2016/10/06 15:06:50 [error] [php] Invalid argument supplied for foreach() (D:\local-web-server\www\miniq\protected\controllers\MysqlTransactionController.php:73)
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): MysqlTransactionController->runAction()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): MysqlTransactionController->runActionWithFilters()
+#2 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): MysqlTransactionController->run()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 D:\local-web-server\www\miniq\index.php(14): CWebApplication->run()
+REQUEST_URI=/?r=MysqlTransaction/GetTransaction
+in D:\local-web-server\www\miniq\protected\controllers\MysqlTransactionController.php (73)
+in D:\local-web-server\www\miniq\index.php (14)

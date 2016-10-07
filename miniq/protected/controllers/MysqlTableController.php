@@ -1,9 +1,31 @@
 <?php
+
+	/**
+	 * MysqlTableController()
+	 * 		actionCreateLogTable()
+	 * 		actionGetLogTableList()
+	 * 		actionGetAttentonTableInfo()
+	 * 		actionChangeLogTableName()
+	 * 		actionChangeLogTableAnotherName()
+	 * 		actionDeprecatedLogTable()
+	 * 		actionCancelAttention()
+	 * 		actionPayAttention()
+	 * 		actionSearchTableByTableId()
+	 * 		actionOpenTheTable()
+	 * 		actionInherit()
+	 * 		actionRemoveInherit()
+	 * 		actionGetParentInheritLink()
+	 * 		actionGetAllParentTableId()
+	 * 		actionGetAllChildTableId()
+			actionRemoveAll()
+	 */
+
 	include_once("protected/models/util/TableTable.php");
 	include_once("protected/models/util/TableLink.php");
 	include_once("protected/models/util/TableUser.php");
 	include_once("protected/models/util/TableTransaction.php");
 	include_once("protected/models/util/TableTableInherit.php");
+	include_once("protected/models/util/TableTableManagerGroup.php");
 
 	class MysqlTableController extends Controller{
 
@@ -53,6 +75,70 @@
 			}
 			else{
 				print_r(0);	//0表示该用户未使用任何日程表
+			}
+		}
+
+		/**
+			$tableInherit=new TableTableInherit();
+			print_r($tableInherit->getAllParentTableId($childTableId));
+
+		 *	查询该用户的所有关注表，及这些表的所有父表
+		 *	tableId
+		 *	tableName
+		 *	isManager
+		 *	inheritTableAry
+		 *		tableId
+		 *		tableName
+		 *	
+		 * actionGetAttentonTableInfo()	//需要openId
+		 * 
+		 */
+		public function actionGetAttentonTableInfo(){
+			$openId=Yii::app()->request->cookies['openId']->value;
+
+			$tableLink=new TableLink();
+			$linkResult=$tableLink->getAllByUserId($openId);
+			if($linkResult != NULL){
+				$result=array();
+				$tableTable=new TableTable();
+				$tableMangerGroup=new TableTableManagerGroup();
+				$tableInherit=new TableTableInherit();
+
+				foreach ($linkResult as $key => $value) {
+					$info=array();
+					$tableId=$value['tableId'];
+
+					$tableResult=$tableTable->getById($tableId);
+					if($tableResult != NULL){
+
+						$info['tableId']=$tableId;
+						$info['tableName']=$tableResult['tableName'];
+
+						if($tableResult['creatorId'] == $openId  ||  $tableMangerGroup->isManager($openId,$tableId)){
+							$info['isManager']=1;
+						}
+						else{
+							$info['isManager']=0;
+						}
+
+						$allParentTableIdAry=$tableInherit->getAllParentTableId($tableId);
+						$parentTableInfoAry=array();
+						foreach ($allParentTableIdAry as $k => $parentTableId) {
+							$ary=array();
+							$parentTableInfo=$tableTable->getById($parentTableId);
+							$ary['tableId']=$parentTableInfo['id'];
+							$ary['tableName']=$parentTableInfo['tableName'];
+							$parentTableInfoAry[]=$ary;
+						}
+						$info['parentTableInfoAry']=$parentTableInfoAry;
+					}
+					$result[]=$info;
+				}
+
+				print_r(json_encode($result));
+			}
+			else{
+				print_r(0);
 			}
 		}
 
@@ -278,5 +364,3 @@
 			$tableInherit->removeAllAsChildTable($parentTableId);
 		}
 	}
-
-	

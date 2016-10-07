@@ -6,7 +6,9 @@
 	 * 		removeAllAsParentTable(parentTableId)	移除所有以此表为父表的数据，成功放回true，失败返回false
 	 * 		removeAllAsChildTable(childTableId)		移除所有以此表为子表的数据，成功返回true，失败返回false
 	 * 		getParentTableId(childTableId)	查询某个表是否具有父表，如果有返回其所有父表的ID组成的数组，没有返回空数组
+	 * 		getAllParentTableId(childTableId)	查询某个表是否具有父表，如果有返回其所有"继承结构上层"的ID组成的数组，没有返回空数组
 	 * 		getChildTableId(parentTableId)	查询某个表是否具有子表，如果有返回其所有子表的ID组成的数组，没有返回空数组
+	 * 		getAllChildTableId(parentTableId)	查询某个表是否具有子表，如果有返回其所有"继承结构下层"的ID组成的数组，没有返回空数组
 	 */
 	class TableTableInherit{
 

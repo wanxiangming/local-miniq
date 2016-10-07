@@ -84,10 +84,24 @@ var GetLogTableList={
 	}
 }
 
+var GetAttentionTableInfo={
+	creatNew:function(){
+		var GetAttentionTableInfo=Internet.creatNew(GET_ATTENTION_TBABLE_INFO,"GET",{});
+		return GetAttentionTableInfo;
+	}
+}
+
 var GetTransactionByTimeAry={
 	creatNew:function(TIMEARY){
 		var GetTransactionByTimeAry=Internet.creatNew(GET_TRANSACTION_BY_TIMEARY,"POST",{"time":TIMEARY});
 		return GetTransactionByTimeAry;
+	}
+}
+
+var GetTransaction={
+	creatNew:function(TABLE_ID_ARY,TIME_ARY){
+		var GetTransaction=Internet.creatNew(GET_TRANSACTION,"POST",{"tableIdAry":TABLE_ID_ARY,"timeAry":TIME_ARY});
+		return GetTransaction;
 	}
 }
 
@@ -168,7 +182,17 @@ var OpenTheTable={
 	}
 }
 
+
+
+
+
+
+
 //---------------------------------------------------与待办事项相关--------------------------------------------------------
+//
+//
+//
+//
 var AddMainLine={
 	creatNew:function(CONTENT){
 		var AddMainLine=Internet.creatNew(ADD_MAIN_LINE,"POST",{"content":CONTENT});

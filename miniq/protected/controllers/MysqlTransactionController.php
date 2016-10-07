@@ -58,36 +58,24 @@
 		}
 
 		/**
-		 * 根据用户ID，找到他所关注的表，然后找到该表的所有父表，从这些表中取出对应时段的信息，组合成数据返回给客户端
-		 *  {
-  			"userId": "67EB8F9DA303F184014F9268D8294156", 
-  			"tableId": "1024", 
-   			"anotherName": "自动化2013级", 
-  			"creatorId": "67EB8F9DA303F184014F9268D8294156", 
-   			"tableState": "1", 
-   			"transactionInfo": [
-  			    [
-    			    {
-   			       		"id": "60", 
-    			      	"content": "华宇（大连）信息服务有限公司
-									宣讲时间：14:00
-									宣讲地点：大学生活动中心207宣讲厅
-									招聘需求：软件工程师、需求工程师、需求分析师、测试工程师
-									专业需求：计算机、信息管理与信息系统、法学等相关专业
-								", 
-    			      	"time": "1475992800000"
-    			    }
-    			  ]
-    			]
- 			}
-		 * @return [type] [description]
+		 * 
 		 */
 		public function actionGetTransaction(){
 			$json=file_get_contents("php://input");
 			$obj=json_decode($json);
-			$openId=Yii::app()->request->cookies['openId']->value;
+			$tableIdAry=$obj->tableIdAry;
+			$timeAry=$obj->timeAry;
 
-
+			$transactionAry=array();
+			$tableTransaction=new TableTransaction();
+			foreach ($tableIdAry as $key => $tableId) {
+				foreach ($timeAry as $ke => $time) {
+					foreach($tableTransaction->getInfoByTableIdAndTime($tableId,$time,1) as $k => $transaction){
+						$transactionAry[]=$transaction;
+					}
+				}
+			}
+			print_r(json_encode($transactionAry));
 		}
 
 		public function actionAddTransaction(){

@@ -1,8 +1,8 @@
 document.write('<script' + ' type="text/javascript" src="'+"assets/js/util/MDate.js"+'">' + '</script>');
 /**
  * ChangeTransactionModal()
- * 		initBeforeShow(TIME,CONTENT,TABLE_NAME)
  * 		bindModal(BUTTON)
+ * 		onModalShow(TIME,CONTENT,TABLE_NAME)
  * 		onChange(CALL_BACK(content,time))
  * 		onDelete(CALL_BACK())
  * 		show()
@@ -34,7 +34,7 @@ var ChangeTransactionModal={
 			
 		})();
 
-		ChangeTransactionModal.initBeforeShow=function(TIME,CONTENT,TABLE_NAME){
+		ChangeTransactionModal.onModalShow=function(TIME,CONTENT,TABLE_NAME){
 			mDate=MDate.creatNew(TIME);
 			content=CONTENT;
 			changeTransactionModalHour.html(mDate.getHours());

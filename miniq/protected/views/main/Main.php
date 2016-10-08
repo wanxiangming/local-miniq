@@ -26,7 +26,7 @@
    
     <div class="row col-xs-12 correction-row-css" style="margin-bottom:100px">
         <div class="col-xs-1"></div>
-        <div id="mainTable" class="row form-inline col-xs-10 correction-row-css" >
+        <div id="mainTable" class="row form-inline col-xs-10 correction-row-css panel panel-primary" >
         
         </div>
     </div>        
@@ -92,6 +92,28 @@
         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
         <button id="create_log_modal_create_btn" type="button" class="btn btn-primary">创建</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="time_same_transaction_modal" tabindex="-1" role="dialog" aria-labelledby="checkForAction">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+     <!--  <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">操作确认</h4>
+      </div> -->
+      <div class="modal-body">
+      <!-- <form class="form-horizontal"> -->
+        <fieldset>
+          <div id="time_same_transaction_scope"></div>
+        </fieldset>
+      <!-- </form> -->
+      </div>
+     <!--  <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button id="backlog_check_action_modal_confirm_btn" type="button" class="btn btn-primary">确定</button>
+      </div> -->
     </div>
   </div>
 </div>
@@ -339,3 +361,4 @@
     </div>
   </div>
 </div>
+

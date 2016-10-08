@@ -114,7 +114,8 @@ var DaylogManager={
 					} 
 				}
 			},800);
-			div.ui.attr("style","height:280px;border-bottom: 2px solid #838383; border-left: 2px solid #838383; border-right: 2px solid #838383;");
+			// div.ui.attr("style","height:280px;border-bottom: 2px solid #838383; border-left: 2px solid #838383; border-right: 2px solid #838383;");
+			div.addClass('panel-body');
 			div.appendTo(SCOPE);
 		})();
 		
@@ -171,7 +172,7 @@ var DaylogManager={
 
 		function creatDaylog(DAY_FLAG){
 			var daylog=Daylog.creatNew(DAY_FLAG);
-			daylog.onCreateTransaction(function(TABLE_ID,CONTENT,TIME){
+			daylog.onCreate(function(TABLE_ID,CONTENT,TIME){
 				var def=e_create(TABLE_ID,CONTENT,TIME);
 				def.done(function(TRANSACTION_DATA_STRUCTURE){
 					// daylog.addTransaction(TRANSACTION_DATA_STRUCTURE);逻辑上不通，都已经是daylog告诉你它创建了一个新的transaction了
@@ -179,14 +180,14 @@ var DaylogManager={
 				});
 				return def;
 			});
-			daylog.onDeleteTransaction(function(TRANSACTION_ID){
+			daylog.onDelete(function(TRANSACTION_ID){
 				var def=e_delete(TRANSACTION_ID);
 				def.done(function(){
 
 				});
 				return def;
 			});
-			daylog.onChangeTransaction(function(TRANSACTION_ID,CONTENT,TIME){
+			daylog.onChange(function(TRANSACTION_ID,CONTENT,TIME){
 				var def=e_change(TRANSACTION_ID,CONTENT,TIME);
 				def.done(function(){
 

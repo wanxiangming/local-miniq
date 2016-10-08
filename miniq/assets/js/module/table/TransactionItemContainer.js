@@ -9,8 +9,6 @@ document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/tab
  * 		getTime()
  * 		addTransactionItem(TransactionItem)
  * 		removeTransactionItem(transactionId)
- * 		refreshUI()	//当TransactionItem的可见性发生了变化时，你可以调用这个函数，告诉它刷新UI
- * 					它会根据TransactionItem的可见性决定自己是一个TransactionItem还是一个TimeSameTransactionItem，或者是隐藏的
  */
 var TransactionItemContainer={
 	creatNew:function(TIME){
@@ -19,7 +17,11 @@ var TransactionItemContainer={
 		var div=Div.creatNew();
 		var transactionItemAry=[];
 		var time=TIME;
-		var timeSameTransactionItem;
+		var timeSameTransactionItem=TimeSameTransactionItem.creatNew(time);
+
+		(function(){
+			timeSameTransactionItem.show().appendTo(div.ui);
+		})();
 
 		TransactionItemContainer.show=function(){
 			show();
@@ -43,58 +45,34 @@ var TransactionItemContainer={
 		}
 
 		TransactionItemContainer.addTransactionItem=function(TRANSACTION_ITEM){
+			timeSameTransactionItem.addItem(TRANSACTION_ITEM);
 			transactionItemAry.push(TRANSACTION_ITEM);
-			hideChild();
-			refreshUI();
+			if(transactionItemAry.length == 1){
+				transactionItemAry[0].show().appendTo(div.ui);
+			}
+			if(transactionItemAry.length > 1){
+				transactionItemAry[0].hide();
+			}
 		}
 
 		TransactionItemContainer.removeTransactionItem=function(TRANSACTION_ITEM_ID){
-			hideChild();
+			timeSameTransactionItem.removeItem(TRANSACTION_ITEM_ID);
 			transactionItemAry=$.grep(transactionItemAry,function(value,index){
 				if(value.getTransactionId() == TRANSACTION_ITEM_ID){
+					value.hide();
 					return false;
 				}
 				else{
 					return true;
 				}
 			});
-			refreshUI();
+			if(transactionItemAry.length == 1){
+				transactionItemAry[0].show().appendTo(div.ui);
+			}
 		}
 
 		TransactionItemContainer.refreshUI=function(){
-			hideChild();
-			refreshUI();
-		}
-
-		//它会根据各个TransactionItem的可见性来设置自己的UI
-		function refreshUI(){
-			var visibleItemAry=[];
-			$.each(transactionItemAry,function(index, el) {
-				if(el.isVisible()){
-					visibleItemAry.push(el);
-				}
-			});
-			if(visibleItemAry.length > 1){
-				timeSameTransactionItem=TimeSameTransactionItem.creatNew(time,visibleItemAry);
-				timeSameTransactionItem.show().appendTo(div.ui);
-				show();
-			}
-			else if(visibleItemAry.length == 1){
-				visibleItemAry[0].show().appendTo(div.ui);
-				show();
-			}
-			else{
-				hide();
-			}
-		}
-
-		function hideChild(){
-			if(timeSameTransactionItem != null){
-				timeSameTransactionItem.hide();
-			}
-			$.each(transactionItemAry,function(index, el) {
-				el.hide();
-			});
+			timeSameTransactionItem.refreshUI();
 		}
 
 

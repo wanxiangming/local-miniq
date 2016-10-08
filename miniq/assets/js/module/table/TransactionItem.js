@@ -41,6 +41,7 @@ var TransactionItem={
 		(function(){
 			btn=PopoverButton.creatNew("hover",transaction.getContent(),popverTitle(),popverContent());
 			btn.appendTo(div.ui);
+			div.addClass('clear-fix');
 
 			if(transaction.isManager()){
 				var changeTransactionModal=ChangeTransactionModal.creatNew();
@@ -64,7 +65,7 @@ var TransactionItem={
 				});
 				changeTransactionModal.bindModal(btn.ui);
 				btn.onClickListener(function(){
-					changeTransactionModal.initBeforeShow(transaction.getTime(),transaction.getContent(),transaction.getChildTableName());
+					changeTransactionModal.onModalShow(transaction.getTime(),transaction.getContent(),transaction.getChildTableName());
 				});
 			}
 			else{

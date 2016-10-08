@@ -23,6 +23,7 @@ var DateItem={
 		var dateBtn=Button.creatNew();
 		var createTransactionModal=CreateTransactionModal.creatNew();
 		var e_create=function(TABLE_ID,CONTENT,TIME){return $.Deferred();};
+		var e_modalClose=function(){};
 		(function(){
 			initDateBtn();
 			createTransactionModal.bindModal(dateBtn.ui);
@@ -34,7 +35,7 @@ var DateItem={
 				return def;
 			});
 			dateBtn.onClickListener(function(){
-				createTransactionModal.initBeforShow(dayFlag);
+				createTransactionModal.initBeforeShow(dayFlag);
 			});
 		})();
 
@@ -90,6 +91,10 @@ var DateItem={
 
 		function hide(){
 			scope.addClass('hide');
+		}
+
+		DateItem.onModalClose=function(CALL_BACK){
+			e_modalClose=CALL_BACK;
 		}
 		
 

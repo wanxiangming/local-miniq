@@ -4,7 +4,8 @@ document.write('<script' + ' type="text/javascript" src="'+"assets/js/util/MDate
  * 
  * CreateTransactionModal()
  * 		bindModal(button)
- * 		initBeforShow(beginTimeOfToday)
+ * 		initBeforeShow(beginTimeOfToday)
+ * 		onModalhide()
  * 		onCreate(CALL_BACK(tableId,content,time))	//当transaction被创建时，你可以做一些事情，返回Deferred对象
  * 		show()
  * 		hide()
@@ -25,11 +26,9 @@ var CreateTransactionModal={
 		var createTransactionModalCreateBtn=$("#create_log_modal_create_btn");
 
 		var e_create=function(TABLE_ID,CONTENT,TIME){return $.Deferred();};
-		createTransactionModal.on("hidden.bs.modal",function(e){
-			createTransactionModalContentTextarea.val("");
-		});
+		var e_onModalHide=function(){};
 
-		CreateTransactionModal.initBeforShow=function(BEGINNING_TIME_OF_TODAY){
+		CreateTransactionModal.initBeforeShow=function(BEGINNING_TIME_OF_TODAY){
 			var mDate=MDate.creatNew(BEGINNING_TIME_OF_TODAY);
 			createTransactionModalCreateBtn.unbind().bind("click",function(){
 				var tableId=createTransactionModalTableSelect.val();
@@ -44,6 +43,14 @@ var CreateTransactionModal={
 					closeModal();
 				});
 			});
+			createTransactionModal.on("hidden.bs.modal",function(e){
+				createTransactionModalContentTextarea.val("");
+				e_onModalHide();
+			});
+		}
+
+		CreateTransactionModal.onModalhide=function(CALL_BACK){
+			e_onModalHide=CALL_BACK;
 		}
 
 		CreateTransactionModal.hide=function(){

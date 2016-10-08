@@ -27,9 +27,9 @@ document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/div
  * 		filtByTableAnotherName(tableAnotherName)	//只显示指定日程的transaction
  * 		clearFilt()						//移除filt限制
  * 		
- * 		onCreateTransaction(CALL_BACK(tableId,content,time))		//当用户创建transaction的时候，你可以做一些事情，返回Deferred对象，包含TransacitonDataStructure对象
- * 		onDeleteTransaction(CALL_BACK(transactionId))				//当用户删除transaction的时候，你可以做一些事情，返回Deferred对象
- * 		onChangeTransaction(CALL_BACK(transactionId,content,time))	//当用户修改transaction的时候，你可以做一些事情，返回Deferred对象
+ * 		onCreate(CALL_BACK(tableId,content,time))		//当用户创建transaction的时候，你可以做一些事情，返回Deferred对象，包含TransacitonDataStructure对象
+ * 		onDelete(CALL_BACK(transactionId))				//当用户删除transaction的时候，你可以做一些事情，返回Deferred对象
+ * 		onChange(CALL_BACK(transactionId,content,time))	//当用户修改transaction的时候，你可以做一些事情，返回Deferred对象
  */
 var Daylog={
 	creatNew:function(DAY_FLAG){
@@ -112,21 +112,30 @@ var Daylog={
 			transactionItem.onChange(function(CONTENT,TIME){
 				var def=e_changeTransaction(transactionItem.getTransactionId(),CONTENT,TIME);
 				def.done(function(){
-					removeItemFromContainer(transactionItem.getTransactionId());
-					addTransactionItem(transactionItem,TIME);
+					if(TIME != transactionItem.getTransactionTime()){
+						transactionItem.hide();
+						removeItemFromContainer(transactionItem.getTransactionId());
+						addItemToContainer(transactionItem,TIME);
+					}
+					else{
+						setTimeout(function(){
+							refreshContainerUI();
+						},200);
+					}
 				});
 				return def;
 			});
 			transactionItem.onDelete(function(){
 				var def=e_deleteTransaction(transactionItem.getTransactionId());
 				def.done(function(){
+					transactionItem.setVisible(false);
 					removeItemFromContainer(transactionItem.getTransactionId());
 					removeItemFromTransactionAry(transactionItem.getTransactionId());
 				});
 				return def;
 			});
 			transactionItemAry.push(transactionItem);
-			addTransactionItem(transactionItem,transactionItem.getTransactionTime());
+			addItemToContainer(transactionItem,transactionItem.getTransactionTime());
 		}
 
 		function removeItemFromTransactionAry(ID){
@@ -146,8 +155,14 @@ var Daylog={
 			});
 		}
 
+		function refreshContainerUI(){
+			$.each(transactionItemContainerAry,function(index, el) {
+				el.refreshUI();
+			});
+		}
+
 		//这个函数有待优化
-		function addTransactionItem(TRANSACTION_ITEM,TIME){
+		function addItemToContainer(TRANSACTION_ITEM,TIME){
 			var isExist=false;
 			$.each(transactionItemContainerAry,function(index, el) {
 				if(el.getTime() == TIME){
@@ -158,9 +173,23 @@ var Daylog={
 			if(!isExist){
 				var transactionItemContainer=TransactionItemContainer.creatNew(TIME);
 				transactionItemContainer.addTransactionItem(TRANSACTION_ITEM);
-				transactionItemContainer.show().appendTo(transactionScope.ui);
 				transactionItemContainerAry.push(transactionItemContainer);
+				sortContainer();
+				$.each(transactionItemContainerAry,function(index, el) {
+					el.show().appendTo(transactionScope.ui);
+				});
 			}
+		}
+
+		function sortContainer(){
+			transactionItemContainerAry.sort(function(valueA,valueB){
+				if(valueA.getTime() <= valueB.getTime()){
+					return -1;
+				}
+				else{
+					return 1;
+				}
+			});
 		}
 
 		function isTransactionItemContainerExist(TIME){
@@ -173,15 +202,15 @@ var Daylog={
 			return isExist;
 		}
 
-		Daylog.onCreateTransaction=function(CALL_BACK){
+		Daylog.onCreate=function(CALL_BACK){
 			e_createTransaction=CALL_BACK;
 		}
 
-		Daylog.onDeleteTransaction=function(CALL_BACK){
+		Daylog.onDelete=function(CALL_BACK){
 			e_deleteTransaction=CALL_BACK;
 		}
 
-		Daylog.onChangeTransaction=function(CALL_BACK){
+		Daylog.onChange=function(CALL_BACK){
 			e_changeTransaction=CALL_BACK;
 		}
 

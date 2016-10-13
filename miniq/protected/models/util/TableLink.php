@@ -1,4 +1,16 @@
 <?php
+	/**
+	 * TableLink()
+	 * 		insertOneData()
+	 * 		getAllByUserId()
+	 * 		changeAnotherName()
+	 * 		deleteOne()
+	 * 		deleteAllByTableId()
+	 * 		isExist()
+	 * 		
+	 */
+
+
 	class TableLink{
 		public function __construct(){
 
@@ -51,6 +63,13 @@
 			else{
 				return false;
 			}
+		}
+
+		public function deleteAllByTableId($tableId){
+			$criteria=new CDbCriteria();
+			$criteria->condition="tableId=:tableId";
+			$criteria->params=array(':tableId'=>$tableId);
+			MysqlLink::model()->deleteAll($criteria);
 		}
 
 		public function isExist($userId,$tableId){

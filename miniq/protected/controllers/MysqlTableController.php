@@ -142,6 +142,62 @@
 			}
 		}
 
+		public function actionGetTableInfo(){
+			$openId=Yii::app()->request->cookies['openId']->value;
+			$tableId=$_GET['tableId'];
+
+			$result=array();
+			$parentTableInfoAry=array();
+			$childTableInfoAry=array();
+			$tableTable=new TableTable();
+			$tableInherit=new TableTableInherit();
+			$tableResult=$tableTable->getById($tableId);
+			if($tableResult != NULL){
+				$result['tableId']=$tableResult['id'];
+				$result['tableName']=$tableResult['tableName'];
+				$result['isCreator']=($openId == $tableResult['creatorId'] ? 1:0);
+				$result['isPublic']=$tableResult['visibilityState'];
+
+				if($result['isCreator']){
+					$result['isAttention']=1;
+				}
+				else{
+					$tableLink=new TableLink();
+					if($tableLink->isExist($openId,$tableId)){
+						$result['isAttention']=1;
+					}
+					else{
+						$result['isAttention']=0;
+					}
+				}
+
+				$parentTableIdAry=$tableInherit->getParentTableId($tableId);
+				foreach ($parentTableIdAry as $key => $value) {
+					$parentTableInfo=array();
+					$parentTable=$tableTable->getById($value);
+					$parentTableInfo['tableId']=$parentTable['id'];
+					$parentTableInfo['tableName']=$parentTable['tableName'];
+					$parentTableInfoAry[]=$parentTableInfo;
+				}
+				$result['parentTableAry']=$parentTableInfoAry;
+
+				$childTableIdAry=$tableInherit->getChildTableId($tableId);
+				foreach ($childTableIdAry as $key => $value) {
+					$childTableInfo=array();
+					$childTable=$tableTable->getById($value);
+					$childTableInfo['tableId']=$childTable['id'];
+					$childTableInfo['tableName']=$childTable['tableName'];
+					$childTableInfoAry[]=$childTableInfo;
+				}
+				$result['childTableAry']=$childTableInfoAry;
+
+				print_r(json_encode($result));
+			}
+			else{
+				print_r(0);
+			}
+		}
+
 		public function actionChangeLogTableName(){
 			$json=file_get_contents("php://input");
 			$obj=json_decode($json);
@@ -162,6 +218,8 @@
 			}
 		}
 
+
+		//弃用了！！！！！！！！！！！！！！！！！！！！！！！！！！
 		public function actionChangeLogTableAnotherName(){
 			$json=file_get_contents("php://input");
 			$obj=json_decode($json);
@@ -178,13 +236,10 @@
 
 		/**
 		 *	当用户弃用某表的时候
-		 *		1，将该用户从该表的link名单中移除（这个用户其实也就是该表的creator）
+		 *		1，将所有用户从该表的link名单中移除
 		 *		2，将该表的继承链移除，包括它和父表的继承关系，以及它和子表的继承关系
 		 *		3，移除该表的所有管理员
-		 *		4，修改该标的TableState
-		 *
-		 * 	弃用操作，不会影响那些仅仅直接关注了该表的用户，他们仍然能接受到数据，但因为该表没有了管理员，所以该表的内容将没有人有权限修改。
-		 * 	并且该表的信息不会再出现在其他表的继承结构中
+		 *  	4，将该表的Table数据移除
 		 * 
 		 * actionDeprecatedLogTable()
 		 * @return [type] [description]
@@ -194,18 +249,18 @@
 			$tableId=$_GET['tableId'];
 
 			$tableTable=new TableTable();
-			if($tableTable->changeTableState($tableId)){
+			if($tableTable->deleteOneData($tableId)){
 				$tableLink=new TableLink();
-				if($tableLink->deleteOne($openId,$tableId)){
-					print_r(0);	//0表示操作成功
-				}
-				else{
-					print_r(1);	//1表示tablelink数据删除失败
-				}
+				$tableLink->deleteAllByTableId($tableId);
+				
+				$tableTableInherit=new TableTableInherit();
+				$tableTableInherit->removeAllAsChildTable($tableId);
+				$tableTableInherit->removeAllAsParentTable($tableId);
+
+				$tableTableManagerGroup=new TableTableManagerGroup();
+				$tableTableManagerGroup->removeAll($tableId);
 			}
-			else{
-				print_r(2);//2表示tablestate修改失败
-			}
+			print_r(1);
 		}
 
 		public function actionCancelAttention(){
@@ -280,14 +335,14 @@
 		/**
 		 * actionInherit()
 		 * 添加新的继承关系
-		 * @return [int] [添加成功返回1，失败返回0]
+		 * @return [int] [添加成功返回新继承链的id，保存失败返回-1，已存在该继承结构返回-2，循环继承返回-3]
 		 */
 		public function actionInherit(){
-			$childTableId=$_GET['childTableId'];
+			$tableId=$_GET['tableId'];
 			$parentTableId=$_GET['parentTableId'];
 
 			$tableInherit=new TableTableInherit();
-			print_r($tableInherit->add($childTableId,$parentTableId));
+			print_r($tableInherit->add($tableId,$parentTableId));
 		}
 
 		/**
@@ -296,11 +351,11 @@
 		 * @return [int] [成功返回真，失败返回假]
 		 */
 		public function actionRemoveInherit(){
-			$childTableId=$_GET['childTableId'];
+			$tableId=$_GET['tableId'];
 			$parentTableId=$_GET['parentTableId'];
 
 			$tableInherit=new TableTableInherit();
-			if($tableInherit->remove($childTableId,$parentTableId)){
+			if($tableInherit->remove($tableId,$parentTableId)){
 				print_r(1);
 			}
 			else{

@@ -20,7 +20,7 @@
 
 			Yii::app()->request->cookies['openId']=$cookie;
 			print_r(1);
-		}
+ 		}
 
 		public function actionSetCookie(){
 			$openId=$_GET['openId'];
@@ -45,7 +45,7 @@
 				if($tableUser->isUserExist()){
 					$cookie->expire=time()+self::MONTH;
 					Yii::app()->request->cookies['openId']=$cookie;
-					print_r(1);
+					print_r(json_encode($tableUser->getUserInfo()));
 				}
 				else{
 					unset(Yii::app()->request->cookies['openId']);

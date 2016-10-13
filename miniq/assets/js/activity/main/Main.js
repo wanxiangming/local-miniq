@@ -119,100 +119,100 @@ function host(){
  */
 
 
-	$("input").iCheck({
-		checkboxClass:"icheckbox_flat-red",
-		redioClass:"iradio_flat-red"
-	});
+	// $("input").iCheck({
+	// 	checkboxClass:"icheckbox_flat-red",
+	// 	redioClass:"iradio_flat-red"
+	// });
 
-	var area=$("#backlogBoxRow");
-	var mainLineId;
-	var mainLineContent="";
-	var backlogInfoManager=GetInfoInUseMainLineAndUncompletedBacklogManager.creatNew();
-	backlogInfoManager.onQuestSuccess(function(){
-		mainLineId=backlogInfoManager.getMainLineId();
-		mainLineContent=backlogInfoManager.getMainLineContent();
-		$(".mainQuestContent_span").html(mainLineContent);
-		var backlogBoxManager=BacklogBoxManager.creatNew(backlogInfoManager.getBacklogAry(),backlogInfoManager.isMainLineExist(),area);
-		backlogBoxManager.onRemoveItem(function(ID){
-			var def=$.Deferred();
-			var removeBacklog=RemoveBacklog.creatNew(ID);
-			removeBacklog.onSuccessLisenter(function(data){
-				if(data == 1){
-					def.resolve();
-				}
-				else if(data == 0){
-					def.reject();
-				}
-			});
-			removeBacklog.launch();
-			return def;
-		});
-		backlogBoxManager.onItemChange(function(ID,CONTENT,IS_MAIN_LINE,IS_RECENT){
-			var def=$.Deferred();
-			var changeBacklog=ChangeBacklog.creatNew(mainLineId,ID,CONTENT,IS_MAIN_LINE,IS_RECENT);
-			changeBacklog.onSuccessLisenter(function(data){
-				if(data == 1){
-					def.resolve();
-				}
-				else if(data == 0){
-					def.reject();
-				}
-			});
-			changeBacklog.launch();
-			return def;
-		});
-		backlogBoxManager.onItemComplete(function(ID){
-			var def=$.Deferred();
-			var completeBacklog=CompleteBacklog.creatNew(ID);
-			completeBacklog.onSuccessLisenter(function(data){
-				if(data == 1){
-					def.resolve();
-				}
-				else if(data == 0){
-					def.reject();
-				}
-			});
-			completeBacklog.launch();
-			return def;
-		});
-		backlogBoxManager.onAddItem(function(CONTENT,IS_MAIN_LINE,IS_RECENT){
-			var def=$.Deferred();
-			var addBacklog=AddBacklog.creatNew(mainLineId,CONTENT,IS_MAIN_LINE,IS_RECENT);
-			addBacklog.onSuccessLisenter(function(data){
-				var backlogId=Number(data);
-				if(backlogId != -1){
-					var backlog=Backlog.creatNew();
-					backlog.setId(backlogId);
-					backlog.setContent(CONTENT);
-					backlog.setIsMainLine(IS_MAIN_LINE);
-					backlog.setIsRecent(IS_RECENT);
-					def.resolve(backlog);
-				}
-			});
-			addBacklog.launch();
-			return def;
-		});
-		backlogBoxManager.onAddMainQuest(function(CONTENT){
-			var def=$.Deferred();
-			var addMainLine=AddMainLine.creatNew(CONTENT);
-			addMainLine.onSuccessLisenter(function(data){
-				var mId=Number(data);
-				if(mId != -1){
-					mainLineId=mId;
-					mainLineContent=CONTENT;
-					$(".mainQuestContent_span").html(CONTENT);
-					def.resolve();
-				}
-				else{
-					def.reject();
-				}
-			});
-			addMainLine.launch();
-			return def;
-		});
-	});
-	backlogInfoManager.onQuestError(function(){});
-	backlogInfoManager.launch();
+	// var area=$("#backlogBoxRow");
+	// var mainLineId;
+	// var mainLineContent="";
+	// var backlogInfoManager=GetInfoInUseMainLineAndUncompletedBacklogManager.creatNew();
+	// backlogInfoManager.onQuestSuccess(function(){
+	// 	mainLineId=backlogInfoManager.getMainLineId();
+	// 	mainLineContent=backlogInfoManager.getMainLineContent();
+	// 	$(".mainQuestContent_span").html(mainLineContent);
+	// 	var backlogBoxManager=BacklogBoxManager.creatNew(backlogInfoManager.getBacklogAry(),backlogInfoManager.isMainLineExist(),area);
+	// 	backlogBoxManager.onRemoveItem(function(ID){
+	// 		var def=$.Deferred();
+	// 		var removeBacklog=RemoveBacklog.creatNew(ID);
+	// 		removeBacklog.onSuccessLisenter(function(data){
+	// 			if(data == 1){
+	// 				def.resolve();
+	// 			}
+	// 			else if(data == 0){
+	// 				def.reject();
+	// 			}
+	// 		});
+	// 		removeBacklog.launch();
+	// 		return def;
+	// 	});
+	// 	backlogBoxManager.onItemChange(function(ID,CONTENT,IS_MAIN_LINE,IS_RECENT){
+	// 		var def=$.Deferred();
+	// 		var changeBacklog=ChangeBacklog.creatNew(mainLineId,ID,CONTENT,IS_MAIN_LINE,IS_RECENT);
+	// 		changeBacklog.onSuccessLisenter(function(data){
+	// 			if(data == 1){
+	// 				def.resolve();
+	// 			}
+	// 			else if(data == 0){
+	// 				def.reject();
+	// 			}
+	// 		});
+	// 		changeBacklog.launch();
+	// 		return def;
+	// 	});
+	// 	backlogBoxManager.onItemComplete(function(ID){
+	// 		var def=$.Deferred();
+	// 		var completeBacklog=CompleteBacklog.creatNew(ID);
+	// 		completeBacklog.onSuccessLisenter(function(data){
+	// 			if(data == 1){
+	// 				def.resolve();
+	// 			}
+	// 			else if(data == 0){
+	// 				def.reject();
+	// 			}
+	// 		});
+	// 		completeBacklog.launch();
+	// 		return def;
+	// 	});
+	// 	backlogBoxManager.onAddItem(function(CONTENT,IS_MAIN_LINE,IS_RECENT){
+	// 		var def=$.Deferred();
+	// 		var addBacklog=AddBacklog.creatNew(mainLineId,CONTENT,IS_MAIN_LINE,IS_RECENT);
+	// 		addBacklog.onSuccessLisenter(function(data){
+	// 			var backlogId=Number(data);
+	// 			if(backlogId != -1){
+	// 				var backlog=Backlog.creatNew();
+	// 				backlog.setId(backlogId);
+	// 				backlog.setContent(CONTENT);
+	// 				backlog.setIsMainLine(IS_MAIN_LINE);
+	// 				backlog.setIsRecent(IS_RECENT);
+	// 				def.resolve(backlog);
+	// 			}
+	// 		});
+	// 		addBacklog.launch();
+	// 		return def;
+	// 	});
+	// 	backlogBoxManager.onAddMainQuest(function(CONTENT){
+	// 		var def=$.Deferred();
+	// 		var addMainLine=AddMainLine.creatNew(CONTENT);
+	// 		addMainLine.onSuccessLisenter(function(data){
+	// 			var mId=Number(data);
+	// 			if(mId != -1){
+	// 				mainLineId=mId;
+	// 				mainLineContent=CONTENT;
+	// 				$(".mainQuestContent_span").html(CONTENT);
+	// 				def.resolve();
+	// 			}
+	// 			else{
+	// 				def.reject();
+	// 			}
+	// 		});
+	// 		addMainLine.launch();
+	// 		return def;
+	// 	});
+	// });
+	// backlogInfoManager.onQuestError(function(){});
+	// backlogInfoManager.launch();
 
 }
 

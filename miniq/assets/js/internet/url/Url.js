@@ -7,10 +7,14 @@ CHECK_COOKIE=MINIQ_URL+"Login/CheckCookie";
 DEL_COOKIE=MINIQ_URL+"Login/DelCookie";
 CHANGE_NICK_NAME=MINIQ_URL+"MysqlUser/ChangeNickName";
 
+//用户相关url
+ALTER_USER_INFO=MINIQ_URL+"MysqlUser/AlterUserInfo";
+
 //日程表相关url
 CREATE_LOG_TABLE=MINIQ_URL+"MysqlTable/CreateLogTable";
 GET_LOG_TABLE_LIST=MINIQ_URL+"MysqlTable/GetLogTableList";
 GET_ATTENTION_TBABLE_INFO=MINIQ_URL+"MysqlTable/GetAttentonTableInfo";
+GET_TABLE_INFO=MINIQ_URL+"MysqlTable/GetTableInfo";
 CHANGE_TABLE_NAME=MINIQ_URL+"MysqlTable/ChangeLogTableName";
 CHANGE_TABLE_ANOTHER_NAME=MINIQ_URL+"MysqlTable/ChangeLogTableAnotherName";
 DEPRECATED_TABLE=MINIQ_URL+"MysqlTable/DeprecatedLogTable";
@@ -18,6 +22,8 @@ CANCEL_ATTENTION=MINIQ_URL+"MysqlTable/CancelAttention";
 SEARCH_TABLE_BY_TABLE_ID=MINIQ_URL+"MysqlTable/SearchTableByTableId";
 PAY_ATTENTION_TO_TABLE=MINIQ_URL+"MysqlTable/PayAttention";
 OPEN_THE_TABLE=MINIQ_URL+"MysqlTable/OpenTheTable";
+INHERIT=MINIQ_URL+"MysqlTable/Inherit";
+RELIEVE_INHERIT=MINIQ_URL+"MysqlTable/RemoveInherit";
 
 //日程事务相关url
 GET_TRANSACTION_BY_TIMEARY=MINIQ_URL+"MysqlTransaction/GetTransactionByTimeAry";

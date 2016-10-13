@@ -77,6 +77,13 @@ var ChangeNickName={
 	}
 }
 
+var AlterUserInfo={
+	creatNew:function(NICK_NAME){
+		var AlterUserInfo=Internet.creatNew(ALTER_USER_INFO,"POST",{"nickName":NICK_NAME});
+		return AlterUserInfo;
+	}
+}
+
 var GetLogTableList={
 	creatNew:function(){
 		var GetLogTableList=Internet.creatNew(GET_LOG_TABLE_LIST,"GET",{});
@@ -88,6 +95,13 @@ var GetAttentionTableInfo={
 	creatNew:function(){
 		var GetAttentionTableInfo=Internet.creatNew(GET_ATTENTION_TBABLE_INFO,"GET",{});
 		return GetAttentionTableInfo;
+	}
+}
+
+var GetTableInfo={
+	creatNew:function(TABLE_ID){
+		var GetTableInfo=Internet.creatNew(GET_TABLE_INFO,"GET",{"tableId":TABLE_ID});
+		return GetTableInfo;
 	}
 }
 
@@ -182,6 +196,19 @@ var OpenTheTable={
 	}
 }
 
+var Inherit={
+	creatNew:function(TABLE_ID,PARENT_TABLE_ID){
+		var Inherit=Internet.creatNew(INHERIT,"GET",{"tableId":TABLE_ID,"parentTableId":PARENT_TABLE_ID});
+		return Inherit;
+	}
+}
+
+var RelieveInherit={
+	creatNew:function(TABLE_ID,PARENT_TABLE_ID){
+		var RelieveInherit=Internet.creatNew(RELIEVE_INHERIT,"GET",{"tableId":TABLE_ID,"parentTableId":PARENT_TABLE_ID});
+		return RelieveInherit;
+	}
+}
 
 
 

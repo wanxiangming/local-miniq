@@ -26,7 +26,7 @@
    
     <div class="row col-xs-12 correction-row-css" style="margin-bottom:100px">
         <div class="col-xs-1"></div>
-        <div id="mainTable" class="row form-inline col-xs-10 correction-row-css panel panel-primary" >
+        <div id="mainTable" class="row form-inline col-xs-10 correction-row-css panel panel-primary" style="height: 310px">
         
         </div>
     </div>        

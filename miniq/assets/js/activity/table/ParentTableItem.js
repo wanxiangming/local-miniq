@@ -1,6 +1,7 @@
 
 document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/div/Div.js"+'">' + '</script>');
 document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/button/Button.js"+'">' + '</script>');
+document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/listitem/DropDownListItem.js"+'">' + '</script>');
 
 /**
  *	它有两种形态，一种是正常的继承关系展示，还有一种是编辑模式,两个模式只需要一个隐藏，一个显示，就能实现切换功能
@@ -72,29 +73,16 @@ var ParentTableItemDisplay={
 		var settingBtn=DropDown.creatNew("<span class=\"glyphicon glyphicon-cog\"></span>");
 		var e_relieveInherit=function(parentTableId){};
 		(function(){
-			div.addClass("row correction-row-css deep-background-on-hover col-xs-12");
-			div.setAttribute("style","padding-top:6px;padding-bottom:6px;");
-			div.ui.mouseenter(function(event) {
-				settingBtn.show();
-			});
-			div.ui.mouseleave(function(event) {
-				settingBtn.hide();
-				settingBtn.closeMenu();
-			});
-
 			var tableNameDiv=Div.creatNew();
-			tableNameDiv.addClass('col-xs-10');
-			tableNameDiv.html(TABLE_NAME+"  <<  "+"<a href=\"http://localhost/?r=Table/TableInfo&tableId="+PARENT_TABLE_ID+"\">"+PARENT_TABLE_NAME+" ("+PARENT_TABLE_ID+")</a>");
-			tableNameDiv.appendTo(div.ui);
+			tableNameDiv.html(TABLE_NAME+"  <<  "+"<a href=\""+MINIQ_URL+"Table/TableInfo&tableId="+PARENT_TABLE_ID+"\">"+PARENT_TABLE_NAME+" ("+PARENT_TABLE_ID+")</a>");
 
-			settingBtnDiv.addClass('col-xs-2');
-			settingBtnDiv.setAttribute("style","padding-top:0px;padding-bottom:0px;");
-			settingBtn.hide();
-			settingBtn.appendTo(settingBtnDiv.ui);
-			settingBtn.addMenuItem(makeRelieveInheritBtn());
 			if(EDIT_PERMISSION){
 				settingBtnDiv.appendTo(div.ui);
-			}		
+			}
+			var dropDownListItem=DropDownListItem.creatNew(EDIT_PERMISSION,"<span class=\"glyphicon glyphicon-cog\"></span>","mousein");
+			dropDownListItem.addDropDownMenu(makeRelieveInheritBtn());
+			dropDownListItem.appendContent(tableNameDiv.ui);
+			dropDownListItem.appendTo(div.ui);
 		})();
 
 		function makeRelieveInheritBtn(){
@@ -107,7 +95,7 @@ var ParentTableItemDisplay={
 				});
 				checkActionModal.modal("show");
 			});
-			return dropDownItem.ui;
+			return dropDownItem;
 		}
 
 		ParentTableItemDisplay.onRelieveInherit=function(CALL_BACK){
@@ -129,15 +117,6 @@ var ParentTableItemDisplay={
 		return ParentTableItemDisplay;
 	}
 }
-
-
-/**
- * ParentTableItemEdit()
- * 		show()
- * 		hide()
- * 		onClickRelieveBtn()
- */
-
 
 
 

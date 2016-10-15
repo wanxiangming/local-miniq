@@ -7,6 +7,6 @@
 		}  
 		
 		public function tableName(){  
-			return '{{tableInherit}}';  
+			return '{{tableinherit}}';  
 		} 
 	} 

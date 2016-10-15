@@ -1,15 +1,26 @@
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/TableInfoDataStructure.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/GetTableInfoNET.js"+'">' + '</script>');
+document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/data-structure/TableInfoDataStructure.js"+'">' + '</script>');
+document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/internet/GetTableInfoNET.js"+'">' + '</script>');
 document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/ParentTableItem.js"+'">' + '</script>');
 document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/ChildTableItem.js"+'">' + '</script>');
 document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/TableItem.js"+'">' + '</script>');
-
-
+document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/data-structure/FollowerDataStructure.js"+'">' + '</script>');
+document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/FollowerItem.js"+'">' + '</script>');
+document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/FollowerItemAryIterator.js"+'">' + '</script>');
+document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/FollowerItemFilter.js"+'">' + '</script>');
 
 function host(){
 	var tableScope=$("#table");
 	var parentTableListScope=$("#parentTable");
 	var childTableListScope=$("#childTable");
+	var followerScope=$("#follower");
+	var filtInput=$("#filt_follower_input");
+	var followerListScope=$("#follower_list_scope");
+	var loaderScope=$("#loaderScope");
+
+	var loader=LoaderPiano.creatNew();
+	loader.show();
+	loader.ui.appendTo(loaderScope);
+
 	var getTableInfoNet=GetTableInfoNET.creatNew(getUrlParam("tableId"));
 	getTableInfoNet.onSuccess(function(TABLE_INFO_DATA_STRUCTURE){
 		var tableId=TABLE_INFO_DATA_STRUCTURE.getTableId();
@@ -54,7 +65,7 @@ function host(){
 			var def=$.Deferred();
 			var cancelAttention=CancelAttention.creatNew(tableId);
 			cancelAttention.onSuccessLisenter(function(data){
-				if(data==0){
+				if(data==1){
 					def.resolve();
 					//这里要刷新页面
 					location.reload(true);
@@ -121,6 +132,98 @@ function host(){
 			inherit.launch();
 			return def;
 		});
+		tableItem.onOpenFollowerList(function(){
+			followerScope.removeClass('hide');
+			refreshFollowerList();
+		});
+
+		function refreshFollowerList(){
+			loader.show();
+			var getFollowerList=GetFollowerList.creatNew(tableId);
+			getFollowerList.onSuccessLisenter(function(data){
+				loader.hide();
+				followerListScope.empty();
+				if(data.length == 0){
+					//服务器返回的数据是空数组，说明该表没有任何人关注,实际上不会出现这种情况
+				}
+				else{
+					var followerItemAry=[];
+					$.each(data,function(index, el) {
+						var followerDataStructure=FollowerDataStructure.creatNew(el.isManager,el.isCreator);
+						followerDataStructure.setFollowerId(el.followerId);
+						followerDataStructure.setFollowerName(el.followerName);
+						var followerItem=FollowerItem.creatNew(followerDataStructure);
+						followerItem.onSetToManager(function(followerId){
+							var addManager=AddManager.creatNew(followerId,tableId);
+							addManager.onSuccessLisenter(function(data){
+								if(data == 1){
+									refreshFollowerList();
+								}
+							});
+							addManager.launch();
+						});
+						followerItem.onRepealManager(function(followerId){
+							var repealManager=RepealManager.creatNew(followerId,tableId);
+							repealManager.onSuccessLisenter(function(data){
+								if(data == 1){
+									refreshFollowerList();
+								}
+							});
+							repealManager.launch();
+						});
+						followerItemAry.push(followerItem);
+					});
+					var followerItemAryIterator=FollowerItemAryIterator.creatNew(followerItemAry);
+					followerItemAryIterator.sort();
+					followerItemAryIterator.iterate(function(FOLLOWER_ITEM){
+						FOLLOWER_ITEM.getUI().appendTo(followerListScope);
+					});
+					var followerItemFilter=FollowerItemFilter.creatNew(followerItemAry);
+					filtInput.unbind().bind("input propertychange",function(){
+						followerItemAryIterator.iterate(function(FOLLOWER_ITEM){
+							FOLLOWER_ITEM.hide();
+						});
+						if(filtInput.val() == ""){
+							followerItemAryIterator.iterate(function(FOLLOWER_ITEM){
+								FOLLOWER_ITEM.getUI().appendTo(followerListScope);
+								FOLLOWER_ITEM.show();
+							});
+						}
+						else{
+							$.each(followerItemFilter.filt(filtInput.val()),function(index,val){
+								val.getUI().appendTo(followerListScope);
+								val.show();
+							});
+						}
+						
+					});
+				}
+			});
+			getFollowerList.launch();
+		}
+
+		// function makeFollowerItem(FOLLOWER_DATA_STRUCTURE){
+		// 	var followerItem=FollowerItem.creatNew(FOLLOWER_DATA_STRUCTURE);
+		// 	followerItem.onSetToManager(function(followerId){
+		// 		//tableId followerId
+		// 		var addManager=AddManager.creatNew(followerId,tableId);
+		// 		addManager.onSuccessLisenter(function(data){
+		// 			if(data == 1){
+		// 				var followerDataStructure=FollowerDataStructure.creatNew(true,false);
+		// 				followerDataStructure.setFollowerId(FOLLOWER_DATA_STRUCTURE.getFollowerId());
+		// 				followerDataStructure.setFollowerName(FOLLOWER_DATA_STRUCTURE.getFollowerName());
+		// 				makeFollowerItem(FollowerDataStructure);
+
+		// 			}
+				
+		// 		});
+		// 	});
+		// 	followerItem.onRepealManager(function(){
+
+		// 	});
+		// }
+
+
 
 		if(TABLE_INFO_DATA_STRUCTURE.queryParentTableCount() > 0){
 			TABLE_INFO_DATA_STRUCTURE.parentTableIterator(function(PARENT_TABLE_ID,PARENT_TABLE_NAME){

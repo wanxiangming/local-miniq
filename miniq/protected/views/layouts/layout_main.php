@@ -40,9 +40,9 @@
     <div class="col-xs-offset-3 col-xs-1 text-center" style="font-size:24px;color:#FFFFFF;">MiniQueue</div>
 
     <div class="col-xs-offset-4 col-xs-4 text-left row form-inline" id="userInfo">
-    	<a href="http://localhost/?r=Main/Main" class="btn btn-defualt white"><span class="glyphicon glyphicon-home"></span></a>
-        <a id="nickName" type="button" href="http://localhost/?r=User/AccountSetting" data-toggle="tooltip" data-placement="bottom" title="加载中……" class="btn btn-defualt white"><span class="glyphicon glyphicon-user"></span></a>
-        <a id="scheduleManagerBtn" href="http://localhost/?r=Main/ScheduleManager" data-toggle="tooltip" data-placement="bottom" title="表管理" class="btn btn-defualt white" ><span class="glyphicon glyphicon-th"></span></a>
+    	<a href="<?php echo SITE_URL;?>?r=Main/Main" class="btn btn-defualt white"><span class="glyphicon glyphicon-home"></span></a>
+        <a id="nickName" type="button" href="<?php echo SITE_URL;?>?r=User/AccountSetting" data-toggle="tooltip" data-placement="bottom" title="加载中……" class="btn btn-defualt white"><span class="glyphicon glyphicon-user"></span></a>
+        <a id="scheduleManagerBtn" href="<?php echo SITE_URL;?>?r=Main/ScheduleManager" data-toggle="tooltip" data-placement="bottom" title="表管理" class="btn btn-defualt white" ><span class="glyphicon glyphicon-th"></span></a>
     </div>  
 </div>
 

@@ -1,16 +1,26 @@
 document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/div/Div.js"+'">' + '</script>');
 document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/button/Button.js"+'">' + '</script>');
 document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/ul/Ul.js"+'">' + '</script>');
+document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/dropdown/DropDownItemButton.js"+'">' + '</script>');
+
 
 
 /**
  * DropDown(Html)
+ * 		setHtml()
+ * 		//setMouseLeaveHideMenu()
  * 		appendTo()
  * 		addMenuItem()
+ * 		
  * 		openMenu()
  * 		closeMenu()
+ *
+ * 		onMenuOpen()
+ * 		onMenuClose()
+ * 		
  * 		show()
  * 		hide()
+ * 		isMenuOpen()
  */
 
 var DropDown={
@@ -20,8 +30,16 @@ var DropDown={
 		var div=Div.creatNew();
 		var dropDownBtn=Button.creatNew();
 		var ul=Ul.creatNew();
+		var e_menuOpen=function(){};
+		var e_menuClose=function(){};
 
 		div.addClass("dropdown");
+		div.ui.on("shown.bs.dropdown",function(){
+			e_menuOpen();
+		});
+		div.ui.on("hidden.bs.dropdown",function(){
+			e_menuClose();
+		});
 
 		dropDownBtn.addClass("btn btn-default dropdown-toggle correction-cancel-border");
 		dropDownBtn.setAttribute("type","button");
@@ -56,26 +74,40 @@ var DropDown={
 			div.addClass('open');
 		}
 
+		DropDown.isMenuOpen=function(){
+			return div.ui.hasClass('open');
+		}
+
+		// DropDown.setMouseLeaveHideMenu=function(){
+		// 	ul.ui.mouseleave(function(event) {
+		// 		closeMenu();
+		// 	});
+		// }
+
 		DropDown.closeMenu=function(){
+			closeMenu();
+		}
+
+		function closeMenu(){
 			div.removeClass('open');
+		}
+
+		DropDown.onMenuOpen=function(CALL_BACK){
+			e_menuOpen=CALL_BACK;
+		}
+
+		DropDown.onMenuClose=function(CALL_BACK){
+			e_menuClose=CALL_BACK;
+		}
+
+		DropDown.setHtml=function(HTML){
+			dropDownBtn.html(HTML);
 		}
 
 		return DropDown;
 	}
 }
 
-
-
-
-var DropDownItemButton={
-	creatNew:function(){
-		var DropDownItemButton=Button.creatNew();
-
-		DropDownItemButton.addClass("form-control btn btn-default correction-dropdown-btn-css");
-
-		return DropDownItemButton;
-	}
-}
 
 
 

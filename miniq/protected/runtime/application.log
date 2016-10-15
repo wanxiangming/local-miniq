@@ -2300,3 +2300,48 @@ REQUEST_URI=/?r=User/AccountSetting
 in D:\local-web-server\www\miniq\protected\views\user\AccountSetting.php (16)
 in D:\local-web-server\www\miniq\protected\controllers\UserController.php (11)
 in D:\local-web-server\www\miniq\index.php (14)
+2016/10/15 17:37:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MysqlTableManagerGroup/AddManager".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('MysqlTableManag...')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/?r=MysqlTableManagerGroup/AddManager&tableId=1024&followerId=1008
+HTTP_REFERER=http://localhost/?r=Table/TableInfo&tableId=1024
+---
+2016/10/15 17:37:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MysqlTableManagerGroup/AddManager".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('MysqlTableManag...')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/?r=MysqlTableManagerGroup/AddManager&tableId=1024&followerId=1008
+HTTP_REFERER=http://localhost/?r=Table/TableInfo&tableId=1024
+---
+2016/10/15 17:37:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MysqlTableManagerGroup/AddManager".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('MysqlTableManag...')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/?r=MysqlTableManagerGroup/AddManager&tableId=1024&followerId=1008
+HTTP_REFERER=http://localhost/?r=Table/TableInfo&tableId=1024
+---
+2016/10/15 17:39:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MysqlTableManagerGroup/AddManager".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('MysqlTableManag...')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/?r=MysqlTableManagerGroup/AddManager&tableId=1024&followerId=1008
+HTTP_REFERER=http://localhost/?r=Table/TableInfo&tableId=1024
+---
+2016/10/15 17:39:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MysqlTableManagerGroup/AddManager".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('MysqlTableManag...')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/?r=MysqlTableManagerGroup/AddManager&tableId=1024&followerId=1008
+HTTP_REFERER=http://localhost/?r=Table/TableInfo&tableId=1024
+---

@@ -98,6 +98,13 @@ var GetAttentionTableInfo={
 	}
 }
 
+var GetFollowerList={
+	creatNew:function(TABLE_ID){
+		var GetFollowerList=Internet.creatNew(GET_FOLLOWER_LIST,"GET",{"tableId":TABLE_ID});
+		return GetFollowerList;
+	}
+}
+
 var GetTableInfo={
 	creatNew:function(TABLE_ID){
 		var GetTableInfo=Internet.creatNew(GET_TABLE_INFO,"GET",{"tableId":TABLE_ID});
@@ -210,6 +217,19 @@ var RelieveInherit={
 	}
 }
 
+var AddManager={
+	creatNew:function(FOLLOWER_ID,TABLE_ID){
+		var AddManager=Internet.creatNew(ADD_MANAGER,"GET",{"tableId":TABLE_ID,"followerId":FOLLOWER_ID});
+		return AddManager;
+	}
+}
+
+var RepealManager={
+	creatNew:function(FOLLOWER_ID,TABLE_ID){
+		var RepealManager=Internet.creatNew(REPEAL_MANAGER,"GET",{"tableId":TABLE_ID,"followerId":FOLLOWER_ID});
+		return RepealManager;
+	}
+}
 
 
 

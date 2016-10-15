@@ -14,8 +14,13 @@
 			$this->renderPartial('Qc');	
 		}
 
+		/**
+		 * (1009)2291571C2A1ED1017BADF6F93BC0DA06
+		 * (100000)67EB8F9DA303F184014F9268D8294156
+		 *
+		 */
 		public function actionLocalSetCookie(){
-			$cookie=new CHttpCookie('openId',"67EB8F9DA303F184014F9268D8294156");
+			$cookie=new CHttpCookie('openId',"67EB8F9DA303F184014F9268D8294156");	
 			$cookie->expire=time()+self::MONTH;
 
 			Yii::app()->request->cookies['openId']=$cookie;

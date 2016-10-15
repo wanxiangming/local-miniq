@@ -39,7 +39,7 @@ function host(){
 	attentionTableInfoManager.onSuccess(function(){
 		var attentionTableAry=attentionTableInfoManager.getAttentionTableAry();
 		$.each(attentionTableAry,function(index,value){
-			if(value.isManager){
+			if(value.isManager()){
 				createTransactionModalTableSelect.append("<option value="+value.getTableId()+">"+value.getTableName()+"</option>");
 			}
 		});

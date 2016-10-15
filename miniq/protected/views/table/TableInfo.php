@@ -7,10 +7,10 @@
 	<div class="col-xs-offset-2 col-xs-8">
 		<div class="row correction-row-css" style="margin-top:20px;position:relative;">
 			<label class="control-label col-xs-2" style="padding-top: 12px;" for="input01">表名称</label>
-			<div id="table" class="row col-xs-offset-2"></div>
+			<div id="table" class="row col-xs-10"></div>
 			<div id="inheritSearch" class="row col-xs-offset-3 col-xs-9 hide" style="margin-top: 30px;margin-bottom: 30px">
 				<div class="col-xs-5 correction-clear-col-xs-padding">
-	              <input  id="search_input" class="col-xs-12" placeholder=""type="text">
+	              <input  id="search_input" class="col-xs-12" placeholder="输入表ID" type="text">
 	            </div>
 	            <div class="correction-clear-col-xs-padding">
 	            	<div id="search_button" class="btn correction-clear-col-xs-padding" style="font-size: 19px;"><span class="glyphicon glyphicon-search"></span></div>
@@ -20,11 +20,21 @@
 		</div>
 		<div class="row correction-row-css" style="margin-top:20px;position:relative;">
 			<label class="control-label col-xs-2" style="padding-top: 6px;" for="input01">父表列表</label>
-			<div id="parentTable" class="row col-xs-offset-2"></div>
+			<div id="parentTable" class="row col-xs-10"></div>
 		</div>
 		<div class="row correction-row-css" style="margin-top:20px;position:relative;">
 			<label class="control-label col-xs-2" style="padding-top: 6px;" for="input01">子表列表</label>
-			<div id="childTable" class="row col-xs-offset-2"></div>
+			<div id="childTable" class="row col-xs-10"></div>
+		</div>
+		<div id="follower" class="row correction-row-css hide" style="margin-top:20px;position:relative;">
+			<label class="control-label col-xs-2 " style="padding-top: 6px;font-size: 13px" for="input01">关注者&管理员</label>
+			<div class="row col-xs-10">
+				<div class="col-xs-12 text-center">
+					<input id="filt_follower_input" type="text" placeholder="搜索">
+					<div id="loaderScope"></div>
+				</div>
+				<div id="follower_list_scope" class="col-xs-12"></div>
+			</div>
 		</div>
 	</div>
 

@@ -24,6 +24,11 @@ PAY_ATTENTION_TO_TABLE=MINIQ_URL+"MysqlTable/PayAttention";
 OPEN_THE_TABLE=MINIQ_URL+"MysqlTable/OpenTheTable";
 INHERIT=MINIQ_URL+"MysqlTable/Inherit";
 RELIEVE_INHERIT=MINIQ_URL+"MysqlTable/RemoveInherit";
+GET_FOLLOWER_LIST=MINIQ_URL+"MysqlTable/GetFollowerList";
+
+//管理员相关
+ADD_MANAGER=MINIQ_URL+"MysqlTableManagerGroup/AddManager";
+REPEAL_MANAGER=MINIQ_URL+"MysqlTableManagerGroup/RepealManager";
 
 //日程事务相关url
 GET_TRANSACTION_BY_TIMEARY=MINIQ_URL+"MysqlTransaction/GetTransactionByTimeAry";

@@ -3,21 +3,30 @@
 	/**
 	 * MysqlTableController()
 	 * 		actionCreateLogTable()
-	 * 		actionGetLogTableList()
+	 * 		
+	 * 		actionGetLogTableList()		//弃用
 	 * 		actionGetAttentonTableInfo()
+	 * 		actionGetFollowerList()
+	 * 		actionGetTableInfo()
+	 * 		
 	 * 		actionChangeLogTableName()
-	 * 		actionChangeLogTableAnotherName()
+	 * 		actionChangeLogTableAnotherName()	//弃用
+	 * 		
 	 * 		actionDeprecatedLogTable()
 	 * 		actionCancelAttention()
+	 * 		
 	 * 		actionPayAttention()
 	 * 		actionSearchTableByTableId()
 	 * 		actionOpenTheTable()
 	 * 		actionInherit()
 	 * 		actionRemoveInherit()
+	 *
+	 * 		//测试用
 	 * 		actionGetParentInheritLink()
 	 * 		actionGetAllParentTableId()
 	 * 		actionGetAllChildTableId()
 			actionRemoveAll()
+
 	 */
 
 	include_once("protected/models/util/TableTable.php");
@@ -96,6 +105,10 @@
 		public function actionGetAttentonTableInfo(){
 			$openId=Yii::app()->request->cookies['openId']->value;
 
+			$tableUser=new TableUser($openId);
+			$userInfo=$tableUser->getUserInfo();
+			$userId=$userInfo['id'];
+
 			$tableLink=new TableLink();
 			$linkResult=$tableLink->getAllByUserId($openId);
 			if($linkResult != NULL){
@@ -114,11 +127,11 @@
 						$info['tableId']=$tableId;
 						$info['tableName']=$tableResult['tableName'];
 
-						if($tableResult['creatorId'] == $openId  ||  $tableMangerGroup->isManager($openId,$tableId)){
-							$info['isManager']=1;
+						if($tableResult['creatorId'] == $openId  ||  $tableMangerGroup->isManager($userId,$tableId)){
+							$info['isManager']=true;
 						}
 						else{
-							$info['isManager']=0;
+							$info['isManager']=false;
 						}
 
 						$allParentTableIdAry=$tableInherit->getAllParentTableId($tableId);
@@ -198,6 +211,42 @@
 			}
 		}
 
+		public function actionGetFollowerList(){
+			$tableId=$_GET['tableId'];
+			$result=array();
+
+			$tableTable=new TableTable();
+			$tableResult=$tableTable->getById($tableId);
+			$creatorId=$tableResult['creatorId'];
+
+			$tableLink=new TableLink();
+			$linkResult=$tableLink->getAllByTableId($tableId);
+
+			$tableManagerGroup=new TableTableManagerGroup();
+			$managerList=$tableManagerGroup->getAllManager($tableId);
+
+			foreach ($linkResult as $key => $value) {
+				$userId=$value['userId'];
+
+				$tableUser=new TableUser($userId);
+				$userResult=$tableUser->getUserInfo();
+
+				$userName=$userResult['nickName'];
+				$userId=$userResult['id'];
+				$openId=$userResult['openId'];
+				$isCreator=($creatorId==$openId);
+				$isManager=in_array($userId,$managerList);
+
+				$userInfo=array();
+				$userInfo['followerName']=$userName;
+				$userInfo['followerId']=$userId;
+				$userInfo['isManager']=$isManager;
+				$userInfo['isCreator']=$isCreator;
+				$result[]=$userInfo;
+			}
+			print_r(json_encode($result));
+		}
+
 		public function actionChangeLogTableName(){
 			$json=file_get_contents("php://input");
 			$obj=json_decode($json);
@@ -268,12 +317,15 @@
 			$tableId=$_GET['tableId'];
 
 			$tableLink=new TableLink();
-			if($tableLink->deleteOne($openId,$tableId)){
-				print_r(0);	//0表示操作成功
-			}
-			else{
-				print_r(1);	//1表示tablelink数据删除失败
-			}
+			$tableLink->deleteOne($openId,$tableId);
+
+			$tableUser=new TableUser($openId);
+			$userInfo=$tableUser->getUserInfo();
+
+			$managerGroup=new TableTableManagerGroup();
+			$managerGroup->remove($userInfo['id'],$tableId);
+			
+			print_r(1);
 		}
 
 		public function actionPayAttention(){

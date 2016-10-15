@@ -114,7 +114,7 @@ var DaylogManager={
 					} 
 				}
 			},800);
-			// div.ui.attr("style","height:280px;border-bottom: 2px solid #838383; border-left: 2px solid #838383; border-right: 2px solid #838383;");
+			// div.setAttribute("style","height:310px;");
 			div.addClass('panel-body');
 			div.appendTo(SCOPE);
 		})();

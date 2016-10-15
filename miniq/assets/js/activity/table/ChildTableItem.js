@@ -70,7 +70,7 @@ var ChildTableItemDisplay={
 
 			var tableNameDiv=Div.creatNew();
 			tableNameDiv.addClass('col-xs-11');
-			tableNameDiv.html("<a href=\"http://localhost/?r=Table/TableInfo&tableId="+CHILD_TABLE_ID+"\">"+CHILD_TABLE_NAME+" ("+CHILD_TABLE_ID+")</a>"+"  <<  "+TABLE_NAME);
+			tableNameDiv.html("<a href=\""+MINIQ_URL+"Table/TableInfo&tableId="+CHILD_TABLE_ID+"\">"+CHILD_TABLE_NAME+" ("+CHILD_TABLE_ID+")</a>"+"  <<  "+TABLE_NAME);
 			tableNameDiv.appendTo(div.ui);
 
 

@@ -3,6 +3,7 @@ document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/div
 document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/button/Button.js"+'">' + '</script>');
 document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/dropdown/DropDown.js"+'">' + '</script>');
 document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/dl/Dl.js"+'">' + '</script>');
+minclude("LoaderPiano");
 
 function host(){
 	var logNameInpCreat=$("#log_name_inp");

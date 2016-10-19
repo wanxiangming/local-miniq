@@ -2345,3 +2345,20 @@ Stack trace:
 REQUEST_URI=/?r=MysqlTableManagerGroup/AddManager&tableId=1024&followerId=1008
 HTTP_REFERER=http://localhost/?r=Table/TableInfo&tableId=1024
 ---
+2016/10/19 18:27:03 [error] [php] Undefined variable: i周 (D:\local-web-server\www\miniq\protected\views\main\BatchAdd.php:19)
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(869): MainController->renderFile()
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(782): MainController->renderPartial()
+#2 D:\local-web-server\www\miniq\protected\controllers\MainController.php(10): MainController->render()
+#3 D:\local-web-server\yii-1.1.17.467ff50\framework\web\actions\CInlineAction.php(49): MainController->actionBatchAdd()
+#4 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(286): MainController->runAction()
+#6 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CController.php(265): MainController->runActionWithFilters()
+#7 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(282): MainController->run()
+#8 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 D:\local-web-server\www\miniq\index.php(14): CWebApplication->run()
+REQUEST_URI=/?r=Main/BatchAdd
+in D:\local-web-server\www\miniq\protected\views\main\BatchAdd.php (19)
+in D:\local-web-server\www\miniq\protected\controllers\MainController.php (10)
+in D:\local-web-server\www\miniq\index.php (14)

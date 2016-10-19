@@ -6,8 +6,8 @@
 			$this->render('Main');
 		}
 		
-		public function actionTest(){
-			$this->render('Test');
+		public function actionBatchAdd(){
+			$this->render('BatchAdd');
 		}
 		
 		public function actionScheduleManager(){

@@ -1,7 +1,8 @@
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/util/MDate.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/div/Div.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/button/Button.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/table/modal/CreateTransactionModal.js"+'">' + '</script>');
+
+minclude("MDate");
+minclude("Div");
+minclude("Button");
+// minclude("CreateTransactionModal");
 /**
  * 有两种显示模式，一种是显示年月日，一种是星期和日期
  * 它会根据日期自动调整自己的样式（也就是显示“今天”）
@@ -21,20 +22,19 @@ var DateItem={
 		var theMDate=MDate.creatNew(DAY_FLAG);
 		var scope=Div.creatNew();
 		var dateBtn=Button.creatNew();
-		var createTransactionModal=CreateTransactionModal.creatNew();
 		var e_create=function(TABLE_ID,CONTENT,TIME){return $.Deferred();};
 		var e_modalClose=function(){};
 		(function(){
 			initDateBtn();
 			createTransactionModal.bindModal(dateBtn.ui);
-			createTransactionModal.onCreate(function(TABLE_ID,CONTENT,TIME){
-				var def=e_create(TABLE_ID,CONTENT,TIME);
-				def.done(function(){
-					createTransactionModal.hide();
-				});
-				return def;
-			});
 			dateBtn.onClickListener(function(){
+				createTransactionModal.onCreate(function(TABLE_ID,CONTENT,TIME){
+					var def=e_create(TABLE_ID,CONTENT,TIME);
+					def.done(function(){
+						createTransactionModal.hide();
+					});
+					return def;
+				});
 				createTransactionModal.initBeforeShow(dayFlag);
 			});
 		})();

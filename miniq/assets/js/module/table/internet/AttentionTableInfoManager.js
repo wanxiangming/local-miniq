@@ -1,5 +1,5 @@
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/table/datastructure/AttentionTable.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/table/datastructure/Table.js"+'">' + '</script>');
+minclude("Table");
+minclude("AttentionTable");
 /**
  * AttentionTableInfoManager()
  * 		launch()

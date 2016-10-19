@@ -1,4 +1,4 @@
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/button/Button.js"+'">' + '</script>');
+minclude("Button");
 
 /**
  * 这个按钮可以显示弹出框

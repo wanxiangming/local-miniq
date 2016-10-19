@@ -1,4 +1,6 @@
 
+minclude("Li");
+
 // var DropDownItemButton={
 // 	creatNew:function(){
 // 		var DropDownItemButton=Button.creatNew();
@@ -8,11 +10,6 @@
 // 		return DropDownItemButton;
 // 	}
 // }
-
-
-
-
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/li/Li.js"+'">' + '</script>');
 
 
 var DropDownItemButton={

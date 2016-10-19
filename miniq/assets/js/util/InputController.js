@@ -1,20 +1,20 @@
 
 
 /**
- * ContentInputController(input)
- * 		onChange(CALL_BACK(content,remainLength))
+ * InputController(input,maxLength)
+ * 		onChange(CALL_BACK())
  * 		verify()	验证输入框中的内容是否符合长度要求.......，符合返回true，不符合返回false
  * 		setContent()	设置输入框内容
  * 		getContent()	
  * 		getRemainLength()	获取输入框合法输入内容所剩长度
  * 		empty()		清空输入框内容
  */
-var ContentInputController={
-	creatNew:function(INPUT){
-		var ContentInputController={};
+var InputController={
+	creatNew:function(INPUT,MAX_LENGTH){
+		var InputController={};
 
 		var input=INPUT;
-		var CONTENT_LENGTH_MAX=150;
+		var CONTENT_LENGTH_MAX=MAX_LENGTH;
 		var CONTENT_LENGTH_MIN=1;
 		var e_change=function(CONTENT,REMAIN_LENGTH){};
 		(function(){
@@ -23,7 +23,7 @@ var ContentInputController={
 			});
 		})();
 
-		ContentInputController.getRemainLength=function(){
+		InputController.getRemainLength=function(){
 			return getRemainLength();
 		}
 
@@ -31,7 +31,7 @@ var ContentInputController={
 			return CONTENT_LENGTH_MAX-getLength();
 		}
 
-		ContentInputController.verify=function(){
+		InputController.verify=function(){
 			return thisVerify();
 		}
 
@@ -48,7 +48,7 @@ var ContentInputController={
 			return Number(getContent().length);
 		}
 
-		ContentInputController.getContent=function(){
+		InputController.getContent=function(){
 			return getContent();
 		}
 
@@ -56,25 +56,25 @@ var ContentInputController={
 			return input.val();
 		}
 
-		ContentInputController.onChange=function(CALL_BACK){
+		InputController.onChange=function(CALL_BACK){
 			e_change=CALL_BACK;
 		}
 
-		ContentInputController.setContent=function(CONTENT){
+		InputController.setContent=function(CONTENT){
 			input.val(CONTENT);
 		}
 
-		ContentInputController.empty=function(){
+		InputController.empty=function(){
 			input.val("");
 		}
 
-		return ContentInputController;
+		return InputController;
 	}
 }
 
 var BacklogContentInputController={
 	creatNew:function(INPUT){
-		var BacklogContentInputController=ContentInputController.creatNew(INPUT);
+		var BacklogContentInputController=InputController.creatNew(INPUT);
 		return BacklogContentInputController;
 	}
 }
@@ -85,7 +85,7 @@ var BacklogContentInputController={
  */
 var NameInputController={
 	creatNew:function(INPUT){
-		var NameInputController=ContentInputController.creatNew(INPUT);
+		var NameInputController=InputController.creatNew(INPUT);
 
 		var CONTENT_LENGTH_MAX=12;
 		var CONTENT_LENGTH_MIN=1;

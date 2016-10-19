@@ -1,17 +1,21 @@
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/util/MDate.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/util/TextTranslator.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/div/Div.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/button/Button.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/button/PopoverButton.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/util/InputController.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/backlog/BacklogBoxManager.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/backlog/Backlog.js"+'">' + '</script>');
 
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/table/DaylogManager.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/table/internet/AttentionTableInfoManager.js"+'">' + '</script>');
+minclude("MDate");
+minclude("TextTranslator");
+minclude("Div");
+minclude("Button");
+minclude("InputController");
+minclude("DaylogManager");
+minclude("AttentionTableInfoManager");
+minclude("CreateTransactionModal");
+minclude("ChangeTransactionModal");
+
+var createTransactionModal=null;
+var changeTransactionModal=null;
 
 function host(){
 	var mainTable=$("#mainTable");
+	createTransactionModal=CreateTransactionModal.creatNew();
+	changeTransactionModal=ChangeTransactionModal.creatNew();
 
 	var changeModal=TransactionModal.creatNew();
 	var changeTransactionModalHourUpBtn=$("#change_log_modal_hour_up_btn");
@@ -113,107 +117,6 @@ function host(){
 	});
 	attentionTableInfoManager.launch();
 
-
-/**
- * 以下是待办事项模块////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- */
-
-
-	// $("input").iCheck({
-	// 	checkboxClass:"icheckbox_flat-red",
-	// 	redioClass:"iradio_flat-red"
-	// });
-
-	// var area=$("#backlogBoxRow");
-	// var mainLineId;
-	// var mainLineContent="";
-	// var backlogInfoManager=GetInfoInUseMainLineAndUncompletedBacklogManager.creatNew();
-	// backlogInfoManager.onQuestSuccess(function(){
-	// 	mainLineId=backlogInfoManager.getMainLineId();
-	// 	mainLineContent=backlogInfoManager.getMainLineContent();
-	// 	$(".mainQuestContent_span").html(mainLineContent);
-	// 	var backlogBoxManager=BacklogBoxManager.creatNew(backlogInfoManager.getBacklogAry(),backlogInfoManager.isMainLineExist(),area);
-	// 	backlogBoxManager.onRemoveItem(function(ID){
-	// 		var def=$.Deferred();
-	// 		var removeBacklog=RemoveBacklog.creatNew(ID);
-	// 		removeBacklog.onSuccessLisenter(function(data){
-	// 			if(data == 1){
-	// 				def.resolve();
-	// 			}
-	// 			else if(data == 0){
-	// 				def.reject();
-	// 			}
-	// 		});
-	// 		removeBacklog.launch();
-	// 		return def;
-	// 	});
-	// 	backlogBoxManager.onItemChange(function(ID,CONTENT,IS_MAIN_LINE,IS_RECENT){
-	// 		var def=$.Deferred();
-	// 		var changeBacklog=ChangeBacklog.creatNew(mainLineId,ID,CONTENT,IS_MAIN_LINE,IS_RECENT);
-	// 		changeBacklog.onSuccessLisenter(function(data){
-	// 			if(data == 1){
-	// 				def.resolve();
-	// 			}
-	// 			else if(data == 0){
-	// 				def.reject();
-	// 			}
-	// 		});
-	// 		changeBacklog.launch();
-	// 		return def;
-	// 	});
-	// 	backlogBoxManager.onItemComplete(function(ID){
-	// 		var def=$.Deferred();
-	// 		var completeBacklog=CompleteBacklog.creatNew(ID);
-	// 		completeBacklog.onSuccessLisenter(function(data){
-	// 			if(data == 1){
-	// 				def.resolve();
-	// 			}
-	// 			else if(data == 0){
-	// 				def.reject();
-	// 			}
-	// 		});
-	// 		completeBacklog.launch();
-	// 		return def;
-	// 	});
-	// 	backlogBoxManager.onAddItem(function(CONTENT,IS_MAIN_LINE,IS_RECENT){
-	// 		var def=$.Deferred();
-	// 		var addBacklog=AddBacklog.creatNew(mainLineId,CONTENT,IS_MAIN_LINE,IS_RECENT);
-	// 		addBacklog.onSuccessLisenter(function(data){
-	// 			var backlogId=Number(data);
-	// 			if(backlogId != -1){
-	// 				var backlog=Backlog.creatNew();
-	// 				backlog.setId(backlogId);
-	// 				backlog.setContent(CONTENT);
-	// 				backlog.setIsMainLine(IS_MAIN_LINE);
-	// 				backlog.setIsRecent(IS_RECENT);
-	// 				def.resolve(backlog);
-	// 			}
-	// 		});
-	// 		addBacklog.launch();
-	// 		return def;
-	// 	});
-	// 	backlogBoxManager.onAddMainQuest(function(CONTENT){
-	// 		var def=$.Deferred();
-	// 		var addMainLine=AddMainLine.creatNew(CONTENT);
-	// 		addMainLine.onSuccessLisenter(function(data){
-	// 			var mId=Number(data);
-	// 			if(mId != -1){
-	// 				mainLineId=mId;
-	// 				mainLineContent=CONTENT;
-	// 				$(".mainQuestContent_span").html(CONTENT);
-	// 				def.resolve();
-	// 			}
-	// 			else{
-	// 				def.reject();
-	// 			}
-	// 		});
-	// 		addMainLine.launch();
-	// 		return def;
-	// 	});
-	// });
-	// backlogInfoManager.onQuestError(function(){});
-	// backlogInfoManager.launch();
-
 }
 
 
@@ -275,90 +178,6 @@ var TransactionModal={
 	}
 }
 
-
-/**
- * GetInfoInUseMainLineAndUncompletedBacklogManager()
- * 		launch()
- * 		isMainLineExist()
- * 		getMainLineId()
- * 		getMainLineContent()
- * 		getBacklogAry()
- * 		onQuestError(CALL_BACK())
- * 		onQuestSuccess(CALL_BACK())
- */
-var GetInfoInUseMainLineAndUncompletedBacklogManager={
-	creatNew:function(){
-		var GetInfoInUseMainLineAndUncompletedBacklogManager={};
-
-		var isMainLineExist=false;
-		var mainLineId=0;	//当backlog不是任何主线的任务，那么它才会是0，但此时isMaingLine数据段也是0
-		var mainLineContent="";
-		var backlogAry=[];
-		var e_questSuccess=function(){};
-		var e_questError=function(){};
-
-		GetInfoInUseMainLineAndUncompletedBacklogManager.launch=function(){
-			var getInfoInUseMainLineAndUncompletedBacklog=GetInfoInUseMainLineAndUncompletedBacklog.creatNew();
-			getInfoInUseMainLineAndUncompletedBacklog.onSuccessLisenter(function(data){
-				var mId=data['mainLine'].id;	//如果服务器没有查询到相关数据，则返回的数组是空数组
-				if(typeof(mId) != "undefined"){
-					isMainLineExist=true;
-					mainLineId=Number(mId);
-					mainLineContent=data['mainLine'].content;
-					$.each(data['backlogAry'],function(index, el) {
-						var backlog=Backlog.creatNew();
-						backlog.setId(el.id);
-						backlog.setContent(el.content);
-						backlog.setIsRecent(transformNumToBoolean(el.isRecent));
-						if(transformNumToBoolean(el.isMainLine)){
-							backlog.setIsMainLine((Number(el.mainLineId)==mainLineId ? true:false));
-						}
-						else{
-							backlog.setIsMainLine(false);
-						}
-						backlogAry.push(backlog);
-					});
-				}
-				e_questSuccess();
-			});
-			getInfoInUseMainLineAndUncompletedBacklog.onErrorLisenter(function(){
-				e_questError();
-			});
-			getInfoInUseMainLineAndUncompletedBacklog.launch();
-		}
-
-		function transformNumToBoolean(NUM){
-			return NUM==1 ? true:false;
-		}
-
-		GetInfoInUseMainLineAndUncompletedBacklogManager.onQuestSuccess=function(CALL_BACK){
-			e_questSuccess=CALL_BACK;
-		}
-
-		GetInfoInUseMainLineAndUncompletedBacklogManager.onQuestError=function(CALL_BACK){
-			e_questError=CALL_BACK;
-		}
-
-		GetInfoInUseMainLineAndUncompletedBacklogManager.getMainLineId=function(){
-			return mainLineId;
-		}
-
-		GetInfoInUseMainLineAndUncompletedBacklogManager.getMainLineContent=function(){
-			return mainLineContent;
-		}
-
-		GetInfoInUseMainLineAndUncompletedBacklogManager.isMainLineExist=function(){
-			return isMainLineExist;
-		}
-
-		GetInfoInUseMainLineAndUncompletedBacklogManager.getBacklogAry=function(){
-			return backlogAry;
-		}
-
-
-		return GetInfoInUseMainLineAndUncompletedBacklogManager;
-	}
-}
 
 
 

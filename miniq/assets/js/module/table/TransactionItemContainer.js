@@ -1,5 +1,6 @@
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/div/Div.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/table/TimeSameTransactionItem.js"+'">' + '</script>');
+
+minclude("Div");
+minclude("TimeSameTransactionItem");
 /**
  *	它会根据自己所持有的transactionItem的可见性来改变自己的样子（也就是在transactionItem和timeSameTransaction之间切换，甚至在所有Item不可见的情况下隐藏自己）
  * 

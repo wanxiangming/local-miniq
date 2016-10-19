@@ -1,7 +1,8 @@
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/table/DateItem.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/table/TransactionItem.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/table/TransactionItemContainer.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/div/Div.js"+'">' + '</script>');
+
+minclude("DateItem");
+minclude("TransactionItem");
+minclude("TransactionItemContainer");
+minclude("Div");
 /**
  * 每一个Daylog都有一个DayFlag，是它的唯一标识
  * 

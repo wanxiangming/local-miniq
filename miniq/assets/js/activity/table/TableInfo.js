@@ -1,12 +1,12 @@
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/data-structure/TableInfoDataStructure.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/internet/GetTableInfoNET.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/ParentTableItem.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/ChildTableItem.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/TableItem.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/data-structure/FollowerDataStructure.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/FollowerItem.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/FollowerItemAryIterator.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/activity/table/FollowerItemFilter.js"+'">' + '</script>');
+minclude("GetTableInfoNET");
+minclude("ParentTableItem");
+minclude("ChildTableItem");
+minclude("TableItem");
+minclude("FollowerDataStructure");
+minclude("FollowerItem");
+minclude("FollowerItemAryIterator");
+minclude("FollowerItemFilter");
+minclude("LoaderPiano");
 
 function host(){
 	var tableScope=$("#table");
@@ -202,35 +202,9 @@ function host(){
 			getFollowerList.launch();
 		}
 
-		// function makeFollowerItem(FOLLOWER_DATA_STRUCTURE){
-		// 	var followerItem=FollowerItem.creatNew(FOLLOWER_DATA_STRUCTURE);
-		// 	followerItem.onSetToManager(function(followerId){
-		// 		//tableId followerId
-		// 		var addManager=AddManager.creatNew(followerId,tableId);
-		// 		addManager.onSuccessLisenter(function(data){
-		// 			if(data == 1){
-		// 				var followerDataStructure=FollowerDataStructure.creatNew(true,false);
-		// 				followerDataStructure.setFollowerId(FOLLOWER_DATA_STRUCTURE.getFollowerId());
-		// 				followerDataStructure.setFollowerName(FOLLOWER_DATA_STRUCTURE.getFollowerName());
-		// 				makeFollowerItem(FollowerDataStructure);
-
-		// 			}
-				
-		// 		});
-		// 	});
-		// 	followerItem.onRepealManager(function(){
-
-		// 	});
-		// }
-
-
-
 		if(TABLE_INFO_DATA_STRUCTURE.queryParentTableCount() > 0){
 			TABLE_INFO_DATA_STRUCTURE.parentTableIterator(function(PARENT_TABLE_ID,PARENT_TABLE_NAME){
-				var parentTable=Table.creatNew();
-				parentTable.setTableId(PARENT_TABLE_ID);
-				parentTable.setTableName(PARENT_TABLE_NAME);
-				var parentTableItem=ParentTableItem.creatNew(table,parentTable,isCreator);
+				var parentTableItem=ParentTableItem.creatNew(tableName,PARENT_TABLE_ID,PARENT_TABLE_NAME,isCreator);
 				parentTableItem.getUI().appendTo(parentTableListScope);
 				parentTableItem.onRelieveInherit(function(PRANT_T_ID){
 					var relieveInherit=RelieveInherit.creatNew(tableId,PRANT_T_ID);
@@ -253,11 +227,7 @@ function host(){
 
 		if(TABLE_INFO_DATA_STRUCTURE.queryChildTableCount() > 0){
 			TABLE_INFO_DATA_STRUCTURE.childTableIterator(function(CHILE_TABLE_ID,CHILD_TABLE_NAME){
-				var childTable=Table.creatNew();
-				childTable.setTableId(CHILE_TABLE_ID);
-				childTable.setTableName(CHILD_TABLE_NAME);
-
-				var childTableItem=ChildTableItem.creatNew(table,childTable,isCreator);
+				var childTableItem=ChildTableItem.creatNew(tableName,CHILE_TABLE_ID,CHILD_TABLE_NAME,isCreator);
 				childTableItem.getUI().appendTo(childTableListScope);
 			});
 		}

@@ -1,4 +1,4 @@
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/table/datastructure/Table.js"+'">' + '</script>');
+minclude("Table");
 
 /**
  *	tableId

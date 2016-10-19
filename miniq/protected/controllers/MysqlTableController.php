@@ -308,6 +308,8 @@
 
 				$tableTableManagerGroup=new TableTableManagerGroup();
 				$tableTableManagerGroup->removeAll($tableId);
+
+				//todo
 			}
 			print_r(1);
 		}

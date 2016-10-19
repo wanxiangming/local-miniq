@@ -1,4 +1,5 @@
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/util/MDate.js"+'">' + '</script>');
+minclude("MDate");
+minclude("InputController");
 /**
  * 它的table选择列表在获取服务器数据的时候初始化
  * 
@@ -23,29 +24,64 @@ var CreateTransactionModal={
 		var createTransactionModalHour=$("#create_log_modal_hour");
 		var createTransactionModalMinute=$("#create_log_modal_minute");
 		var createTransactionModalContentTextarea=$("#create_log_modal_content_input");
+		var createTransactionModalContentLength=$("#transaction_create_input_length");
 		var createTransactionModalCreateBtn=$("#create_log_modal_create_btn");
+		var contentRow=$("#create_transaction_content_row");
+		var inputController=InputController.creatNew(createTransactionModalContentTextarea,1000);
 
 		var e_create=function(TABLE_ID,CONTENT,TIME){return $.Deferred();};
 		var e_onModalHide=function(){};
 
+		(function(){
+			inputController.onChange(function(){
+				setContentTextareaLengthHtml(inputController.getRemainLength());
+				if(inputController.verify()){
+					contentOk();
+				}
+				else{
+					contentError();
+				}
+			});
+
+			createTransactionModal.on("hidden.bs.modal",function(e){
+				inputController.empty();
+				e_onModalHide();
+			});
+		})();
+
+		function contentOk(){
+			contentRow.removeClass('has-error');
+		}
+
+		function contentError(){
+			contentRow.addClass('has-error');
+		}
+
+		function setContentTextareaLengthHtml(REMAIN_LENGTH){
+			createTransactionModalContentLength.html(REMAIN_LENGTH+"字");
+		}
+
+
 		CreateTransactionModal.initBeforeShow=function(BEGINNING_TIME_OF_TODAY){
-			var mDate=MDate.creatNew(BEGINNING_TIME_OF_TODAY);
-			createTransactionModalCreateBtn.unbind().bind("click",function(){
+			createTransactionModalCreateBtn.unbind().bind("click",function(){	//when the modal open,it will to alter action of create button
 				var tableId=createTransactionModalTableSelect.val();
 				var content=createTransactionModalContentTextarea.val();
 				var hour=createTransactionModalHour.html();
 				var minute=createTransactionModalMinute.html();
+				var mDate=MDate.creatNew(BEGINNING_TIME_OF_TODAY);
 				mDate.setHours(hour);
 				mDate.setMinutes(minute);
 				var transactionTime=mDate.getTime();
-				var def=e_create(tableId,content,transactionTime);
-				def.done(function(){
-					closeModal();
-				});
-			});
-			createTransactionModal.on("hidden.bs.modal",function(e){
-				createTransactionModalContentTextarea.val("");
-				e_onModalHide();
+
+				if(inputController.verify()){
+					var def=e_create(tableId,content,transactionTime);
+					def.done(function(){
+						closeModal();
+					});
+				}
+				else{
+					//do nothing if varification failed 
+				}
 			});
 		}
 

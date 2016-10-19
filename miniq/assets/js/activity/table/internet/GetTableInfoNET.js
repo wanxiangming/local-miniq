@@ -1,4 +1,6 @@
 
+minclude("Table");
+minclude("TableInfoDataStructure");
 /**
  * GetTableInfoNET(TableId)
  * 		launch()

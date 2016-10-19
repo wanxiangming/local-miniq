@@ -1,7 +1,10 @@
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/util/MDate.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/div/Div.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/button/Button.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/table/modal/TimeSameTransactionModal.js"+'">' + '</script>');
+
+minclude("MDate");
+minclude("Div");
+minclude("Button");
+minclude("TimeSameTransactionModal");
+minclude("PopoverButton");
+minclude("TextTranslator");
 /**
  * 
  * TimeSameTransactionItem(time)
@@ -53,12 +56,6 @@ var TimeSameTransactionItem={
 		}
 
 		function refreshPopver(){
-			// var ary=[];
-			// $.each(transactionItemAry,function(index, el) {
-			// 	if(el.isVisible()){
-			// 		ary.push(el);
-			// 	}
-			// });
 			if(transactionItemAry.length < 2){
 				modal.hide();
 				hide();
@@ -71,8 +68,10 @@ var TimeSameTransactionItem={
 		}
 
 		function popverContent(TRANSACTION_ITEM_ARY){
+			var textTranslator=TextTranslator.creatNew();
 			var content="";
 			$.each(TRANSACTION_ITEM_ARY,function(index, el) {
+				content+="</br>";
 				if(el.isDirectAttention()){
 					content+="<strong>"+el.getChildTableName()+"</strong></br>";
 				}
@@ -80,13 +79,14 @@ var TimeSameTransactionItem={
 					content+="<strong>"+el.getChildTableName()+" << "+el.getParentTableName()+"</strong></br>";
 				}
 				if(el.getTransactionContent().length > 100){
-					content+=el.getTransactionContent().substring(0,101)+"……";
+					content+=textTranslator.encodeText(el.getTransactionContent()).substring(0,101)+"……";
 				}
 				else{
-					content+=el.getTransactionContent();
+					content+=textTranslator.encodeText(el.getTransactionContent());
 				}
-				content+="</br></br>"
+				content+="</br>";
 			});
+			content+="</br>";
 			return content;
 		}
 

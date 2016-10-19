@@ -1,0 +1,37 @@
+js:
+ ☐ 加个身份在ScheduleManager那,告知用户其是否是该表的管理员
+ ☐ 不可编辑的 transaction点击后用 modal呈现
+ ☐ 批量添加 transaction
+ ☐ 解决TimeSameTransactionModal意外关闭问题 
+   .\assets\js\module\table\modal\TimeSameTransactionModal.js:45
+ ☐ transaction的 time修改为用 select标签设置
+
+
+php:
+ ☐ 删除表时要删除其 transaction
+   .\protected\controllers\MysqlTableController.php:312
+
+
+url:
+ ☐ 本地批量添加页面
+   http://localhost/?r=Main/BatchAdd
+
+
+
+
+
+tips for PlainTask:
+ ☐ ctrl+enter          create a new task
+ ☐ ctrl+D              complete a task
+ ☐ alt+C               marks the task as cancelled
+ ☐ ctrl+shift+up/down  to move tasks up and down
+ ☐ ctrl+R              to see a list of projects and quickly jump between them
+ ☐ ctrl+shift+A        archives tasks in done mode
+ ☐ alt+O               opens the file in Sublime
+ ☐ ctrl+shift+U        opens the URL under the cursor in your default browser
+ ☐ Preferences->package settings->PlainTask->tutorial   to open the statement of PlainTask
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Archive:
+ ✔ ./assets/js/url.js/ @done (16-10-19 11:45) @project(js)
+ ✔ www.miniq.site @done (16-10-19 11:42) @project(js)

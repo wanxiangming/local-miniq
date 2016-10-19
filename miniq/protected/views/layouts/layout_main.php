@@ -19,9 +19,11 @@
     <script language="javascript" type="text/javascript" src="<?php echo FRONT_OPEN_SOURCE_URL; ?>bootstrap/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
     <script language="javascript" type="text/javascript" src="<?php echo FRONT_OPEN_SOURCE_URL; ?>bootstrap/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
     
+
+    <script language="javascript" type="text/javascript" src="<?php echo JS_URL; ?>url.js"></script> 
     <script language="javascript" type="text/javascript" src="<?php echo JS_URL; ?>internet/url/Url.js"></script> 
     <script language="javascript" type="text/javascript" src="<?php echo JS_URL; ?>internet/Internet.js"></script>
-	<script language="javascript" type="text/javascript" src="<?php echo JS_URL; ?>uitool/loader/LoaderPiano.js"></script> 
+	<!-- <script language="javascript" type="text/javascript" src="<?php echo JS_URL; ?>uitool/loader/LoaderPiano.js"></script>  -->
     <script language="javascript" type="text/javascript" src="<?php echo JS_URL; ?>util/DataStructure.js"></script> 
 	<script language="javascript" type="text/javascript" src="<?php echo JS_URL; ?>activity/Main.js"></script> 
     
@@ -50,6 +52,8 @@
 header("Content-Type:text/html;   charset=utf-8");
 echo $content; 
 ?>
+
+<div class="row" style="height: 250px"></div>
 
 
 </body>

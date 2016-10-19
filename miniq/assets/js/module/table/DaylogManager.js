@@ -1,8 +1,10 @@
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/table/datastructure/Table.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/table/datastructure/AttentionTable.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/table/datastructure/Transaction.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/table/datastructure/TransactionDataStructure.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/table/Daylog.js"+'">' + '</script>');
+
+minclude("Table");
+minclude("AttentionTable");
+minclude("Transaction");
+minclude("TransactionDataStructure");
+minclude("Daylog");
+minclude("LoaderPiano");
 /**
  * 它维护一个TransactionDataStructure池，当一个TransactionDataStructure被add到了一个Daylog中去，这个TransactionDataStructure就从池中移除，
  * 它从网络上获取到的这些TransactionDataStructure并不一定有Daylog可以去（因为适合这个TransactionDataStructure的Daylog可能还不存在），它们会
@@ -57,12 +59,15 @@ var DaylogManager={
 		var oneDayMS=Number(86400000);
 		var timePicker=$("#mainTimePicker");
 		var timePickerInput=$("#timePickerInput");
+		var loaderScope=$("#loaderScope");
+		var loaderPiano=LoaderPiano.creatNew();
 
 		var e_internetQuest=function(dayFlagAry){return $.Deferred();};
 		var e_change=function(transactionId,content,time){return $.Deferred();};
 		var e_create=function(tableId,content,time){return $.Deferred();};
 		var e_delete=function(transactionId){return $.Deferred();};
 		(function(){
+			loaderPiano.appendTo(loaderScope);
 			setDaylogScope();
 			onScopeChangeRefreshUI()
 			timePicker.datetimepicker({
@@ -98,9 +103,14 @@ var DaylogManager={
 						}
 					});
 					if(questDayFlagAry.length > 0){
+						loaderPiano.show();
 						var def=e_internetQuest(questDayFlagAry);
 						isInternetQuestEnd=false;
 						def.done(function(TRANSACTION_DATA_STRUCTURE_ARY){
+							setTimeout(function(){
+								loaderPiano.hide();
+							},500);
+							
 							$.each(TRANSACTION_DATA_STRUCTURE_ARY,function(index, el) {
 								$.each(daylogAry,function(index, daylogel) {
 									if(daylogel.getDayFlag() <= el.getTime()  &&  el.getTime() <= (daylogel.getDayFlag()+oneDayMS)){

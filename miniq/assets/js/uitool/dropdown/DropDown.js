@@ -1,14 +1,12 @@
 document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/div/Div.js"+'">' + '</script>');
 document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/button/Button.js"+'">' + '</script>');
 document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/ul/Ul.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/dropdown/DropDownItemButton.js"+'">' + '</script>');
 
 
 
 /**
  * DropDown(Html)
  * 		setHtml()
- * 		//setMouseLeaveHideMenu()
  * 		appendTo()
  * 		addMenuItem()
  * 		
@@ -77,12 +75,6 @@ var DropDown={
 		DropDown.isMenuOpen=function(){
 			return div.ui.hasClass('open');
 		}
-
-		// DropDown.setMouseLeaveHideMenu=function(){
-		// 	ul.ui.mouseleave(function(event) {
-		// 		closeMenu();
-		// 	});
-		// }
 
 		DropDown.closeMenu=function(){
 			closeMenu();

@@ -1,6 +1,4 @@
-
-
-
+minclude("Div");
 /**
  * TimeSameTransactionModal()
  * 		bindModal(Button)
@@ -44,7 +42,9 @@ var TimeSameTransactionModal={
 		}
 
 		TimeSameTransactionModal.hide=function(){
-			modal.modal('hide');
+			// TODO 
+			// 解决modal被意外关闭的问题
+			// modal.modal('hide');
 		}
 
 		return TimeSameTransactionModal;

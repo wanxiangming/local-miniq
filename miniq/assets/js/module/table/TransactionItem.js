@@ -1,7 +1,9 @@
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/util/TextTranslator.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/div/Div.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/button/Button.js"+'">' + '</script>');
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/module/table/modal/ChangeTransactionModal.js"+'">' + '</script>');
+minclude("PopoverButton");
+minclude("TextTranslator");
+minclude("Div");
+minclude("Button");
+// minclude("ChangeTransactionModal");
+// minclude("PopoverButton");
 /**
  *	对transaction的show操作并不会改变它的可见性，
  * 
@@ -39,33 +41,32 @@ var TransactionItem={
 		var e_change=function(content,time){return $.Deferred();};
 		var e_delete=function(){return $.Deferred();};
 		(function(){
-			btn=PopoverButton.creatNew("hover",transaction.getContent(),popverTitle(),popverContent());
+			btn=PopoverButton.creatNew("hover",popverHtml(),popverTitle(),popverContent());
 			btn.appendTo(div.ui);
 			div.addClass('clear-fix');
 
 			if(transaction.isManager()){
-				var changeTransactionModal=ChangeTransactionModal.creatNew();
-				changeTransactionModal.onChange(function(CONTENT,TIME){
-					var def=e_change(CONTENT,TIME);
-					def.done(function(){
-						transaction.setContent(CONTENT);
-						transaction.setTime(TIME);
-						changeTransactionModal.hide();
-						btn.changeHtml(CONTENT);
-						btn.changeContent(popverContent());
-					});
-					return def;
-				});
-				changeTransactionModal.onDelete(function(){
-					var def=e_delete();
-					def.done(function(){
-						changeTransactionModal.hide();
-					});
-					return def;
-				});
 				changeTransactionModal.bindModal(btn.ui);
 				btn.onClickListener(function(){
-					changeTransactionModal.onModalShow(transaction.getTime(),transaction.getContent(),transaction.getChildTableName());
+					changeTransactionModal.onChange(function(CONTENT,TIME){
+						var def=e_change(CONTENT,TIME);
+						def.done(function(){
+							transaction.setContent(CONTENT);
+							transaction.setTime(TIME);
+							changeTransactionModal.hide();
+							btn.changeHtml(popverHtml());
+							btn.changeContent(popverContent());
+						});
+						return def;
+					});
+					changeTransactionModal.onDelete(function(){
+						var def=e_delete();
+						def.done(function(){
+							changeTransactionModal.hide();
+						});
+						return def;
+					});
+					changeTransactionModal.initBeforeShow(transaction.getTime(),transaction.getContent(),transaction.getChildTableName());
 				});
 			}
 			else{
@@ -77,6 +78,18 @@ var TransactionItem={
 				});
 			}
 		})();
+
+		function popverHtml(){
+			var content="";
+			var transactionContent=transaction.getContent();
+			var reg=/(.)+/;
+			var stringAry=transactionContent.match(reg);
+			console.log(stringAry);
+			if(stringAry != null){
+				content=stringAry[0];
+			}
+			return content;
+		}
 
 		function popverContent(){
 			var time=new Date(transaction.getTime());

@@ -1,4 +1,4 @@
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/div/Div.js"+'">' + '</script>');
+minclude("Div");
 
 var LoaderPiano={
 	creatNew:function(){

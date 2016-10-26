@@ -1,4 +1,6 @@
-document.write('<script' + ' type="text/javascript" src="'+"assets/js/uitool/Ui.js"+'">' + '</script>');
+
+
+minclude("Ui");
 
 var Select={
 	creatNew:function(){

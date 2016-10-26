@@ -1,4 +1,4 @@
-<script language="javascript" type="text/javascript" src="<?php echo JS_URL; ?>activity/table/TableInfo.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo JS_URL; ?>activity/table/table-info/TableInfo.js"></script>
 
 
 

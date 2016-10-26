@@ -1,9 +1,5 @@
 
-minclude("MDate");
-minclude("TextTranslator");
-minclude("Div");
-minclude("Button");
-minclude("InputController");
+
 minclude("DaylogManager");
 minclude("AttentionTableInfoManager");
 minclude("CreateTransactionModal");

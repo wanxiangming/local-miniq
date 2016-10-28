@@ -22,9 +22,10 @@ var AttentionTableInfoManager={
 		AttentionTableInfoManager.launch=function(){
 			var getAttentionTableInfo=GetAttentionTableInfo.creatNew();
 			getAttentionTableInfo.onSuccessLisenter(function(DATA){
+				console.log(DATA);
 				$.each(DATA,function(index, el) {
 					var parentTableAry=[];
-					$.each(el.parentTableInfoAry,function(index, value) {
+					$.each(el.inheritTableAry,function(index, value) {
 						var table=Table.creatNew();
 						table.setTableId(value.tableId);
 						table.setTableName(value.tableName);

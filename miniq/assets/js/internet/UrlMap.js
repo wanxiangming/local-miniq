@@ -74,7 +74,8 @@ UrlMap.map=[
 	{urlName:"CreateTransactionModal",url:UrlMap.activity_main_transaction_table+"modal/CreateTransactionModal.js"},
 	{urlName:"TimeSameTransactionModal",url:UrlMap.activity_main_transaction_table+"modal/TimeSameTransactionModal.js"},
 	{urlName:"ChangeTransactionModal",url:UrlMap.activity_main_transaction_table+"modal/ChangeTransactionModal.js"},
-	{urlName:"AttentionTableInfoManager",url:UrlMap.activity_main_transaction_table+"internet/AttentionTableInfoManager.js"}
+	{urlName:"AttentionTableInfoManager",url:UrlMap.activity_main_transaction_table+"internet/AttentionTableInfoManager.js"},
+	{urlName:"AttentionTableAryManager",url:UrlMap.activity_main_transaction_table+"datastructure/AttentionTableAryManager.js"}
 
 	//activity/user/
 	// {urlName:"",url:UrlMap.activity_user+""},

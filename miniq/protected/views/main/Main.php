@@ -1,6 +1,10 @@
 
 <script language="javascript" type="text/javascript" src="<?php echo JS_URL; ?>activity/main/Main.js"></script>
 
+<!-- jquery -->
+<script language="javascript" type="text/javascript" src="<?php echo FRONT_OPEN_SOURCE_URL; ?>jquery/jquery.mousewheel.min.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo FRONT_OPEN_SOURCE_URL; ?>jquery/pagination.min.js"></script>
+
 <!-- icheck -->
 <link type="text/css" rel="stylesheet" href="<?php echo FRONT_OPEN_SOURCE_URL; ?>bootstrap/icheck/skins/flat/_all.css"/>
 <script language="javascript" type="text/javascript" src="<?php echo FRONT_OPEN_SOURCE_URL; ?>bootstrap/icheck/icheck.min.js"></script>
@@ -10,6 +14,12 @@
 <script language="javascript" type="text/javascript" src="<?php echo FRONT_OPEN_SOURCE_URL; ?>bootstrap/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 <script language="javascript" type="text/javascript" src="<?php echo FRONT_OPEN_SOURCE_URL; ?>bootstrap/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
 <link type="text/css" rel="stylesheet" href="<?php echo FRONT_OPEN_SOURCE_URL; ?>bootstrap/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css"/>
+
+<script type="text/javascript">
+  <?php 
+    echo "var attentionTableAryNET=".json_encode($attentionTableAry);
+  ?>;
+</script>
 
 
 
@@ -42,7 +52,11 @@
         <div id="mainTable" class="row form-inline col-xs-10 correction-row-css panel panel-primary" style="height: 310px">
         
         </div>
-    </div>        
+    </div>   
+
+    <div class="row col-xs-12">
+      <div id="pagination" class="paging"></div>
+    </div>     
 </div>
 
 <div class="modal fade" id="create_log_transaction_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

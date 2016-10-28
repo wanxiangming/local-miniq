@@ -11,6 +11,8 @@ minclude("Table");
  * 		isManager()
  *
  * 		setParentTableAry(Table_Ary)
+ * 		addParentTable(Table)
+ * 		parentTableIterator(CALL_BACL(Table))	//父表的迭代器
  * 		findParentTable(tableId)	//有则返回Table对象，没有返回null
  *
  * 		来自父：
@@ -38,6 +40,10 @@ var AttentionTable={
 			parentTableAry=PARENT_TABLE_ARY;
 		}
 
+		AttentionTable.addParentTable=function(TABLE){
+			parentTableAry.push(TABLE);
+		}
+
 		AttentionTable.findParentTable=function(TABLE_ID){
 			var table=null;
 			$.each(parentTableAry,function(index, el) {
@@ -46,6 +52,12 @@ var AttentionTable={
 				}
 			});
 			return table;
+		}
+
+		AttentionTable.parentTableIterator=function(CALL_BACL){
+			$.each(parentTableAry,function(index, el) {
+				CALL_BACL(el);
+			});
 		}
 
 		return AttentionTable;

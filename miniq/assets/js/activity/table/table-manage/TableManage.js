@@ -388,7 +388,7 @@ var SearchData={
 		}
 
 		SearchData.getIsAttention=function(){
-			return Number(isAttention);
+			return isAttention;
 		}
 
 		SearchData.setIsMine=function(IS_MINE){
@@ -430,7 +430,7 @@ var TableSearchBlock={
 			logTableState=SEARCH_DATA.getLogTableState();
 			logTableCreatorId=SEARCH_DATA.getLogTableCreatorId();
 			isMine=SEARCH_DATA.isMine();
-			isAttention=SEARCH_DATA.getIsAttention()==1 ? true:false;
+			isAttention=SEARCH_DATA.getIsAttention();
 
 			divBox.addClass("row");
 			divBox.setAttribute("style","background-color:#E9EBEE");
@@ -480,8 +480,8 @@ var TableSearchBlock={
 			tableIdDd.appendTo(dl.ui);
 			tableNameDt.appendTo(dl.ui);
 			tableNameDd.appendTo(dl.ui);
-			tableStateDt.appendTo(dl.ui);
-			tableStateDd.appendTo(dl.ui);
+			// tableStateDt.appendTo(dl.ui);
+			// tableStateDd.appendTo(dl.ui);
 
 			return dl;
 		}
@@ -499,8 +499,9 @@ var TableSearchBlock={
 			div.addClass("text-center");
 			div.setAttribute("style","margin-top:32px;");
 
-			if(!isMine && logTableState==1)
+			if(!isMine){
 				attentionButton().appendTo(div.ui);
+			}
 
 			return div;
 		}

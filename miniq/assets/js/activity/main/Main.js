@@ -1,7 +1,7 @@
 
 
 minclude("DaylogManager");
-minclude("AttentionTableInfoManager");
+minclude("AttentionTableAryManager");
 minclude("CreateTransactionModal");
 minclude("ChangeTransactionModal");
 
@@ -10,6 +10,7 @@ var changeTransactionModal=null;
 
 function host(){
 	var mainTable=$("#mainTable");
+	var pagination=$("#pagination");
 	createTransactionModal=CreateTransactionModal.creatNew();
 	changeTransactionModal=ChangeTransactionModal.creatNew();
 
@@ -35,83 +36,95 @@ function host(){
 	createModal.hourBind(createTransactionModalHour,createTransactionModalHourDownBtn,createTransactionModalHourUpBtn);
 	createModal.minuteBind(createTransactionModalMinute,createTransactionModalMinuteDownBtn,createTransactionModalMinuteUpBtn);
 
-	var attentionTableInfoManager=AttentionTableInfoManager.creatNew();
-	attentionTableInfoManager.onSuccess(function(){
-		var attentionTableAry=attentionTableInfoManager.getAttentionTableAry();
-		$.each(attentionTableAry,function(index,value){
-			if(value.isManager()){
-				createTransactionModalTableSelect.append("<option value="+value.getTableId()+">"+value.getTableName()+"</option>");
+	var attentionTableAryManager=AttentionTableAryManager.creatNew();
+	$.each(attentionTableAryNET,function(index, el) {
+		var attentionTable=AttentionTable.creatNew();
+		attentionTable.setTableId(el.tableId);
+		attentionTable.setTableName(el.tableName);
+		attentionTable.setIsManager(el.isManager);
+		$.each(el.inheritTableAry,function(index, value) {
+			var table=Table.creatNew();
+			table.setTableId(value.tableId);
+			table.setTableName(value.tableName);
+			attentionTable.addParentTable(table);
+		});
+		attentionTableAryManager.addAttentionTable(attentionTable);
+	});
+
+	var attentionTableAry=attentionTableAryManager.getAttentionTableAry();
+
+	$.each(attentionTableAry,function(index,value){
+		if(value.isManager()){
+			createTransactionModalTableSelect.append("<option value="+value.getTableId()+">"+value.getTableName()+"</option>");
+		}
+	});
+
+	var daylogManager=DaylogManager.creatNew(mainTable);
+	daylogManager.whatINeed(function(TIME_ARY){
+		var def=$.Deferred();
+		var allTableIdAry=attentionTableAryManager.getAllTableIdAry();
+		var getTransaction=GetTransaction.creatNew(allTableIdAry,TIME_ARY);
+		getTransaction.onSuccessLisenter(function(DATA){
+			var transactionDataStructureAry=[];
+			$.each(DATA,function(index, el) {
+				var transaction=Transaction.creatNew();
+				transaction.setTransactionId(el.id);
+				transaction.setTableId(el.tableId);
+				transaction.setContent(el.content);
+				transaction.setTime(el.time);
+				transactionDataStructureAry.push(TransactionDataStructure.creatNew(attentionTableAry,transaction));
+
+			});
+			def.resolve(transactionDataStructureAry);
+		});
+		getTransaction.launch();
+		return def;
+	});
+	daylogManager.onCreate(function(TABLE_ID,CONTENT,TIME){
+		var def=$.Deferred();
+		var createLogTransaction=CreateLogTransaction.creatNew(TABLE_ID,TIME,CONTENT);
+		createLogTransaction.onSuccessLisenter(function(data){
+			var transaction=Transaction.creatNew();
+			transaction.setTransactionId(data);
+			transaction.setTableId(TABLE_ID);
+			transaction.setContent(CONTENT);
+			transaction.setTime(TIME);
+			def.resolve(TransactionDataStructure.creatNew(attentionTableAry,transaction));
+		});
+		createLogTransaction.onErrorLisenter(function(){
+			def.reject();
+		});
+		createLogTransaction.launch();
+		return def;
+	});
+	daylogManager.onChange(function(TRANSACTION_ID,CONTENT,TIME){
+		var def=$.Deferred();
+		var changeLogTransaction=ChangeLogTransaction.creatNew(TRANSACTION_ID,TIME,CONTENT);
+		changeLogTransaction.onSuccessLisenter(function(data){
+			if(data == 0){
+				def.resolve();
 			}
 		});
-
-		var daylogManager=DaylogManager.creatNew(mainTable);
-		daylogManager.whatINeed(function(TIME_ARY){
-			var def=$.Deferred();
-			var allTableIdAry=attentionTableInfoManager.getAllTableIdAry();
-			var getTransaction=GetTransaction.creatNew(allTableIdAry,TIME_ARY);
-			getTransaction.onSuccessLisenter(function(DATA){
-				var transactionDataStructureAry=[];
-				$.each(DATA,function(index, el) {
-					var transaction=Transaction.creatNew();
-					transaction.setTransactionId(el.id);
-					transaction.setTableId(el.tableId);
-					transaction.setContent(el.content);
-					transaction.setTime(el.time);
-					transactionDataStructureAry.push(TransactionDataStructure.creatNew(attentionTableAry,transaction));
-
-				});
-				def.resolve(transactionDataStructureAry);
-			});
-			getTransaction.launch();
-			return def;
+		changeLogTransaction.onErrorLisenter(function(){
+			def.reject();
 		});
-		daylogManager.onCreate(function(TABLE_ID,CONTENT,TIME){
-			var def=$.Deferred();
-			var createLogTransaction=CreateLogTransaction.creatNew(TABLE_ID,TIME,CONTENT);
-			createLogTransaction.onSuccessLisenter(function(data){
-				var transaction=Transaction.creatNew();
-				transaction.setTransactionId(data);
-				transaction.setTableId(TABLE_ID);
-				transaction.setContent(CONTENT);
-				transaction.setTime(TIME);
-				def.resolve(TransactionDataStructure.creatNew(attentionTableAry,transaction));
-			});
-			createLogTransaction.onErrorLisenter(function(){
-				def.reject();
-			});
-			createLogTransaction.launch();
-			return def;
-		});
-		daylogManager.onChange(function(TRANSACTION_ID,CONTENT,TIME){
-			var def=$.Deferred();
-			var changeLogTransaction=ChangeLogTransaction.creatNew(TRANSACTION_ID,TIME,CONTENT);
-			changeLogTransaction.onSuccessLisenter(function(data){
-				if(data == 0){
-					def.resolve();
-				}
-			});
-			changeLogTransaction.onErrorLisenter(function(){
-				def.reject();
-			});
-			changeLogTransaction.launch();
-			return def;
-		});
-		daylogManager.onDelete(function(TRANSACTION_ID){
-			var def=$.Deferred();
-			var deleteLogTransaction=DeleteLogTransaction.creatNew(TRANSACTION_ID);
-			deleteLogTransaction.onSuccessLisenter(function(data){
-				if(data == 0){
-					def.resolve();
-				}
-			});
-			deleteLogTransaction.onErrorLisenter(function(){
-				def.reject();
-			});
-			deleteLogTransaction.launch();
-			return def;
-		});
+		changeLogTransaction.launch();
+		return def;
 	});
-	attentionTableInfoManager.launch();
+	daylogManager.onDelete(function(TRANSACTION_ID){
+		var def=$.Deferred();
+		var deleteLogTransaction=DeleteLogTransaction.creatNew(TRANSACTION_ID);
+		deleteLogTransaction.onSuccessLisenter(function(data){
+			if(data == 0){
+				def.resolve();
+			}
+		});
+		deleteLogTransaction.onErrorLisenter(function(){
+			def.reject();
+		});
+		deleteLogTransaction.launch();
+		return def;
+	});
 
 }
 

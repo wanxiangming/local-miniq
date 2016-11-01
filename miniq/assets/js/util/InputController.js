@@ -16,10 +16,10 @@ var InputController={
 		var input=INPUT;
 		var CONTENT_LENGTH_MAX=MAX_LENGTH;
 		var CONTENT_LENGTH_MIN=1;
-		var e_change=function(CONTENT,REMAIN_LENGTH){};
+		var e_change=function(){};
 		(function(){
 			input.bind("input propertychange",function(){
-				e_change(getContent(),getRemainLength());
+				e_change();
 			});
 		})();
 

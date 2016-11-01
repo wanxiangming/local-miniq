@@ -8,12 +8,16 @@ minclude("Table");
  * 
  * AttentionTable()
  * 		setIsManager(boolean)
- * 		isManager()
+ * 		isManager()				//manager要弃用，因为以后凡是attention的table，就是manager
  *
+ * 		setInheritAry(array inheritAry)	//inherit是一个以子表为key，父表为value的数组
  * 		setParentTableAry(Table_Ary)
+ * 		
  * 		addParentTable(Table)
  * 		parentTableIterator(CALL_BACL(Table))	//父表的迭代器
- * 		findParentTable(tableId)	//有则返回Table对象，没有返回null
+ * 		findParentTable(int tableId)	//有则返回Table对象，没有返回null
+ * 		entrance(int tableId)			//有则返回Table对象，没有返回null,用tableId去InheritAry中找，
+ *
  *
  * 		来自父：
  * 		setTableId(id)
@@ -27,9 +31,14 @@ var AttentionTable={
 
 		var parentTableAry=[];
 		var isManager;
+		var inheritAry;
 
 		AttentionTable.setIsManager=function(BOOLEAN){
 			isManager=BOOLEAN;
+		}
+
+		AttentionTable.setInheritAry=function(INHERIT_ARY){
+			inheritAry=INHERIT_ARY;
 		}
 
 		AttentionTable.isManager=function(){
@@ -58,6 +67,32 @@ var AttentionTable={
 			$.each(parentTableAry,function(index, el) {
 				CALL_BACL(el);
 			});
+		}
+
+		AttentionTable.entrance=function(TABLE_ID){
+			var tableId=Number(TABLE_ID);
+			var key=true;
+			var result;
+			while(key){
+				result=findKey(tableId);
+				if(result == AttentionTable.getTableId()){
+					//tableId是入口
+					key=false;
+				}
+				else{
+					tableId=result;
+				}
+			}
+		}
+
+		function findKey(VALUE){
+			var key=null;
+			$.each(inheritAry,function(index, el) {
+				if(el == VALUE){
+					key=index;
+				}
+			});
+			return key;
 		}
 
 		return AttentionTable;

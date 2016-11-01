@@ -75,7 +75,7 @@ function host(){
 		searchTableByTableId.onSuccessLisenter(function(data){
 			loaderPiano.remove();
 			if(data==0){
-				searchLoaderScope.html("未搜索到该日程表.");
+				searchLoaderScope.html("未搜索到该节点.");
 			}
 			else{
 				var searchData=SearchData.creatNew();
@@ -146,7 +146,7 @@ var TableListBlock={
 					// makeTableListItem(value);
 				});
 				$("span").tooltip();
-				Alerts.creatNew(true,"更新列表完成。",$("#tab_manage_firstRow"));
+				Alerts.creatNew(true,"列表刷新完成",$("#tab_manage_firstRow"));
 			},function(){
 
 			});
@@ -453,8 +453,8 @@ var TableSearchBlock={
 			setDtStyle(tableIdDt);
 			setDtStyle(tableNameDt);
 			setDtStyle(tableStateDt);
-			tableIdDt.html("日程ID");
-			tableNameDt.html("日程名称");
+			tableIdDt.html("节点ID");
+			tableNameDt.html("节点名称");
 			tableStateDt.html("日程状态");
 
 			var tableIdDd=Dd.creatNew();

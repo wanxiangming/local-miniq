@@ -8,11 +8,18 @@
 	 * 	public methods
 	 * 		changeTableName(int $tableId,String tableName)	//返回boolean
 	 * 		changeTableVisibilityState(int $tableId)		//只支持从私有变为公开，返回boolean
-	 *
+	 *   	changeTransaction(int $transactionId,long $time,String $content)	//返回boolean
+	 *   	changeUserName(String $openId,String $userName)	//返回boolean
+	 * 
 	 * 		insertTable(String $openId,String $tableName)	//返回tableId
 	 * 		insertLink(int $tableId,String $openId)			//关注table，返回boolean
 	 * 		insertInherit(int $tableId,int $parentTableId)	//返回int。[添加成功返回新继承链的id，保存失败返回-1，已存在该继承结构返回-2，循环继承返回-3]
 	 * 	 	insertManager(int $tableId,int $userId)	//返回boolean
+	 * 	 	insertTransaction(int $tableId,long $time,String content)	//成功放回TransactionId，失败返回-1
+	 * 	 	insertUser(String $openId)				//返回boolean
+	 * 	 	
+	 * 		isExistTheTableLink(int $tableId,String $openId)	//检查是否存在这样的TableLink数据，返回Boolean
+	 * 		isUserExist(String $openId)				//返回boolean
 	 *
 	 * 		deleteTable(int $tableId)				//返回boolean
 	 * 		deleteLink(int $tableId,String $openId)	//取消关注，返回boolean
@@ -20,12 +27,13 @@
 	 * 		deleteManager(int $tableId,int $userId)	//返回boolean
 	 * 		
 	 * 		getAttentionTableAry(String $openId)	//返回AttentionTable对象数组
+	 * 		getInheritLink(int $tableId)			//
 	 * 		getTableInfo(int $tableId)				//返回TableInfo对象,如果不存在该table，则返回NULL
 	 * 		getTableFollowerAry(int $tableId)		//返回TableFollower对象数组
-	 * 		
-	 * 		isExistTheTableLink(int $tableId,String $openId)	//检查是否存在这样的TableLink数据，返回Boolean
-	 *
-	 * 		
+	 * 		getUserInfo(String $openId)				//返回UserInfo对象
+	 * 		getHistoryCountOfTransaction(array tableIdAry)		//返回int
+	 * 		getHistoryTransactionAry(array tableIdAry,int page)	//return object Transaction
+	 * 		getTransactionAry(array tableIdAry)		//和getHistoryTransactionAry的区别在于，这是获取未来的transaction
 	 *
 	 * 	private methods
 	 */
@@ -42,7 +50,10 @@
 	include_once("protected/models/datastructure/table/AttentionTable.php");
 
 	include_once("protected/models/datastructure/user/User.php");
+	include_once("protected/models/datastructure/user/UserInfo.php");
 	include_once("protected/models/datastructure/user/TableFollower.php");
+
+	include_once("protected/models/datastructure/transaction/Transaction.php");
 
 
 	class MiniqDB{
@@ -94,6 +105,32 @@
 				}
 			}
 			return $result;
+		}
+
+		public function getInheritLink($childTableId){
+			$tableInherit=new TableTableInherit();
+			return $this->getParentInheritLink($tableInherit,$childTableId);
+		}
+
+		private function getParentInheritLink($db,$childTableId){
+			$result=$this->getParentTableId($db,$childTableId);
+			foreach ($result as $key => $value) {
+				$result=array_merge($result,$this->getParentInheritLink($db,$value[$childTableId]));
+			}
+			return $result;
+		}
+		
+		private function getParentTableId($db,$childTableId){
+			$result=$db->getParentTableId($childTableId);
+			$parentTableIdAry=array();
+			if(!empty($result)){
+				foreach ($result as $key => $value) {
+					$attentionTable=array();
+					$attentionTable[$childTableId]=$value;
+					$parentTableIdAry[]=$attentionTable;
+				}
+			}
+			return $parentTableIdAry;
 		}
 
 		public function getTableInfo($tableId){
@@ -254,6 +291,70 @@
 		public function deleteManager($tableId,$userId){
 			$tableManagerGroup=new TableTableManagerGroup();
 			return $tableManagerGroup->remove($userId,$tableId);
+		}
+
+		public function insertTransaction($tableId,$time,$content){
+			$tableTransaction=new TableTransaction();
+			return $tableTransaction->insertOneData($tableId,$time,$content);
+		}
+
+		public function changeTransaction($transactionId,$time,$content){
+			$tableTransaction=new TableTransaction();
+			return $tableTransaction->changeOneData($transactionId,$time,$content);
+		}
+
+		public function isUserExist($openId){
+			$tableUser=new TableUser($openId);
+			return $tableUser->isUserExist();
+		}
+
+		public function insertUser($openId){
+			$tableUser=new TableUser($openId);
+			$tableUser->insertOneData();
+			$tableTable=new TableTable();
+			$tableId=$tableTable->insertOneData($openId,"我的节点");
+			$tableLink=new TableLink();
+			$tableLink->insertOneData($openId,$tableId);
+			return true;
+		}
+
+		public function getUserInfo($openId){
+			$tableUser=new TableUser($openId);
+			$user=$tableUser->getUserInfo();
+			return (new UserInfo($user['id'],$user['nickName'],$user['openId'],$user['email'],$user['registerTime']));
+		}
+
+		public function changeUserName($openId,$userName){
+			$tableUser=new TableUser($openId);
+			$tableUser->changeNickName($userName);
+			return true;
+		}
+
+		public function getHistoryCountOfTransaction($tableIdAry){
+			$tableTransaction=new TableTransaction();
+			return $tableTransaction->getCountOfHistory($tableIdAry);
+		}
+
+		public function getHistoryTransactionAry($tableIdAry,$page){
+			$tableTransaction=new TableTransaction();
+			$transactionAry=array();
+			$resultAry=$tableTransaction->getHistoryTransactionAry($tableIdAry,$page);
+			foreach ($resultAry as $key => $value) {
+				$transaction=new Transaction($value['id'],$value['tableId'],$value['content'],$value['time']);
+				$transactionAry[]=$transaction;
+			}
+			return $transactionAry;
+		}
+
+		public function getTransactionAry($tableIdAry){
+			$tableTransaction=new TableTransaction();
+			$transactionAry=array();
+			$resultAry=$tableTransaction->getTransactionAry($tableIdAry);
+			foreach ($resultAry as $key => $value) {
+				$transaction=new Transaction($value['id'],$value['tableId'],$value['content'],$value['time']);
+				$transactionAry[]=$transaction;
+			}
+			return $transactionAry;
 		}
 	}
 

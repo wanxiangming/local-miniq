@@ -11,7 +11,7 @@
 						<a href="#tab_search" data-toggle="tab">搜索</a>
 					</li>
 					<li class="active">
-						<a href="#tab_manage" data-toggle="tab">表</a>
+						<a href="#tab_manage" data-toggle="tab">节点</a>
 					</li>
 				</ul>
 				<div class="tab-content ">
@@ -66,14 +66,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">日程创建</h4>
+        <h4 class="modal-title" id="myModalLabel">节点创建</h4>
       </div>
       <div class="modal-body">
 
 		  <form class="form-horizontal">
 		    <fieldset>
 		   		<div id="create_inp_parent" class="control-group row ">
-		          <label class="control-label col-xs-2" for="input01">日程名称</label>
+		          <label class="control-label col-xs-2" for="input01">节点名称</label>
 		          <div class="controls col-xs-10">
 		            <input id="log_name_inp" type="text" placeholder="1-12个字符长度！" class="input-xlarge form-control">
 		          </div>
@@ -102,7 +102,7 @@
 		  <form class="form-horizontal">
 		    <fieldset>
 		   		<div id="create_inp_parent_changeNickName" class="control-group row ">
-		          <label class="control-label col-xs-2" for="input01">日程名称</label>
+		          <label class="control-label col-xs-2" for="input01">节点名称</label>
 		          <div class="controls col-xs-10">
 		            <input id="log_name_inp_changeNickName" type="text" placeholder="1-12个字符长度！" class="input-xlarge form-control"/>
 		          </div>
@@ -144,6 +144,7 @@
 </div>
 
 
+<div class="row" style="height: 250px"></div>
 
 
 

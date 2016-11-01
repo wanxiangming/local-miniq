@@ -55,13 +55,13 @@ var TableItemInheritEdit={
 			div.addClass('text-danger col-xs-12');
 			div.setAttribute("style","padding-top:15px;padding-left:13px;padding-right:0px");
 			if(ERROR_CODE == 1){
-				div.html("已继承此表");
+				div.html("管道已存在");
 			}
 			else if(ERROR_CODE == 2){
-				div.html("查无此表，或此表为私有表");
+				div.html("查无此节点，或此节点为私有");
 			}
 			else if(ERROR_CODE == 3){
-				div.html("无法继承自己");
+				div.html("管道无效");
 			}
 			return div.ui;
 		}

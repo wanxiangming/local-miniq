@@ -119,16 +119,23 @@ var GetTransactionByTimeAry={
 }
 
 var GetTransaction={
-	creatNew:function(TABLE_ID_ARY,TIME_ARY){
-		var GetTransaction=Internet.creatNew(GET_TRANSACTION,"POST",{"tableIdAry":TABLE_ID_ARY,"timeAry":TIME_ARY});
+	creatNew:function(TABLE_ID_ARY){
+		var GetTransaction=Internet.creatNew(GET_TRANSACTION,"POST",{"tableIdAry":TABLE_ID_ARY});
 		return GetTransaction;
 	}
 }
 
-var CreateLogTransaction={
+var GetHistoryTransaction={
+	creatNew:function(TABLE_ID_ARY,PAGE){
+		var GetHistoryTransaction=Internet.creatNew(GET_HISTORY_TRANSACTION,"POST",{"tableIdAry":TABLE_ID_ARY,"page":PAGE});
+		return GetHistoryTransaction;
+	}
+}
+
+var CreateTransaction={
 	creatNew:function(TABLE_ID,TIME,CONTENT){
-		var CreateLogTransaction=Internet.creatNew(CREATE_LOG_TRANSACTION,"POST",{"tableId":TABLE_ID,"time":TIME,"content":CONTENT});
-		return CreateLogTransaction;
+		var CreateTransaction=Internet.creatNew(CREATE_LOG_TRANSACTION,"POST",{"tableId":TABLE_ID,"time":TIME,"content":CONTENT});
+		return CreateTransaction;
 	}
 }
 

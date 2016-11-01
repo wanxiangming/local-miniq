@@ -3,6 +3,8 @@
 	 * User(int $userId,String $userName)
 	 * 		getUserId()
 	 * 		getUserName()
+	 *
+	 * 		setUserName()
 	 */
 
 	class User{
@@ -16,6 +18,10 @@
 
 		public function getUserId(){
 			return $this->userId;
+		}
+
+		public function setUserName($userName){
+			$this->userName=$userName;
 		}
 
 		public function getUserName(){

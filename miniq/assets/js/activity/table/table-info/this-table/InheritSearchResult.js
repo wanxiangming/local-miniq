@@ -41,7 +41,7 @@ var InheritSearchResult={
 				var inheritBtn=Div.creatNew();
 				inheritBtn.addClass('col-xs-2 btn');
 				inheritBtn.setAttribute("style","color: cornflowerblue;");
-				inheritBtn.html("继承");
+				inheritBtn.html("确定");
 				inheritBtn.appendTo(div.ui);
 				inheritBtn.ui.bind("click",function(){
 					var def=e_inherit(tableId);
@@ -51,10 +51,10 @@ var InheritSearchResult={
 							errorTipDiv.html("未知的错误");
 						}
 						else if(ERROR_CODE == -2){
-							errorTipDiv.html("已继承该表");
+							errorTipDiv.html("管道已存在");
 						}
 						else if(ERROR_CODE == -3){
-							errorTipDiv.html("循环继承错误，</br>\""+tableName+"\"存在于您的子表链上，您无法继承它");
+							errorTipDiv.html("管道循环错误，</br>\""+tableName+"\"是您的下层节点，您无法对它架设管道");
 						}
 					});
 				});

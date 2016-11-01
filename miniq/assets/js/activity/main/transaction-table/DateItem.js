@@ -8,56 +8,35 @@ minclude("Button");
  * 它会根据日期自动调整自己的样式（也就是显示“今天”）
  * 
  * DateItem(dayFlag)
- * 		show()
- * 		hide()
- * 		onCreate(CALL_BACK(tableId,content,time))	//当transaction被创建的时候，你可以做一些事情，返回Deferred对象
  * 		changeUiToYMD()
  * 		changeUiToDD()
  */
 var DateItem={
 	creatNew:function(DAY_FLAG){
-		var DateItem={};
+		var DateItem=Div.creatNew();
 
 		var dayFlag=DAY_FLAG;
 		var theMDate=MDate.creatNew(DAY_FLAG);
-		var scope=Div.creatNew();
 		var dateBtn=Button.creatNew();
-		var e_create=function(TABLE_ID,CONTENT,TIME){return $.Deferred();};
-		var e_modalClose=function(){};
 		(function(){
 			initDateBtn();
-			createTransactionModal.bindModal(dateBtn.ui);
-			dateBtn.onClickListener(function(){
-				createTransactionModal.onCreate(function(TABLE_ID,CONTENT,TIME){
-					var def=e_create(TABLE_ID,CONTENT,TIME);
-					def.done(function(){
-						createTransactionModal.hide();
-					});
-					return def;
-				});
-				createTransactionModal.initBeforeShow(dayFlag);
-			});
 		})();
 
 		function initDateBtn(){
 			dateBtn.addClass("btn text-center col-xs-12");
-			dateBtn.appendTo(scope.ui);
+			dateBtn.appendTo(DateItem.ui);
 			if(isToday()){
 				dateBtn.addClass("btn-primary");
 			}
 			else{
 				dateBtn.addClass("btn-activity-main-dateBtn");
 			}
-			changeUiToDD();
+			changeUiToYMD();
 		}
 
 		function isToday(){
 			var todayFlag=MDate.creatNew(new Date()).getDayFlag();
 			return dayFlag == todayFlag;
-		}
-
-		DateItem.onCreate=function(CALL_BACK){
-			e_create=CALL_BACK;
 		}
 
 		DateItem.changeUiToDD=function(){
@@ -73,30 +52,27 @@ var DateItem={
 		}
 
 		function changeUiToYMD(){
-			dateBtn.html(theMDate.getFullYear()+"年"+theMDate.getDate()+"月"+theMDate.getDay()+"日");
+			dateBtn.html(theMDate.getFullYear()+"-"+(theMDate.getMonth()+1)+"-"+theMDate.getDate()+"&nbsp;&nbsp;&nbsp;&nbsp;"+getChineseDay(theMDate.getDay()));
 		}
 
-		DateItem.show=function(){
-			show();
-			return scope.ui;
+		function getChineseDay(NUM){
+			switch(NUM){
+				case 1:
+					return "一";
+				case 2:
+					return "二";
+				case 3:
+					return "三";
+				case 4:
+					return "四";
+				case 5:
+					return "五";
+				case 6:
+					return "六";
+				case 0:
+					return "日";
+			}
 		}
-
-		function show(){
-			scope.removeClass('hide');
-		}
-
-		DateItem.hide=function(){
-			hide();
-		}
-
-		function hide(){
-			scope.addClass('hide');
-		}
-
-		DateItem.onModalClose=function(CALL_BACK){
-			e_modalClose=CALL_BACK;
-		}
-		
 
 		return DateItem;
 	}

@@ -1,23 +1,24 @@
 <?php
-	include_once("protected/models/util/TableUser.php");
-	include_once("protected/models/util/TableTable.php");
-	include_once("protected/models/util/TableLink.php");
-	
+	include_once("protected/models/database/MiniqDB.php");
+
 	class MysqlUserController extends Controller{
 		
 		public function actionLoginCheck(){
 			$openId=$_GET['openId'];
 
-			$tableUser=new TableUser($openId);
-			if($tableUser->isUserExist()){
-				print_r(json_encode($tableUser->getUserInfo()));
+			$miniqDB=new MiniqDB();
+			if($miniqDB->isUserExist($openId)){
+				$userInfo=$miniqDB->getUserInfo($openId);
+				$result=array();
+				$result['id']=$userInfo->getUserId();
+				$result['nickName']=$userInfo->getUserName();
+				$result['openId']=$userInfo->getOpenId();
+				$result['email']=$userInfo->getEmail();
+				$result['registerTime']=$userInfo->getRegisterTime();
+				print_r(json_encode($result));
 			}
 			else{
-				$tableUser->insertOneData();	
-				$tableTable=new TableTable();
-				$tableId=$tableTable->insertOneData($openId,"我的日程");
-				$tableLink=new TableLink();
-				$tableLink->insertOneData($openId,$tableId,"我的日程");
+				$miniqDB->insertUser($openId);
 				print_r(300);	//如果该用户是第一次注册，则向前端发送300
 			}
 		}
@@ -28,22 +29,19 @@
 			$nickName=$obj->nickName;
 			$openId=$obj->openId;
 
-			$tableUser=new TableUser($openId);
-			print_r($nickName);
-			if($tableUser->changeNickName($nickName))
-				print_r(0);		//修改昵称成功
-			else
-				print_r(301);	//修改昵称失败，该用户不存在
+			$miniqDB=new MiniqDB();
+			$miniqDB->changeUserName($openId,$nickName);
+
+			print_r(0);
 		}
 
 		public function actionAlterUserInfo(){
 			$openId=Yii::app()->request->cookies['openId']->value;
 			$json=file_get_contents("php://input");
 			$obj=json_decode($json);
-			$nickName=$obj->nickName;
 
-			$tableUser=new TableUser($openId);
-			$tableUser->changeNickName($nickName);
+			$miniqDB=new MiniqDB();
+			$miniqDB->changeUserName($openId,$obj->nickName);
 
 			print_r(0);
 		}

@@ -11,71 +11,36 @@ minclude("Button");
  * 		show()
  * 		hide()
  *
+ * 		onClick()
+ *
  * 		getTransactionId()
  * 		getTransactionTime()
  * 		getTransactionContent()
- * 		getTransactionTableId()
- * 		
- * 		isDirectAttention()
+ * 		getSourceNodeName()
+ * 		getSourceNodeId()
+ * 		getPathString()
  * 		getChildTableName()
  * 		getChildTableId()
  * 		getParentTableName()
  * 		getParentTableId()
  * 		
- * 		setVisible(boolean)	//告诉它，它是否应该可见
- * 		isVisible()			//你可以通过这个方法得知它的可见性
- * 		
- * 		onChange(CALL_BACK(Content,Time))	//当transaction变化时，你可以做一些事情，返回Deferred对象
- * 		onDelete(CALL_BACK())					//当transaction被删除时，你可以做一些事情，返回Deferred对象
+ * 		isDirectAttention()
  */		
 var TransactionItem={
 	creatNew:function(TRANSACTION_DATA_STRUCTURE){
-		var TransactionItem={};
+		var TransactionItem=Div.creatNew();
 
 		var transaction=TRANSACTION_DATA_STRUCTURE;
 		var isVisible=true;
 		var textTranslator=TextTranslator.creatNew();
-		var div=Div.creatNew();
-		var btn=null;
-		var e_change=function(content,time){return $.Deferred();};
-		var e_delete=function(){return $.Deferred();};
+		var e_click=function(IS_MANAGER){};
 		(function(){
-			btn=PopoverButton.creatNew("hover",popverHtml(),popverTitle(),popverContent());
-			btn.appendTo(div.ui);
-			div.addClass('clear-fix');
-
-			if(transaction.isManager()){
-				changeTransactionModal.bindModal(btn.ui);
-				btn.onClickListener(function(){
-					changeTransactionModal.onChange(function(CONTENT,TIME){
-						var def=e_change(CONTENT,TIME);
-						def.done(function(){
-							transaction.setContent(CONTENT);
-							transaction.setTime(TIME);
-							changeTransactionModal.hide();
-							btn.changeHtml(popverHtml());
-							btn.changeContent(popverContent());
-						});
-						return def;
-					});
-					changeTransactionModal.onDelete(function(){
-						var def=e_delete();
-						def.done(function(){
-							changeTransactionModal.hide();
-						});
-						return def;
-					});
-					changeTransactionModal.initBeforeShow(transaction.getTime(),transaction.getContent(),transaction.getChildTableName());
-				});
-			}
-			else{
-				btn.onClickListener(function(){
-					btn.addClass("wobble animated");
-				});
-				btn.ui.on("animationend",function(){
-					btn.removeClass("wobble animated");
-				});
-			}
+			var btn=PopoverButton.creatNew("hover",popverHtml(),popverTitle(),popverContent());
+			btn.onClickListener(function(){
+				e_click(transaction.isManager());
+			});
+			btn.appendTo(TransactionItem.ui);
+			TransactionItem.addClass('clear-fix');
 		})();
 
 		function popverHtml(){
@@ -106,34 +71,12 @@ var TransactionItem={
 			return title;
 		}
 
-		TransactionItem.onChange=function(CALL_BACK){
-			e_change=CALL_BACK;
-		}
-
-		TransactionItem.onDelete=function(CALL_BACK){
-			e_delete=CALL_BACK;
-		}
-
-		TransactionItem.setVisible=function(BOOLEAN){
-			isVisible=BOOLEAN;
-			if(!isVisible){
-				hideItem();
-			}
-		}
-
-		TransactionItem.isVisible=function(){
-			return isVisible;
-		}
-
 		TransactionItem.show=function(){
-			if(isVisible){
-				showItem();
-			}
-			return div.ui;
+			showItem();
 		}
 
 		function showItem(){
-			div.removeClass('hide');
+			TransactionItem.removeClass('hide');
 		}
 
 		TransactionItem.hide=function(){
@@ -141,7 +84,7 @@ var TransactionItem={
 		}
 
 		function hideItem(){
-			div.addClass("hide");
+			TransactionItem.addClass("hide");
 		}
 
 		TransactionItem.getTransactionId=function(){
@@ -156,8 +99,14 @@ var TransactionItem={
 			return transaction.getContent();
 		}
 
-		TransactionItem.getTransactionTableId=function(){
+		TransactionItem.getSourceNodeId=function(){
 			return transaction.getTableId();
+		}
+
+		TransactionItem.getSourceNodeName=function(){
+			if(transaction.isDirectAttention()){
+				return 
+			}
 		}
 
 		TransactionItem.isDirectAttention=function(){
@@ -178,6 +127,10 @@ var TransactionItem={
 
 		TransactionItem.getParentTableName=function(){
 			return transaction.getParentTableName();
+		}
+
+		TransactionItem.onClick=function(CALL_BACK){
+			e_click=CALL_BACK;
 		}
 
 		return TransactionItem;

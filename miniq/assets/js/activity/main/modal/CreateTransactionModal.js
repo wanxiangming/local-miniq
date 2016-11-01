@@ -19,22 +19,40 @@ var CreateTransactionModal={
 
 		var createTransactionModal=$("#create_log_transaction_modal");
 		var createTransactionModalTableSelect=$("#create_log_modal_tableSelect");
-		var createTransactionModalHourUpBtn=$("#create_log_modal_hour_up_btn");
-		var createTransactionModalHourDownBtn=$("#create_log_modal_hour_down_btn");
-		var createTransactionModalMinuteUpBtn=$("#create_log_modal_minute_up_btn");
-		var createTransactionModalMinuteDownBtn=$("#create_log_modal_minute_down_btn");
-		var createTransactionModalHour=$("#create_log_modal_hour");
-		var createTransactionModalMinute=$("#create_log_modal_minute");
 		var createTransactionModalContentTextarea=$("#create_log_modal_content_input");
 		var createTransactionModalContentLength=$("#transaction_create_input_length");
 		var createTransactionModalCreateBtn=$("#create_log_modal_create_btn");
 		var contentRow=$("#create_transaction_content_row");
+		var timePicker=$("#timePicker");
 		var inputController=InputController.creatNew(createTransactionModalContentTextarea,1000);
 
-		var e_create=function(TABLE_ID,CONTENT,TIME){return $.Deferred();};
-		var e_onModalHide=function(){};
-
 		(function(){
+			
+			timePicker.datetimepicker({
+				startDate:new Date(),
+				autoclose:true,
+				todayBtn:true,
+				todayHighlight:true,
+				language:'zh-CN',
+				format:'yyyy-mm-dd hh:ii'
+			});
+			timePicker.datetimepicker("update",new Date());
+			
+			createTransactionModalCreateBtn.bind("click",function(){	//when the modal open,it will to alter action of create button
+				var tableId=createTransactionModalTableSelect.val();
+				var content=createTransactionModalContentTextarea.val();
+
+				if(inputController.verify()){
+					var def=e_create(tableId,content,transactionTime);
+					def.done(function(){
+						closeModal();
+					});
+				}
+				else{
+					//do nothing if varification failed 
+				}
+			});
+
 			inputController.onChange(function(){
 				setContentTextareaLengthHtml(inputController.getRemainLength());
 				if(inputController.verify()){

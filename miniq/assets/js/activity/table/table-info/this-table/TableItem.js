@@ -52,7 +52,7 @@ var TableItem={
 		(function(){
 			var dropDownListItem=DropDownListItem.creatNew(true,"<span class=\"glyphicon glyphicon-cog\"></span>","alltime");
 			if(isCreator){
-				dropDownListItem.addDropDownMenu(getChangeTableNameBtn());
+				// dropDownListItem.addDropDownMenu(getChangeTableNameBtn());
 				dropDownListItem.addDropDownMenu(getDeprecatedBtn());
 				dropDownListItem.addDropDownMenu(getInheritBtn());
 				dropDownListItem.addDropDownMenu(getOpenFollowerListBtn());
@@ -127,9 +127,9 @@ var TableItem={
 
 		function getDeprecatedBtn(){
 			var btn=DropDownItemButton.creatNew();
-			btn.html("弃用此表");
+			btn.html("删除此节点");
 			btn.onClickListener(function(){
-				checkActionContent.html("您确定要弃用\""+tableName+"\"吗？");
+				checkActionContent.html("您确定要删除\""+tableName+"\"吗？</br>这将会切断所有入口和出口");
 				checkActionBtn.unbind().bind("click",function(){
 					e_deprecated();
 				});
@@ -154,7 +154,7 @@ var TableItem={
 
 		function getOpenTableBtn(){
 			var btn=DropDownItemButton.creatNew();
-			btn.html("公开此表");
+			btn.html("公开此节点");
 			btn.onClickListener(function(){
 				checkActionContent.html("您确定要公开\""+tableName+"\"吗？(公开后将无法再设为私有)");
 				checkActionBtn.unbind().bind("click",function(){
@@ -167,7 +167,7 @@ var TableItem={
 
 		function getInheritBtn(){
 			var btn=DropDownItemButton.creatNew();
-			btn.html("继承其他表");
+			btn.html("架设管道");
 			btn.onClickListener(function(){
 				tableItemInheritEdit.show();
 			});

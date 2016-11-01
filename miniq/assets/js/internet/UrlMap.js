@@ -2,6 +2,7 @@
 //UrlMap
 // {urlName:"",url:""},
 // minclude("");
+// D:\local-web-server\www\miniq\assets\js\util
 var UrlMap={};
 
 UrlMap.js="assets/js/";
@@ -11,7 +12,9 @@ UrlMap.util=UrlMap.js+"util/";
 
 UrlMap.activity=UrlMap.js+"activity/";
 	UrlMap.activity_main=UrlMap.activity+"main/";
+		UrlMap.activity_main_modal=UrlMap.activity_main+"modal/";
 		UrlMap.activity_main_transaction_table=UrlMap.activity_main+"transaction-table/";
+		UrlMap.activity_main_history_list=UrlMap.activity_main+"history-list/";
 
 	UrlMap.activity_table=UrlMap.activity+"table/";
 		UrlMap.activity_table_table_info=UrlMap.activity_table+"table-info/";
@@ -43,6 +46,7 @@ UrlMap.map=[
 	{urlName:"MDate",url:UrlMap.util+"MDate.js"},
 	{urlName:"TextTranslator",url:UrlMap.util+"TextTranslator.js"},
 	{urlName:"InputController",url:UrlMap.util+"InputController.js"},
+	{urlName:"MPagination",url:UrlMap.util+"MPagination.js"},
 
 	//activity/table/table-info/
 	{urlName:"ParentTableItem",url:UrlMap.activity_table_table_info+"parent-table/ParentTableItem.js"},
@@ -59,6 +63,10 @@ UrlMap.map=[
 
 	//activity/table/table-manage/
 
+	//activity/main/modal/
+	{urlName:"CreateTransactionModal",url:UrlMap.activity_main_modal+"CreateTransactionModal.js"},
+	{urlName:"TimeSameTransactionModal",url:UrlMap.activity_main_modal+"TimeSameTransactionModal.js"},
+	{urlName:"ChangeTransactionModal",url:UrlMap.activity_main_modal+"ChangeTransactionModal.js"},
 
 	//activity/mian/transaction-table/
 	{urlName:"DaylogManager",url:UrlMap.activity_main_transaction_table+"DaylogManager.js"},
@@ -71,11 +79,13 @@ UrlMap.map=[
 	{urlName:"AttentionTable",url:UrlMap.activity_main_transaction_table+"datastructure/AttentionTable.js"},
 	{urlName:"Transaction",url:UrlMap.activity_main_transaction_table+"datastructure/Transaction.js"},
 	{urlName:"TransactionDataStructure",url:UrlMap.activity_main_transaction_table+"datastructure/TransactionDataStructure.js"},
-	{urlName:"CreateTransactionModal",url:UrlMap.activity_main_transaction_table+"modal/CreateTransactionModal.js"},
-	{urlName:"TimeSameTransactionModal",url:UrlMap.activity_main_transaction_table+"modal/TimeSameTransactionModal.js"},
-	{urlName:"ChangeTransactionModal",url:UrlMap.activity_main_transaction_table+"modal/ChangeTransactionModal.js"},
 	{urlName:"AttentionTableInfoManager",url:UrlMap.activity_main_transaction_table+"internet/AttentionTableInfoManager.js"},
-	{urlName:"AttentionTableAryManager",url:UrlMap.activity_main_transaction_table+"datastructure/AttentionTableAryManager.js"}
+	{urlName:"AttentionTableAryManager",url:UrlMap.activity_main_transaction_table+"datastructure/AttentionTableAryManager.js"},
+
+	//activity/main/history-list/
+	{urlName:"HistoryItem",url:UrlMap.activity_main_history_list+"HistoryItem.js"},
+	{urlName:"HistoryPage",url:UrlMap.activity_main_history_list+"HistoryPage.js"},
+	{urlName:"HistoryPageManager",url:UrlMap.activity_main_history_list+"HistoryPageManager.js"}
 
 	//activity/user/
 	// {urlName:"",url:UrlMap.activity_user+""},

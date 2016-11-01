@@ -9,6 +9,7 @@
  *
  * 		setContent();
  * 		getContent();
+ * 		getFirstRowContent()
  * 		
  * 		setTime();
  * 		getTime();
@@ -44,6 +45,16 @@ var Transaction={
 
 		Transaction.getContent=function(){
 			return content;
+		}
+
+		Transaction.getFirstRowContent=function(){
+			var newContent=content;
+			var reg=/(.)+/;
+			var stringAry=content.match(reg);
+			if(stringAry != null){
+				newContent=stringAry[0];
+			}
+			return newContent;
 		}
 
 		Transaction.setTime=function(TIME){

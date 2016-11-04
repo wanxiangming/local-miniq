@@ -38,11 +38,12 @@ var AttentionTable={
 		}
 
 		AttentionTable.setInheritAry=function(INHERIT_ARY){
+			console.log(INHERIT_ARY);
 			inheritAry=INHERIT_ARY;
 		}
 
 		AttentionTable.isManager=function(){
-			return isManager;
+			return true;
 		}
 
 		AttentionTable.setParentTableAry=function(PARENT_TABLE_ARY){
@@ -53,7 +54,40 @@ var AttentionTable={
 			parentTableAry.push(TABLE);
 		}
 
+		AttentionTable.parentTableIterator=function(CALL_BACL){
+			$.each(parentTableAry,function(index, el) {
+				CALL_BACL(el);
+			});
+		}
+
 		AttentionTable.findParentTable=function(TABLE_ID){
+			return findParentTable(TABLE_ID);
+		}
+
+		AttentionTable.entrance=function(TABLE_ID){
+			var tableId=Number(TABLE_ID);
+			if(tableId == AttentionTable.getTableId()){	//如果该tableId就是这个attentionTable的ID，说明不存在入口，此时应该返回null
+				return null;
+			}
+			else{
+				var key=true;
+				var result;
+				while(key){
+					result=findKey(tableId);
+					if(result == AttentionTable.getTableId()){
+						//tableId是入口
+						key=false;
+					}
+					else{
+						tableId=result;
+					}
+				}
+				//用tableId去找到table
+				return findParentTable(tableId);
+			}	
+		}
+
+		function findParentTable(TABLE_ID){
 			var table=null;
 			$.each(parentTableAry,function(index, el) {
 				if(el.getTableId() == TABLE_ID){
@@ -63,35 +97,14 @@ var AttentionTable={
 			return table;
 		}
 
-		AttentionTable.parentTableIterator=function(CALL_BACL){
-			$.each(parentTableAry,function(index, el) {
-				CALL_BACL(el);
-			});
-		}
-
-		AttentionTable.entrance=function(TABLE_ID){
-			var tableId=Number(TABLE_ID);
-			var key=true;
-			var result;
-			while(key){
-				result=findKey(tableId);
-				if(result == AttentionTable.getTableId()){
-					//tableId是入口
-					key=false;
-				}
-				else{
-					tableId=result;
-				}
-			}
-		}
-
 		function findKey(VALUE){
 			var key=null;
 			$.each(inheritAry,function(index, el) {
-				if(el == VALUE){
-					key=index;
+				if(el[1] == VALUE){
+					key=el[0];
 				}
 			});
+			
 			return key;
 		}
 

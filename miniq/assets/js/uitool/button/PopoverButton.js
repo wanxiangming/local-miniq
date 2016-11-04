@@ -24,7 +24,7 @@ var PopoverButton={
 		var PopoverButton=Button.creatNew();
 
 		(function(){
-			PopoverButton.addClass("btn btn-default text-center col-xs-12 ");
+			PopoverButton.addClass("btn btn-default text-center col-xs-12");
 			PopoverButton.setAttribute("style","text-overflow:ellipsis;overflow:hidden");
 			PopoverButton.setAttribute("data-toggle","popover");
 			PopoverButton.setAttribute("data-container","body");

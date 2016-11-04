@@ -20,11 +20,11 @@ var HistoryItem={
 				e_click(transactionDataStructure);
 			});
 
-			contentDiv.addClass('col-xs-10 text-left');
+			contentDiv.addClass('col-xs-9 text-left');
 			contentDiv.html(transactionDataStructure.getFirstRowContent());
 			contentDiv.appendTo(HistoryItem.ui);
 
-			timeDiv.addClass('col-xs-2 text-right');
+			timeDiv.addClass('col-xs-3 text-right');
 			timeDiv.setAttribute("style","color:darkgrey");
 			timeDiv.html(getTimeString());
 			timeDiv.appendTo(HistoryItem.ui);

@@ -25,7 +25,7 @@
               var query = queryParams.join('&');
               var url = path + query;
               //window.open(url);
-			  window.location.href=url;
+			         window.location.href=url;
            }
            else 
            {

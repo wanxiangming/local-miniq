@@ -41,7 +41,7 @@
 }
 
 .correction-clear-col-xs-padding{
-	padding: 0px
+	padding: 3px
 }
 
 .table-list-text-css{
@@ -50,7 +50,9 @@
 }
 
 .deep-background-on-hover:hover{
-	background:#F5F6FA;
+	/*background:#F5F6FA;*/
+	/*background:#ededed;*/
+	background:#d4d4d4;
 }
 
 /*.deep-background-on-hover:hover div{

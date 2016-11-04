@@ -146,10 +146,10 @@ var ChangeLogTransaction={
 	}
 }
 
-var DeleteLogTransaction={
+var DeleteTransaction={
 	creatNew:function(LOG_TRANSACTION_ID){
-		var DeleteLogTransaction=Internet.creatNew(DELETE_LOG_TRANSACTION,"GET",{"logTransactionId":LOG_TRANSACTION_ID});
-		return DeleteLogTransaction;
+		var DeleteTransaction=Internet.creatNew(DELETE_LOG_TRANSACTION,"GET",{"logTransactionId":LOG_TRANSACTION_ID});
+		return DeleteTransaction;
 	}
 }
 

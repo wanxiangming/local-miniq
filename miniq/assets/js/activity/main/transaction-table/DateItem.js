@@ -23,7 +23,7 @@ var DateItem={
 		})();
 
 		function initDateBtn(){
-			dateBtn.addClass("btn text-center col-xs-12");
+			dateBtn.addClass("btn text-center col-xs-12 ");
 			dateBtn.appendTo(DateItem.ui);
 			if(isToday()){
 				dateBtn.addClass("btn-primary");

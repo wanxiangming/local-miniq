@@ -6,6 +6,7 @@
 	 */
 	
 	include_once("protected/models/database/MiniqDB.php");
+	include_once("protected/models/util/Cookie.php");
 
 	class MysqlTableManagerGroupController extends Controller{
 

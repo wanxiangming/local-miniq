@@ -3,7 +3,6 @@
 minclude("PopoverButton");
 minclude("TextTranslator");
 minclude("Div");
-minclude("Button");
 /**
  *	对transaction的show操作并不会改变它的可见性，
  * 
@@ -11,20 +10,13 @@ minclude("Button");
  * 		show()
  * 		hide()
  *
- * 		onClick()
+ * 		onClick(CALL_BACK())
  *
  * 		getTransactionId()
  * 		getTransactionTime()
  * 		getTransactionContent()
- * 		getSourceNodeName()
- * 		getSourceNodeId()
- * 		getPathString()
- * 		getChildTableName()
- * 		getChildTableId()
- * 		getParentTableName()
- * 		getParentTableId()
- * 		
- * 		isDirectAttention()
+ * 		getSource()
+ * 		getPath()
  */		
 var TransactionItem={
 	creatNew:function(TRANSACTION_DATA_STRUCTURE){
@@ -37,7 +29,7 @@ var TransactionItem={
 		(function(){
 			var btn=PopoverButton.creatNew("hover",popverHtml(),popverTitle(),popverContent());
 			btn.onClickListener(function(){
-				e_click(transaction.isManager());
+				e_click();
 			});
 			btn.appendTo(TransactionItem.ui);
 			TransactionItem.addClass('clear-fix');
@@ -61,13 +53,7 @@ var TransactionItem={
 		}
 
 		function popverTitle(){
-			var title="";
-			if(transaction.isDirectAttention()){
-				title="<strong>"+transaction.getChildTableName()+"</strong>";
-			}
-			else{
-				title="<strong>"+transaction.getChildTableName()+" << "+transaction.getParentTableName()+"</strong>";
-			}
+			var title=transaction.sourceSTR();
 			return title;
 		}
 
@@ -99,34 +85,12 @@ var TransactionItem={
 			return transaction.getContent();
 		}
 
-		TransactionItem.getSourceNodeId=function(){
-			return transaction.getTableId();
+		TransactionItem.getPath=function(){
+			return transaction.pathSTR();
 		}
 
-		TransactionItem.getSourceNodeName=function(){
-			if(transaction.isDirectAttention()){
-				return 
-			}
-		}
-
-		TransactionItem.isDirectAttention=function(){
-			return transaction.isDirectAttention();
-		}
-
-		TransactionItem.getChildTableId=function(){
-			return transaction.getChildTableId();
-		}
-
-		TransactionItem.getChildTableName=function(){
-			return transaction.getChildTableName();
-		}
-
-		TransactionItem.getParentTableId=function(){
-			return transaction.getParentTableId();
-		}
-
-		TransactionItem.getParentTableName=function(){
-			return transaction.getParentTableName();
+		TransactionItem.getSource=function(){
+			return transaction.sourceSTR();
 		}
 
 		TransactionItem.onClick=function(CALL_BACK){

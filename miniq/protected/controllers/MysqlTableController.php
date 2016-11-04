@@ -30,6 +30,7 @@
 
 
 	include_once("protected/models/database/MiniqDB.php");
+	include_once("protected/models/util/Cookie.php");
 
 	class MysqlTableController extends Controller{
 
@@ -37,7 +38,8 @@
 			$json=file_get_contents("php://input");
 			$obj=json_decode($json);
 			$tableName=$obj->logTableName;
-			$openId=Yii::app()->request->cookies['openId']->value;
+			$cookie=new Cookie();
+			$openId=$cookie->getAccount();
 
 			$miniqDB=new MiniqDB();
 			$miniqDB->insertTable($openId,$tableName);
@@ -61,7 +63,8 @@
 			]
 		 */
 		public function actionGetLogTableList(){
-			$openId=Yii::app()->request->cookies['openId']->value;
+			$cookie=new Cookie();
+			$openId=$cookie->getAccount();
 			
 			$attentionTable=array();
 			$tableLink=new TableLink();
@@ -102,7 +105,8 @@
 		 * 
 		 */
 		public function actionGetAttentonTableInfo(){
-			$openId=Yii::app()->request->cookies['openId']->value;
+			$cookie=new Cookie();
+			$openId=$cookie->getAccount();
 			$attentionTableAry=array();
 			$miniqDB=new MiniqDB();
 			foreach ($miniqDB->getAttentionTableAry($openId) as $key => $value) {
@@ -141,7 +145,8 @@
 			}
 		 */
 		public function actionGetTableInfo(){
-			$openId=Yii::app()->request->cookies['openId']->value;
+			$cookie=new Cookie();
+			$openId=$cookie->getAccount();
 			$tableId=$_GET['tableId'];
 
 			$miniqDB=new MiniqDB();
@@ -228,7 +233,8 @@
 		}
 
 		public function actionDeprecatedLogTable(){
-			$openId=Yii::app()->request->cookies['openId']->value;
+			$cookie=new Cookie();
+			$openId=$cookie->getAccount();
 			$tableId=$_GET['tableId'];
 
 			$miniqDB=new MiniqDB();
@@ -238,7 +244,8 @@
 		}
 
 		public function actionCancelAttention(){
-			$openId=Yii::app()->request->cookies['openId']->value;
+			$cookie=new Cookie();
+			$openId=$cookie->getAccount();
 			$tableId=$_GET['tableId'];
 
 			$miniqDB=new MiniqDB();
@@ -248,7 +255,8 @@
 		}
 
 		public function actionPayAttention(){
-			$openId=Yii::app()->request->cookies['openId']->value;
+			$cookie=new Cookie();
+			$openId=$cookie->getAccount();
 			$tableId=$_GET['tableId'];
 
 			$miniqDB=new MiniqDB();
@@ -262,7 +270,8 @@
 
 		public function actionSearchTableByTableId(){
 			$tableId=$_GET['tableId'];
-			$openId=Yii::app()->request->cookies['openId']->value;
+			$cookie=new Cookie();
+			$openId=$cookie->getAccount();
 
 			$miniqDB=new MiniqDB();
 			$tableInfo=$miniqDB->getTableInfo($tableId);
@@ -349,7 +358,7 @@
 		private function getParentInheritLink($db,$childTableId){
 			$result=$this->getParentTableId($db,$childTableId);
 			foreach ($result as $key => $value) {
-				$result=array_merge($result,$this->getParentInheritLink($db,$value[$childTableId]));
+				$result=array_merge($result,$this->getParentInheritLink($db,$value[1]));
 			}
 			return $result;
 		}
@@ -361,10 +370,12 @@
 			if(!empty($result)){
 				foreach ($result as $key => $value) {
 					$attentionTable=array();
-					$attentionTable[$childTableId]=$value;
+					$attentionTable[]=$childTableId;
+					$attentionTable[]=$value;
 					$parentTableIdAry[]=$attentionTable;
 				}
 			}
+			// print_r(json_encode($parentTableIdAry));
 			return $parentTableIdAry;
 		}
 

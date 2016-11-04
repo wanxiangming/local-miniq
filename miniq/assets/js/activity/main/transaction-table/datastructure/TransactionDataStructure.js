@@ -11,12 +11,15 @@
  * 	ID？
  * 
  * TransactionDataStructure(attentionTableAry,transaction)
- * 		isDirectAttention()
+ * 		//isDirectAttention()
  * 		isManager()
- * 		getChildTableName()
- * 		getChildTableId()
- * 		getParentTableName()
- * 		getParentTableId()
+ * 		//getChildTableName()
+ * 		//getChildTableId()
+ * 		//getParentTableName()
+ * 		//getParentTableId()
+ *
+ * 		sourceSTR()
+ * 		pathSTR()
  *
  * 		来自父：
  * 		setTransactionId();
@@ -44,13 +47,18 @@ var TransactionDataStructure={
 		var parentTableName;
 		var parentTableId;
 
+		var sourceSTR;
+		var pathSTR;
+
 		(function(){
 			$.each(attentionTableAry,function(index, el) {
 				if(el.getTableId() == TransactionDataStructure.getTableId()){
 					isDirectAttention=true;
-					isManager=el.isManager();
+					isManager=true;
 					childTableName=el.getTableName();
 					childTableId=el.getTableId();
+					sourceSTR=el.getTableName();
+					pathSTR=el.getTableName();
 				}
 			});
 			if(!isDirectAttention){
@@ -61,14 +69,26 @@ var TransactionDataStructure={
 						parentTableId=result.getTableId();
 						childTableName=el.getTableName();
 						childTableId=el.getTableId();
+
+						sourceSTR=result.getTableName();
+						// pathSTR=el.getTableName()+" << "+el.entrance(TransactionDataStructure.getTableId()).getTableName();
+						pathSTR=el.getTableName()+" <span class=\"glyphicon glyphicon-arrow-left\"></span> "+el.entrance(TransactionDataStructure.getTableId()).getTableName();
 					}
 				});
 			}
 		})();
 
-		TransactionDataStructure.isDirectAttention=function(){
-			return isDirectAttention;
+		TransactionDataStructure.sourceSTR=function(){
+			return sourceSTR;
 		}
+
+		TransactionDataStructure.pathSTR=function(){
+			return pathSTR;
+		}
+
+		// TransactionDataStructure.isDirectAttention=function(){
+		// 	return isDirectAttention;
+		// }
 
 		TransactionDataStructure.isManager=function(){
 			return isManager;

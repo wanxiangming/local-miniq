@@ -1,21 +1,45 @@
+miniq:
+ ☐ tableInfo界面加该节点的历史消息（再议）
+ ☐ tableInfo界面，你不能进入非自建的私有表
+ ☐ 管理员邀请
+ ☐ 只有管理员能看到出口列表
+
 js:
- ☐ 加个身份在ScheduleManager那,告知用户其是否是该表的管理员
- ☐ 不可编辑的 transaction点击后用 modal呈现
- ☐ 批量添加 transaction
- ☐ 解决TimeSameTransactionModal意外关闭问题 
-   .\assets\js\module\table\modal\TimeSameTransactionModal.js:45
- ☐ transaction的 time修改为用 select标签设置
+ ☐ transaction的撤销问题
+ ☐ 修改入口列表的 "<<"符号
+ ☐ history的loader
+ ☐ mainTable的loader
+ ☐ 只要是 attention的 table，就有撤销 transaction权
+ ☐ transaction过滤器
 
 
 php:
- ☐ 删除表时要删除其 transaction
-   .\protected\controllers\MysqlTableController.php:312
+ ☐ MysqlUserController下的 ChangenickName，不需要给openId数据
+ ☐ 将link中非自建的信息全部转换为inherit数据
+     相当于原来我是关注你，现在我是对你搭建管道，具体是哪个节点去搭建这个管道？用该用户最早创建的那个表。
+     但插入的时候你用miniqDB的insertInherit方法，这样可以防止不可出现的继承情况
+ ☐ managerGroup数据不要了
+ ☐ 取消transaction删除功能,MysqlTransactionController
+ ☐ 将 openId切换成 userId
+     MiniqDB下的isUserExist必须接受oepnId，因为用户登陆的时候，我只能拿到他的OpenId
+     有了OpenId，如果数据库中查到了对应的数据，那么在客户端设置userId的cookie，以后就只用userId操作数据
+ 
+
 
 
 url:
- ☐ 本地批量添加页面
-   http://localhost/?r=Main/BatchAdd
-
+ ☐ 本地 URL
+   http://localhost/?r=Test/BatchAdd
+   http://localhost/?r=Test/LinkTurn
+   http://localhost/?r=Main/Main
+   http://localhost/?r=Table/TableManage
+   http://localhost/?r=Login/LocalSetCookie
+   http://localhost/?r=Login/DelCookie
+   http://localhost/?r=Login/GetCookie
+   http://localhost/?r=MysqlTable/GetParentInheritLink&childTableId=1040
+  
+   (1009)2291571C2A1ED1017BADF6F93BC0DA06
+   (100000)67EB8F9DA303F184014F9268D8294156
 
 
 
@@ -33,5 +57,22 @@ tips for PlainTask:
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+ ✔ transactionContainer的问题 @done (16-11-03 23:22) @project(js)
+ ✔ 撤销关注页面 @done (16-11-03 12:56) @project(miniq)
+ ✔ 将具体实现从控制器中分离出来 @done (16-11-02 18:09) @project(php)
+ ✔ CException cannot find the requested view ,有可能是配置问题，上网查一下 @done (16-11-02 18:09) @project(php)
+ ✔ 过去的transaction在日历下方显示，未来的transaction在日历中显示。（日历中将不再显示过去的数据，只显示未来的！） @done (16-11-02 18:08) @project(js)
+ ✔ 解决TimeSameTransactionModal意外关闭问题  @done (16-11-02 18:08) @project(js)
+ ✔ 在ScheduleManager的TableList中,显示用户是否是该表的管理员 @done (16-11-02 18:08) @project(js)
+ ✔ 修改 tableManage的 search页的代码。这次用户点击搜索结果要能跳转到 tableInfo页面 @done (16-11-02 18:08) @project(js)
+ ✔ 不可编辑的 transaction点击后用 modal呈现 @done (16-11-02 18:08) @project(js)
+ ✔ transaction的 time修改为用 select标签设置 @done (16-11-02 18:08) @project(js)
+ ✔ DaylogManager应该有一个changeTime方法，一个next方法，一个last方法。这样可以把 timepicker释放出去 @done (16-11-02 18:08) @project(js)
+ ✔ MysqlUserController下的 actionChangeNickName，这个方法取缔，它涉及前端代码 @done (16-10-29 19:07) @project(php)
+ ✔ 将数据库中的 openId转换成 ID（再考虑考虑，哪种方案可行） @done (16-10-29 19:01) @project(php)
+ ✔ 批量添加 transaction @done (16-10-26 20:31) @project(js)
+ ✔ 合并js文件。能否用java来写一段智能的添加程序 @done (16-10-25 10:24) @project(js)
+ ✔ 删除表时要删除其 transaction @done (16-10-20 17:34) @project(php)
+  .\protected\controllers\MysqlTableController.php:312
  ✔ ./assets/js/url.js/ @done (16-10-19 11:45) @project(js)
  ✔ www.miniq.site @done (16-10-19 11:42) @project(js)

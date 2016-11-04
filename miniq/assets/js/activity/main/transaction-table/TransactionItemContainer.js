@@ -49,7 +49,8 @@ var TransactionItemContainer={
 			timeSameTransactionItem.addItem(TRANSACTION_ITEM);
 			transactionItemAry.push(TRANSACTION_ITEM);
 			if(transactionItemAry.length == 1){
-				transactionItemAry[0].show().appendTo(div.ui);
+				transactionItemAry[0].show();
+				transactionItemAry[0].appendTo(div.ui);
 			}
 			if(transactionItemAry.length > 1){
 				transactionItemAry[0].hide();

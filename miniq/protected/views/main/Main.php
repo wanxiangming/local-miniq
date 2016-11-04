@@ -28,44 +28,33 @@
 
 
 
-<div class="container-fluid clearfix" style="">
+<div class="container clearfix" style="">
     <div id="dynamicExpansionArea" class="container row"></div>
 
-
-    <div id="backlogBoxRow" class="row form-inline col-xs-12 correction-row-css"  style="">
-      
-    </div> 
-
     <div id="table" class="row text-center col-xs-12" style="margin-top:30px;">
-        <div class="col-xs-5"></div>
-        <div class="col-xs-2 text-left">
-          <div id="addTransactionBtn" class="col-xs-2 btn btn-default"><span class="glyphicon glyphicon-plus"></span></div>
-          <div class="col-xs-10">
+        <!-- <div class="col-xs-4"></div> -->
+        <div class="">
+          <div id="addTransactionBtn" class="col-xs-1 pull-left btn btn-default"><span class="glyphicon glyphicon-plus"></span></div>
+          <div class="col-xs-3 pull-right">
             <input id="filterInput" type="" name="" class="form-control input-sm" >
           </div>
         </div>
-       <!--  <div class="col-xs-1">
-          
-        </div> -->
-       <!--  <div class="col-xs-5 text-right"  style="padding-top:15px">
-          <div id="loaderScope" style="position: absolute;right: 10px;padding-top: 5px;"></div>
-        </div> -->
-
-        
-        <!-- <div class="col-xs-8"></div> -->
     </div> 
    
-    <div class="row col-xs-12 correction-row-css" style="margin-top: 8px">
-        <div class="col-xs-1"></div>
-        <div id="mainTable" class="row form-inline col-xs-10 correction-row-css panel panel-primary" style="height: 310px">
+    <div class="row col-xs-12 " style="margin-top: 8px">
+        <!-- <div class="col-xs-2"></div> -->
+        <div id="mainTable" class="col-xs-12  panel panel-default" style="height: 310px;">
         
         </div>
     </div>   
 
-    <div class="row col-xs-12">
-      <div id="history-list" class="col-xs-offset-2 col-xs-8"></div>
+    <div class="row col-xs-12 " style="margin-top: 25px">
+      <div class="col-xs-12">
+        <div class="col-xs-1 text-left" style="color: #a2a2a2;padding-left: 0px">历史清单</div>
+      </div>
+      <div id="history-list" class="col-xs-12  panel panel-default" style="height: 342px;margin-bottom: 0px"></div>
       <div class="col-xs-12 text-center">
-        <div id="pagination" class="pagination "></div>
+        <div id="pagination" class="pagination" style="margin-top: 0px"></div>
       </div>
     </div>     
 </div>
@@ -75,7 +64,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">发布通告</h4>
+        <h4 class="modal-title" id="myModalLabel">消息发布</h4>
       </div>
       <div class="modal-body">
 
@@ -121,8 +110,8 @@
   </div>
 </div>
 
-<div class="modal fade" id="time_same_transaction_modal" tabindex="-1" role="dialog" aria-labelledby="checkForAction">
-  <div class="modal-dialog" role="document">
+<div class="modal fade bs-example-modal-sm" id="time_same_transaction_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-body">
         <fieldset>
@@ -139,30 +128,38 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">通告详情</h4>
+        <h4 class="modal-title" id="myModalLabel">消息详情</h4>
       </div>
       <div class="modal-body">
 
       <form class="form-horizontal">
         <fieldset>
-          <div class="row correction-row-css">
+          <div class="row correction-row-css" style="padding-top: 6px">
               <label class="control-label col-xs-2" for="input01">消息源</label>
-              <div id="transaction_info_modal_source" class="col-xs-5 correction-clear-col-xs-padding"></div>
+              <div  class="col-xs-5">
+                <div id="transaction_info_modal_source" style="padding-top: 6px"></div>
+              </div>
           </div>
 
-          <div class="row correction-row-css">
-              <label class="control-label col-xs-2" for="input01">路径</label>
-              <div id="transaction_info_modal_path" class="col-xs-5 correction-clear-col-xs-padding"></div>
+          <div class="row correction-row-css" style="padding-top: 6px">
+              <label class="control-label col-xs-2" for="input01">入口</label>
+              <div  class="col-xs-5">
+                <div id="transaction_info_modal_path" style="padding-top: 6px"></div>
+              </div>
           </div>
           
-          <div class="row correction-row-css form-inline">
+          <div class="row correction-row-css form-inline" style="padding-top: 6px">
               <label class="control-label col-xs-2" for="input01">时间</label>
-              <div id="transaction_info_modal_time" class="col-xs-10"></div>
+              <div  class="col-xs-10">
+                <div id="transaction_info_modal_time" style="padding-top: 6px"></div>
+              </div>
           </div>
 
-          <div id="change_transaction_content_row" class="row correction-row-css form-inline" style="margin-top:20px;position:relative;">
+          <div id="change_transaction_content_row" class="row correction-row-css form-inline" style="padding-top: 6px;position:relative;">
             <label class="control-label col-xs-2" for="input01">内容</label>
-            <div id="transaction_info_modal_content"></div>
+            <div class="col-xs-10">
+              <div id="transaction_info_modal_content" style="padding-top: 6px" ></div>
+            </div>
           </div>
           
         </fieldset>
@@ -188,12 +185,13 @@
 		  <form class="form-horizontal">
 		    <fieldset>
 		   		<div id="create_inp_parent_changeNickName" class="control-group row ">
-		          <label class="control-label col-xs-4" for="input01">您确定要删除该事务吗？</label>
+		          <label class="control-label col-xs-4" for="input01">您确定要删除该消息吗？</label>
 		        </div>
 		    </fieldset>
 		  </form>
       </div>
       <div class="modal-footer">
+        <div id="confirmModalLoaderScope" class="col-xs-1"></div>
         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
         <button id="checkAction_btn" type="button" class="btn btn-primary">确定</button>
       </div>

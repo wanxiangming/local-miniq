@@ -1,11 +1,5 @@
 <script language="javascript" type="text/javascript" src="<?php echo JS_URL; ?>activity/user/account-setting/AccountSetting.js"></script>
 
-<?php 
-	$creatorId=Yii::app()->request->cookies['openId']->value;
-	$mysqlUser=new TableUser($creatorId);
-	$userInfoAry=$mysqlUser->getUserInfo();
-?>
-
 <div class="container">
 	<div class="col-xs-12 row" style="margin-top: 10px">
 		<div class="col-xs-8">

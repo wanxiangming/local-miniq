@@ -35,6 +35,8 @@
 	 * 		getHistoryTransactionAry(array tableIdAry,int page)	//return object Transaction
 	 * 		getTransactionAry(array tableIdAry)		//和getHistoryTransactionAry的区别在于，这是获取未来的transaction
 	 *
+	 * 		linkTurnToInherit()
+	 *
 	 * 	private methods
 	 */
 
@@ -115,7 +117,7 @@
 		private function getParentInheritLink($db,$childTableId){
 			$result=$this->getParentTableId($db,$childTableId);
 			foreach ($result as $key => $value) {
-				$result=array_merge($result,$this->getParentInheritLink($db,$value[$childTableId]));
+				$result=array_merge($result,$this->getParentInheritLink($db,$value[1]));
 			}
 			return $result;
 		}
@@ -126,7 +128,8 @@
 			if(!empty($result)){
 				foreach ($result as $key => $value) {
 					$attentionTable=array();
-					$attentionTable[$childTableId]=$value;
+					$attentionTable[]=$childTableId;
+					$attentionTable[]=$value;
 					$parentTableIdAry[]=$attentionTable;
 				}
 			}
@@ -355,6 +358,44 @@
 				$transactionAry[]=$transaction;
 			}
 			return $transactionAry;
+		}
+
+
+		//	print_r(json_encode());		print_r("</br>");
+		public function linkTurnToInherit(){
+			$criteria=new CDbCriteria();
+			$criteria->order='id asc';
+			$allLinkResult=MysqlLink::model()->findAll($criteria);
+			foreach ($allLinkResult as $key => $value) {
+				print_r($value->id);		print_r("</br>");
+				print_r($value->tableId);	print_r("</br>");
+				$tableInfo=$this->getTableInfo($value->tableId);
+				if($tableInfo != NULL){
+					if($tableInfo->getCreatorId()==($value->userId)){
+						print_r(json_encode(true));		print_r("</br>");
+					}
+					else{	//进入这里的是关注表
+						print_r(json_encode(false));		print_r("</br>");
+						// $this->insertInherit();
+						print_r($tableInfo->getCreatorId());		print_r("</br>");	//这是被该用户关注的表的信息
+						$tableCDB=new CDbCriteria();
+						$tableCDB->order='id asc';
+						$tableCDB->addCondition("creatorId="."\"".$value->userId."\"");
+						$tableResult=MysqlTable::model()->find($tableCDB);
+						if($tableResult != NULL){	//该用户有自己创建的表
+							print_r(json_encode($tableResult->id));		print_r("</br>");	//这是该用户的第一个表
+							$this->insertInherit($tableResult->id,$value->tableId);
+						}
+						$value->delete();
+					}
+				}
+				else{
+					//不存在这样的table，这里要删除link
+					$value->delete();
+				}
+				
+				print_r("</br>");
+			}
 		}
 	}
 

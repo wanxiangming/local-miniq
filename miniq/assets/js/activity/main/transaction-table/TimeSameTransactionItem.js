@@ -1,83 +1,44 @@
 
 minclude("MDate");
 minclude("Div");
-minclude("Button");
-minclude("TimeSameTransactionModal");
 minclude("PopoverButton");
 minclude("TextTranslator");
 /**
  * 
- * TimeSameTransactionItem(time)
+ * TimeSameTransactionItem(array TransactionItem)
  * 		show()	//它会变成可见的，并返回给你一个元素节点
  * 		hide()
- * 		addItem()
- * 		removeItem()
- * 		refreshUI()
+ * 		onClick(CALL_BACK())
+ * 		getTransactionTime()
  */
 var TimeSameTransactionItem={
-	creatNew:function(TIME,TRANSACTION_ITEM_ARY){
-		var TimeSameTransactionItem={};
+	creatNew:function(TRANSACTION_ITEM_ARY){
+		var TimeSameTransactionItem=Div.creatNew();
 
-		var div=Div.creatNew();
-		var mDate=MDate.creatNew(TIME);
+		var transactionItemAry=TRANSACTION_ITEM_ARY;
+		var mDate;
 		var btn=null;
-		var modal=null;
-		var transactionItemAry=[];
-
+		var e_click=function(){};
 		(function(){
-			btn=PopoverButton.creatNew("hover","","","");
-			modal=TimeSameTransactionModal.creatNew();
-			modal.bindModal(btn.ui);
-			btn.appendTo(div.ui);
+			$.each(transactionItemAry,function(index, el) {
+				mDate=MDate.creatNew(el.getTransactionTime());
+			});
+
+			btn=PopoverButton.creatNew("hover",popverHtml(),"",popverContent());
+			btn.appendTo(TimeSameTransactionItem.ui);
 			btn.onClickListener(function(){
-				modal.initBeforeShow(transactionItemAry);
+				e_click();
 			});
 		})();
 
-		TimeSameTransactionItem.addItem=function(TRANSACTION_ITEM){
-			transactionItemAry.push(TRANSACTION_ITEM);
-			refreshPopver();
-		}
-
-		TimeSameTransactionItem.removeItem=function(TRANSACTION_ITEM_ID){
-			transactionItemAry=$.grep(transactionItemAry,function(val,index){
-				if(val.getTransactionId() == TRANSACTION_ITEM_ID){
-					return false;
-				}
-				else{
-					return true;
-				}
-			});
-			refreshPopver();
-		}
-
-		TimeSameTransactionItem.refreshUI=function(){
-			refreshPopver();
-		}
-
-		function refreshPopver(){
-			if(transactionItemAry.length < 2){
-				modal.hide();
-				hide();
-			}
-			else{
-				btn.changeHtml(popverHtml(transactionItemAry));
-				btn.changeContent(popverContent(transactionItemAry));
-				show();
-			}
-		}
-
-		function popverContent(TRANSACTION_ITEM_ARY){
+		function popverContent(){
 			var textTranslator=TextTranslator.creatNew();
 			var content="";
-			$.each(TRANSACTION_ITEM_ARY,function(index, el) {
-				content+="</br>";
-				if(el.isDirectAttention()){
-					content+="<strong>"+el.getChildTableName()+"</strong></br>";
+			$.each(transactionItemAry,function(index, el) {
+				if(index!=0){
+					content+="</br>";
 				}
-				else{
-					content+="<strong>"+el.getChildTableName()+" << "+el.getParentTableName()+"</strong></br>";
-				}
+				content+="<strong>"+el.getSource()+"</strong></br>";
 				if(el.getTransactionContent().length > 100){
 					content+=textTranslator.encodeText(el.getTransactionContent()).substring(0,101)+"……";
 				}
@@ -86,21 +47,19 @@ var TimeSameTransactionItem={
 				}
 				content+="</br>";
 			});
-			content+="</br>";
 			return content;
 		}
 
-		function popverHtml(TRANSACTION_ITEM_ARY){
-			return mDate.getHours()+":"+mDate.getMinutes()+"&nbsp&nbsp"+"<span class=badge>"+TRANSACTION_ITEM_ARY.length+"</span>";
+		function popverHtml(){
+			return mDate.getHours()+":"+mDate.getMinutes()+"&nbsp&nbsp"+"<span class=badge>"+transactionItemAry.length+"</span>";
 		}
 
 		TimeSameTransactionItem.show=function(){
 			show();
-			return div.ui;
 		}
 
 		function show(){
-			div.removeClass('hide');
+			TimeSameTransactionItem.removeClass('hide');
 		}
 
 		TimeSameTransactionItem.hide=function(){
@@ -108,7 +67,15 @@ var TimeSameTransactionItem={
 		}
 
 		function hide(){
-			div.addClass('hide');
+			TimeSameTransactionItem.addClass('hide');
+		}
+
+		TimeSameTransactionItem.onClick=function(CALL_BACK){
+			e_click=CALL_BACK;
+		}
+
+		TimeSameTransactionItem.getTransactionTime=function(){
+			return transactionItemAry[0].getTransactionTime();
 		}
 
 		return TimeSameTransactionItem;

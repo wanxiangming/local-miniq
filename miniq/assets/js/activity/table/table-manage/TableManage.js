@@ -10,26 +10,9 @@ function host(){
 	var logNameInpCreat=$("#log_name_inp");
 	var logNameInpParentCreat=$("#create_inp_parent");
 	var createBtn=$("#create_btn");
-	var searchInput=$("#search_input");
-	var searchLoaderScope=$("#loaderScope");
-	var searchButton=$("#search_button");
-	var searchResultScope=$("#search_result");
 	var tableListBlock=TableListBlock.creatNew();
 
 	tableListBlock.flashTableList();
-	$('a[data-toggle="tab"]').on('shown.bs.tab',function(e){
-		var target=$(e.target).attr("href");	//刚刚被打开的tab的id
-		if(target == "#tab_manage"){
-			tableListBlock.flashTableList();
-		}
-	});	
-
-	$('a[data-toggle="tab"]').on('hidden.bs.tab',function(e){
-		var target=$(e.target).attr("href");	//刚刚被关闭的tab的id
-		if(target == "#tab_manage"){
-			// $("#table_list").empty();
-		}
-	});
 
 	$("#create_modal").on('show.bs.modal',function(e){
 		logNameInpCreat.val("");
@@ -51,55 +34,7 @@ function host(){
 		});
 	});
 
-	searchInput.keydown(function(e){
-		clearSearchScope();
-		if(e.keyCode == 13){
-			search();
-		}
-	});
-
-	searchButton.on("click",function(){
-		clearSearchScope();
-		search();
-	});
-
-	function clearSearchScope(){
-		searchLoaderScope.html("");
-		searchResultScope.empty();
-	}
-
-	function search(){
-		var loaderPiano=LoaderPiano.creatNew();
-		loaderPiano.appendTo(searchLoaderScope);
-		var searchTableByTableId=SearchTableByTableId.creatNew(searchInput.val());
-		searchTableByTableId.onSuccessLisenter(function(data){
-			loaderPiano.remove();
-			if(data==0){
-				searchLoaderScope.html("未搜索到该节点.");
-			}
-			else{
-				var searchData=SearchData.creatNew();
-				searchData.setLogTableId(data.id);
-				searchData.setLogTableCreatorId(data.creatorId);
-				searchData.setLogTableName(data.tableName);
-				searchData.setLogTableState(data.tableState);
-				searchData.setIsAttention(data.isAttention);
-				searchData.setIsMine(data.isMine == 1 ? true:false);
-				TableSearchBlock.creatNew(searchData).getSearchBlock().appendTo(searchResultScope);
-			}
-		});
-		searchTableByTableId.launch();
-	}
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -375,169 +310,6 @@ var TableListBlock={
 
 
 
-
-var SearchData={
-	creatNew:function(){
-		var SearchData=LogTable.creatNew();
-
-		var isAttention;
-		var isMine;
-
-		SearchData.setIsAttention=function(IS_ATTENTION){
-			isAttention=IS_ATTENTION;
-		}
-
-		SearchData.getIsAttention=function(){
-			return isAttention;
-		}
-
-		SearchData.setIsMine=function(IS_MINE){
-			isMine=IS_MINE;
-		}
-
-		SearchData.isMine=function(){
-			return isMine;
-		}
-
-		return SearchData;
-	}
-}
-
-var TableSearchBlock={
-	creatNew:function(SEARCH_DATA){
-		var TableSearchBlock={};
-
-		var logTableId;
-		var logTableName;
-		var logTableState;
-		var logTableCreatorId;
-		var isMine;
-		var isAttention;
-
-		var divBox=Div.creatNew();
-		var divLeft=Div.creatNew();
-		var divRight=Div.creatNew();
-		
-		init();
-		
-		TableSearchBlock.getSearchBlock=function(){
-			return divBox;
-		}
-
-		function init(){
-			logTableId=SEARCH_DATA.getLogTableId();
-			logTableName=SEARCH_DATA.getLogTableName();
-			logTableState=SEARCH_DATA.getLogTableState();
-			logTableCreatorId=SEARCH_DATA.getLogTableCreatorId();
-			isMine=SEARCH_DATA.isMine();
-			isAttention=SEARCH_DATA.getIsAttention();
-
-			divBox.addClass("row");
-			divBox.setAttribute("style","background-color:#E9EBEE");
-			divLeft.addClass("col-xs-8");
-			divRight.addClass("col-xs-4");
-			makeSearchResultLeftContent().appendTo(divLeft.ui);
-			makeSearchResultRightContent().appendTo(divRight.ui);
-			divLeft.appendTo(divBox.ui);
-			divRight.appendTo(divBox.ui);
-		}
-
-		function makeSearchResultLeftContent(){
-			var dl=Dl.creatNew();
-			dl.addClass("dl-horizontal");
-			dl.setAttribute("style","margin-top:20px");
-
-			var tableIdDt=Dt.creatNew();
-			var tableNameDt=Dt.creatNew();
-			var tableStateDt=Dt.creatNew();
-			setDtStyle(tableIdDt);
-			setDtStyle(tableNameDt);
-			setDtStyle(tableStateDt);
-			tableIdDt.html("节点ID");
-			tableNameDt.html("节点名称");
-			tableStateDt.html("日程状态");
-
-			var tableIdDd=Dd.creatNew();
-			var tableNameDd=Dd.creatNew();
-			var tableStateDd=Dd.creatNew();
-			setDdStyle(tableIdDd);
-			setDdStyle(tableNameDd);
-			setDdStyle(tableStateDd);
-			tableIdDd.html(logTableId);
-			tableNameDd.html(logTableName);
-			switch(logTableState){
-				case 1:
-					tableStateDd.addClass("text-success");
-					tableStateDd.html("<span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span> 使用中");
-					break;
-				case 0:
-					tableStateDd.addClass("text-danger");
-					tableStateDd.html("<span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span> 已弃用");
-					break;
-			}
-
-			tableIdDt.appendTo(dl.ui);
-			tableIdDd.appendTo(dl.ui);
-			tableNameDt.appendTo(dl.ui);
-			tableNameDd.appendTo(dl.ui);
-			// tableStateDt.appendTo(dl.ui);
-			// tableStateDd.appendTo(dl.ui);
-
-			return dl;
-		}
-
-		function setDtStyle(DT){
-			DT.setAttribute("style","width:80px");
-		}
-
-		function setDdStyle(DD){
-			DD.setAttribute("style","margin-left:100px;");
-		}
-
-		function makeSearchResultRightContent(){
-			var div=Div.creatNew();
-			div.addClass("text-center");
-			div.setAttribute("style","margin-top:32px;");
-
-			if(!isMine){
-				attentionButton().appendTo(div.ui);
-			}
-
-			return div;
-		}
-
-		function attentionButton(){
-			var btn=Button.creatNew();
-			btn.addClass("btn btn-primary");
-			if(isAttention){
-				btn.html("已关注");
-			}
-			else{
-				btn.html("关注");
-				btn.onClickListener(onAttentionButtonClickListener);
-			}
-			return btn;
-		}
-
-		function onAttentionButtonClickListener(CONTENT){
-			var payAttentionToLogTable=PayAttentionToLogTable.creatNew(logTableId);
-			payAttentionToLogTable.onSuccessLisenter(function(data){
-				if(data == 1){
-					CONTENT.html("已关注");
-					CONTENT.unbind();
-				}
-			});
-			payAttentionToLogTable.launch();
-		}
-
-		return TableSearchBlock;
-	}
-}
-
-
-
-
-
 var GetLogTableAryByInternet={
 	creatNew:function(){
 		var GetLogTableAryByInternet={};
@@ -713,4 +485,227 @@ var LogTransaction={
 }
 
 
+
+
+
+
+
+	// var searchInput=$("#search_input");
+	// var searchLoaderScope=$("#loaderScope");
+	// var searchButton=$("#search_button");
+	// var searchResultScope=$("#search_result");
+	// $('a[data-toggle="tab"]').on('shown.bs.tab',function(e){
+	// 	var target=$(e.target).attr("href");	//刚刚被打开的tab的id
+	// 	if(target == "#tab_manage"){
+	// 		tableListBlock.flashTableList();
+	// 	}
+	// });	
+
+	// $('a[data-toggle="tab"]').on('hidden.bs.tab',function(e){
+	// 	var target=$(e.target).attr("href");	//刚刚被关闭的tab的id
+	// 	if(target == "#tab_manage"){
+	// 		// $("#table_list").empty();
+	// 	}
+	// });
+	// 
+	// 
+	// searchInput.keydown(function(e){
+	// 	clearSearchScope();
+	// 	if(e.keyCode == 13){
+	// 		search();
+	// 	}
+	// });
+
+	// searchButton.on("click",function(){
+	// 	clearSearchScope();
+	// 	search();
+	// });
+
+	// function clearSearchScope(){
+	// 	searchLoaderScope.html("");
+	// 	searchResultScope.empty();
+	// }
+
+	// function search(){
+	// 	var loaderPiano=LoaderPiano.creatNew();
+	// 	loaderPiano.appendTo(searchLoaderScope);
+	// 	var searchTableByTableId=SearchTableByTableId.creatNew(searchInput.val());
+	// 	searchTableByTableId.onSuccessLisenter(function(data){
+	// 		loaderPiano.remove();
+	// 		if(data==0){
+	// 			searchLoaderScope.html("未搜索到该节点.");
+	// 		}
+	// 		else{
+	// 			var searchData=SearchData.creatNew();
+	// 			searchData.setLogTableId(data.id);
+	// 			searchData.setLogTableCreatorId(data.creatorId);
+	// 			searchData.setLogTableName(data.tableName);
+	// 			searchData.setLogTableState(data.tableState);
+	// 			searchData.setIsAttention(data.isAttention);
+	// 			searchData.setIsMine(data.isMine == 1 ? true:false);
+	// 			TableSearchBlock.creatNew(searchData).getSearchBlock().appendTo(searchResultScope);
+	// 		}
+	// 	});
+	// 	searchTableByTableId.launch();
+	// }
+
+
+
+// var SearchData={
+// 	creatNew:function(){
+// 		var SearchData=LogTable.creatNew();
+
+// 		var isAttention;
+// 		var isMine;
+
+// 		SearchData.setIsAttention=function(IS_ATTENTION){
+// 			isAttention=IS_ATTENTION;
+// 		}
+
+// 		SearchData.getIsAttention=function(){
+// 			return isAttention;
+// 		}
+
+// 		SearchData.setIsMine=function(IS_MINE){
+// 			isMine=IS_MINE;
+// 		}
+
+// 		SearchData.isMine=function(){
+// 			return isMine;
+// 		}
+
+// 		return SearchData;
+// 	}
+// }
+
+// var TableSearchBlock={
+// 	creatNew:function(SEARCH_DATA){
+// 		var TableSearchBlock={};
+
+// 		var logTableId;
+// 		var logTableName;
+// 		var logTableState;
+// 		var logTableCreatorId;
+// 		var isMine;
+// 		var isAttention;
+
+// 		var divBox=Div.creatNew();
+// 		var divLeft=Div.creatNew();
+// 		var divRight=Div.creatNew();
+		
+// 		init();
+		
+// 		TableSearchBlock.getSearchBlock=function(){
+// 			return divBox;
+// 		}
+
+// 		function init(){
+// 			logTableId=SEARCH_DATA.getLogTableId();
+// 			logTableName=SEARCH_DATA.getLogTableName();
+// 			logTableState=SEARCH_DATA.getLogTableState();
+// 			logTableCreatorId=SEARCH_DATA.getLogTableCreatorId();
+// 			isMine=SEARCH_DATA.isMine();
+// 			isAttention=SEARCH_DATA.getIsAttention();
+
+// 			divBox.addClass("row");
+// 			divBox.setAttribute("style","background-color:#E9EBEE");
+// 			divLeft.addClass("col-xs-8");
+// 			divRight.addClass("col-xs-4");
+// 			makeSearchResultLeftContent().appendTo(divLeft.ui);
+// 			makeSearchResultRightContent().appendTo(divRight.ui);
+// 			divLeft.appendTo(divBox.ui);
+// 			divRight.appendTo(divBox.ui);
+// 		}
+
+// 		function makeSearchResultLeftContent(){
+// 			var dl=Dl.creatNew();
+// 			dl.addClass("dl-horizontal");
+// 			dl.setAttribute("style","margin-top:20px");
+
+// 			var tableIdDt=Dt.creatNew();
+// 			var tableNameDt=Dt.creatNew();
+// 			var tableStateDt=Dt.creatNew();
+// 			setDtStyle(tableIdDt);
+// 			setDtStyle(tableNameDt);
+// 			setDtStyle(tableStateDt);
+// 			tableIdDt.html("节点ID");
+// 			tableNameDt.html("节点名称");
+// 			tableStateDt.html("日程状态");
+
+// 			var tableIdDd=Dd.creatNew();
+// 			var tableNameDd=Dd.creatNew();
+// 			var tableStateDd=Dd.creatNew();
+// 			setDdStyle(tableIdDd);
+// 			setDdStyle(tableNameDd);
+// 			setDdStyle(tableStateDd);
+// 			tableIdDd.html(logTableId);
+// 			tableNameDd.html(logTableName);
+// 			switch(logTableState){
+// 				case 1:
+// 					tableStateDd.addClass("text-success");
+// 					tableStateDd.html("<span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span> 使用中");
+// 					break;
+// 				case 0:
+// 					tableStateDd.addClass("text-danger");
+// 					tableStateDd.html("<span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span> 已弃用");
+// 					break;
+// 			}
+
+// 			tableIdDt.appendTo(dl.ui);
+// 			tableIdDd.appendTo(dl.ui);
+// 			tableNameDt.appendTo(dl.ui);
+// 			tableNameDd.appendTo(dl.ui);
+// 			// tableStateDt.appendTo(dl.ui);
+// 			// tableStateDd.appendTo(dl.ui);
+
+// 			return dl;
+// 		}
+
+// 		function setDtStyle(DT){
+// 			DT.setAttribute("style","width:80px");
+// 		}
+
+// 		function setDdStyle(DD){
+// 			DD.setAttribute("style","margin-left:100px;");
+// 		}
+
+// 		function makeSearchResultRightContent(){
+// 			var div=Div.creatNew();
+// 			div.addClass("text-center");
+// 			div.setAttribute("style","margin-top:32px;");
+
+// 			if(!isMine){
+// 				attentionButton().appendTo(div.ui);
+// 			}
+
+// 			return div;
+// 		}
+
+// 		function attentionButton(){
+// 			var btn=Button.creatNew();
+// 			btn.addClass("btn btn-primary");
+// 			if(isAttention){
+// 				btn.html("已关注");
+// 			}
+// 			else{
+// 				btn.html("关注");
+// 				btn.onClickListener(onAttentionButtonClickListener);
+// 			}
+// 			return btn;
+// 		}
+
+// 		function onAttentionButtonClickListener(CONTENT){
+// 			var payAttentionToLogTable=PayAttentionToLogTable.creatNew(logTableId);
+// 			payAttentionToLogTable.onSuccessLisenter(function(data){
+// 				if(data == 1){
+// 					CONTENT.html("已关注");
+// 					CONTENT.unbind();
+// 				}
+// 			});
+// 			payAttentionToLogTable.launch();
+// 		}
+
+// 		return TableSearchBlock;
+// 	}
+// }
 

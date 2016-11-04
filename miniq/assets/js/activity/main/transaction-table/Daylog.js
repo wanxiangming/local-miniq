@@ -1,7 +1,5 @@
 
 minclude("DateItem");
-minclude("TransactionItem");
-minclude("TransactionItemContainer");
 minclude("Div");
 /**
  * 每一个Daylog都有一个DayFlag，是它的唯一标识
@@ -27,7 +25,6 @@ var Daylog={
 		var isVisible=true;
 		var dayFlag=Number(DAY_FLAG);
 		var dateItem=DateItem.creatNew(dayFlag);
-		var transactionItemContainerAry=[];
 		var transactionItemAry=[];
 		(function(){
 			dateScope.appendTo(Daylog.ui);
@@ -41,53 +38,23 @@ var Daylog={
 
 		Daylog.addTransaction=function(TRANSACTION_ITEM){
 			transactionItemAry.push(TRANSACTION_ITEM);
-			addItemToContainer(TRANSACTION_ITEM,TRANSACTION_ITEM.getTransactionTime());
-		}
-
-		function refreshContainerUI(){
-			$.each(transactionItemContainerAry,function(index, el) {
-				el.refreshUI();
+			sortItem();
+			$.each(transactionItemAry,function(index, el) {
+				el.hide();
+				el.appendTo(transactionScope.ui);
+				el.show();
 			});
 		}
 
-		function addItemToContainer(TRANSACTION_ITEM,TIME){
-			var isExist=false;
-			$.each(transactionItemContainerAry,function(index, el) {
-				if(el.getTime() == TIME){
-					el.addTransactionItem(TRANSACTION_ITEM);
-					isExist=true;
-				}
-			});
-			if(!isExist){
-				var transactionItemContainer=TransactionItemContainer.creatNew(TIME);
-				transactionItemContainer.addTransactionItem(TRANSACTION_ITEM);
-				transactionItemContainerAry.push(transactionItemContainer);
-				sortContainer();
-				$.each(transactionItemContainerAry,function(index, el) {
-					el.show().appendTo(transactionScope.ui);
-				});
-			}
-		}
-
-		function sortContainer(){
-			transactionItemContainerAry.sort(function(valueA,valueB){
-				if(valueA.getTime() <= valueB.getTime()){
+		function sortItem(){
+			transactionItemAry.sort(function(valueA,valueB){
+				if(valueA.getTransactionTime() <= valueB.getTransactionTime()){
 					return -1;
 				}
 				else{
 					return 1;
 				}
 			});
-		}
-
-		function isTransactionItemContainerExist(TIME){
-			var isExist=false;
-			$.each(transactionItemContainerAry,function(index, el) {
-				if(el.getTime() == TIME){
-					isExist=true;
-				}
-			});
-			return isExist;
 		}
 
 		return Daylog;

@@ -1,4 +1,7 @@
 <?php
+	
+	include_once("protected/models/database/MiniqDB.php");
+
 	class TestController extends Controller{
 		
 		public function actionBatchAdd(){
@@ -20,6 +23,11 @@
 			}
 			//print_r(json_encode($categoryInfo));
 			$this->render('Paging',array('pages'=>$pages,'categoryInfo'=>$categoryInfo));
+		}
+
+		public function actionLinkTurn(){
+			$miniqDB=new MiniqDB();
+			$miniqDB->linkTurnToInherit();
 		}
 
 	}

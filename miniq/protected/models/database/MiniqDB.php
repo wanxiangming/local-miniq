@@ -78,7 +78,8 @@
 			$userInfo=$tableUser->getUserInfo();
 			$userId=$userInfo['id'];
 
-			$linkResult=(new TableLink())->getAllByUserId($openId);
+			$tableLink=new TableLink();
+			$linkResult=$tableLink->getAllByUserId($openId);
 			$result=array();
 			if($linkResult != NULL){
 				$tableTable=new TableTable();

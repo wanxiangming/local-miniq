@@ -18,6 +18,7 @@ function host(){
 	var filtInput=$("#filt_follower_input");
 	var followerListScope=$("#follower_list_scope");
 	var loaderScope=$("#loaderScope");
+	var exportList=$("#export_list");
 
 	var loader=LoaderPiano.creatNew();
 	loader.show();
@@ -204,6 +205,7 @@ function host(){
 			getFollowerList.launch();
 		}
 
+		//向入口列表插入数据
 		if(TABLE_INFO_DATA_STRUCTURE.queryParentTableCount() > 0){
 			TABLE_INFO_DATA_STRUCTURE.parentTableIterator(function(PARENT_TABLE_ID,PARENT_TABLE_NAME){
 				var parentTableItem=ParentTableItem.creatNew(tableName,PARENT_TABLE_ID,PARENT_TABLE_NAME,isCreator);
@@ -227,6 +229,7 @@ function host(){
 			parentNullDiv.appendTo(parentTableListScope);
 		}
 
+		//向出口列表插入数据
 		if(TABLE_INFO_DATA_STRUCTURE.queryChildTableCount() > 0){
 			TABLE_INFO_DATA_STRUCTURE.childTableIterator(function(CHILE_TABLE_ID,CHILD_TABLE_NAME){
 				var childTableItem=ChildTableItem.creatNew(tableName,CHILE_TABLE_ID,CHILD_TABLE_NAME,isCreator);
@@ -239,6 +242,11 @@ function host(){
 			childNullDiv.addClass('col-xs-12');
 			childNullDiv.setAttribute("style","padding-top:6px;padding-left:30px");
 			childNullDiv.appendTo(childTableListScope);
+		}
+
+		//如果该用户是该表的创建者或者关注者(管理员),则显示入口列表
+		if(isAttention || isCreator){
+			exportList.removeClass('hide');
 		}
 		
 	});

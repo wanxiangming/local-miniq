@@ -53,9 +53,9 @@ var TableItem={
 			var dropDownListItem=DropDownListItem.creatNew(true,"<span class=\"glyphicon glyphicon-cog\"></span>","alltime");
 			if(isCreator){
 				// dropDownListItem.addDropDownMenu(getChangeTableNameBtn());
-				dropDownListItem.addDropDownMenu(getDeprecatedBtn());
 				dropDownListItem.addDropDownMenu(getInheritBtn());
-				dropDownListItem.addDropDownMenu(getOpenFollowerListBtn());
+				// dropDownListItem.addDropDownMenu(getOpenFollowerListBtn());
+				dropDownListItem.addDropDownMenu(getDeprecatedBtn());
 				if(!isPublic){
 					dropDownListItem.addDropDownMenu(getOpenTableBtn());
 				}

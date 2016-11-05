@@ -9,9 +9,9 @@
 	 */
 
 	class Cookie{
-		const MONTH=30*24*60*60;	//30天
+		const MONTH=2592000;	//30天 30*24*60*60
 		const C_ACCOUNT='account';
-
+		
 		private $cookie=NULL;
 
 		public function __construct(){
@@ -25,7 +25,7 @@
 		public function setAccount($account){
 			$cookie=new CHttpCookie(self::C_ACCOUNT,$account);
 			$cookie->expire=time()+self::MONTH;
-			// $cookie->httpOnly=true;
+			$cookie->httpOnly=true;
 			$this->cookie->add(self::C_ACCOUNT,$cookie);
 		}
 

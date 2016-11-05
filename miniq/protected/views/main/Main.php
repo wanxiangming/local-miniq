@@ -35,8 +35,8 @@
         <!-- <div class="col-xs-4"></div> -->
         <div class="">
           <div id="addTransactionBtn" class="col-xs-1 pull-left btn btn-default"><span class="glyphicon glyphicon-plus"></span></div>
-          <div class="col-xs-3 pull-right">
-            <input id="filterInput" type="" name="" class="form-control input-sm" >
+          <div class="col-xs-2 clear-col-padding pull-right ">
+            <input id="filterInput" type="" name="" class="form-control input-sm hide" >
           </div>
         </div>
     </div> 
@@ -103,6 +103,7 @@
 
       </div>
       <div class="modal-footer">
+        <div id="create_transaction_modal_loader_scope" class="col-xs-1"></div>
         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
         <button id="create_log_modal_create_btn" type="button" class="btn btn-primary">创建</button>
       </div>

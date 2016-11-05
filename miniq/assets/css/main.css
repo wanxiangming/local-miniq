@@ -55,6 +55,10 @@
 	background:#d4d4d4;
 }
 
+.clear-col-padding{
+	padding: 0px;
+}
+
 /*.deep-background-on-hover:hover div{
 	color:black;
 }*/

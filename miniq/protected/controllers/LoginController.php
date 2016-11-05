@@ -8,7 +8,13 @@
 		public $defaultAction = 'Login';
 		
 		public function actionLogin(){
-			$this->renderPartial('Login');
+			$cookie=new Cookie();
+			if($cookie->isSetAccount()){
+				$this->redirect(array('Main/Main'));
+			}
+			else{
+				$this->renderPartial('Login');
+			}
 		}
 		
 		public function actionQc(){

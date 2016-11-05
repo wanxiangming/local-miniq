@@ -1,4 +1,4 @@
-document.write('<script' + ' type="text/javascript" src="'+"assets/opensource/jquery/jquery.cookie.js"+'">' + '</script>');
+// document.write('<script' + ' type="text/javascript" src="'+"assets/opensource/jquery/jquery.cookie.js"+'">' + '</script>');
 
 $(document).ready(function(){
 	var login=$("#loginBtn");
@@ -47,10 +47,10 @@ $(document).ready(function(){
 		});
 	});
 
-	//如果用户已经有cookie了，那就直接跳转主页
-	if($.cookie('account') != null){
-		window.location.href="?r=Main/Main";
-	}
+	// 如果用户已经有cookie了，那就直接跳转主页
+	// if($.cookie('account') != null){
+	// 	window.location.href="?r=Main/Main";
+	// }
 
 });
 

@@ -38,7 +38,6 @@ var AttentionTable={
 		}
 
 		AttentionTable.setInheritAry=function(INHERIT_ARY){
-			console.log(INHERIT_ARY);
 			inheritAry=INHERIT_ARY;
 		}
 

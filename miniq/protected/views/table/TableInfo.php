@@ -22,7 +22,7 @@
 			<label class="control-label col-xs-2" style="padding-top: 6px;" for="input01">入口列表</label>
 			<div id="parentTable" class="row col-xs-10"></div>
 		</div>
-		<div class="row correction-row-css" style="margin-top:20px;position:relative;">
+		<div id="export_list" class="row correction-row-css hide" style="margin-top:20px;position:relative;">
 			<label class="control-label col-xs-2" style="padding-top: 6px;" for="input01">出口列表</label>
 			<div id="childTable" class="row col-xs-10"></div>
 		</div>

@@ -21,6 +21,7 @@ var HistoryItem={
 			});
 
 			contentDiv.addClass('col-xs-9 text-left');
+			contentDiv.setAttribute("style","text-overflow:ellipsis;overflow:hidden");
 			contentDiv.html(transactionDataStructure.getFirstRowContent());
 			contentDiv.appendTo(HistoryItem.ui);
 

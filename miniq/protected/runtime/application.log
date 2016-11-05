@@ -3700,3 +3700,27 @@ REQUEST_URI=/?r=User/AccountSetting
 in D:\local-web-server\www\miniq\protected\views\user\AccountSetting.php (4)
 in D:\local-web-server\www\miniq\protected\controllers\UserController.php (7)
 in D:\local-web-server\www\miniq\index.php (14)
+2016/11/05 13:04:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "Mainl/Main".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Mainl/Main')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=Mainl/Main
+---
+2016/11/05 13:05:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "Mainl/Main".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Mainl/Main')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=Mainl/Main
+---
+2016/11/05 13:05:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "Mainl/Main".' in D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\local-web-server\yii-1.1.17.467ff50\framework\web\CWebApplication.php(141): CWebApplication->runController('Mainl/Main')
+#1 D:\local-web-server\yii-1.1.17.467ff50\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 D:\local-web-server\www\miniq\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=Mainl/Main
+---

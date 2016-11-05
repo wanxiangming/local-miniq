@@ -12,7 +12,7 @@ minclude("Table");
  * 	parentTableAry
  * 	childTableAry
  * 
- * TableInfoDataStructure(isCreator,isPublic)
+ * TableInfoDataStructure(isCreator,isPublic,isAttention)
  * 		setTableId(tableId)
  * 		getTableId()
  *

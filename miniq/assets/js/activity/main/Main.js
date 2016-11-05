@@ -40,19 +40,31 @@ function host(){
 
 	var attentionTableAry=attentionTableAryManager.getAttentionTableAry();
 	var allTableIdAry=attentionTableAryManager.getAllTableIdAry();
+	var mainTable=$("#mainTable");
+	var daylogManager=DaylogManager.creatNew(mainTable);
+	var transactionItemAryAry=[];
+	var createTime=new Date();
+	var isInfoModalShow=false;
+	var isTimeSameModalShow=false;
 
 	//--------------------------------------------------------------------------------------------
 
+	//初始化createTransactionIC
+	var createTransactionModalContentTextarea=$("#create_log_modal_content_input");
+	var createTransactionIC=InputController.creatNew(createTransactionModalContentTextarea,1000);
+	createTransactionIC.onChange(function(){
+		var createTransactionModalcontentRow=$("#create_transaction_content_row");
+		createTransactionModalContentLength.html(createTransactionIC.getRemainLength()+"字");
+		if(createTransactionIC.verify()){
+			createTransactionModalcontentRow.removeClass('has-error');
+		}
+		else{
+			createTransactionModalcontentRow.addClass('has-error');
+		}
+	});
 
-
-	var timeSameTransactionModal=$("#time_same_transaction_modal");
-	var transactionScope=$("#time_same_transaction_scope");
-	
-
-	var mainTable=$("#mainTable");
-	var daylogManager=DaylogManager.creatNew(mainTable);
+	//获取所有未来的transaction，并制作成TransacctionItem，push到transactionItemAryAry中
 	var getTransaction=GetTransaction.creatNew(allTableIdAry);
-	var transactionItemAryAry=[];
 	getTransaction.onSuccessLisenter(function(DATA){
 		$.each(DATA,function(index, el) {
 			var transactionItem=createTransactionItem(el.id,el.tableId,el.content,el.time);
@@ -62,31 +74,32 @@ function host(){
 	});
 	getTransaction.launch();
 
-
-
-
-	var timePicker=$("#timePicker");
-	var createTransactionModal=$("#create_transaction_modal")
-	var createTransactionModalContentTextarea=$("#create_log_modal_content_input");
-	var createTransactionModalTableSelect=$("#create_log_modal_tableSelect");
-	var createTransactionModalcontentRow=$("#create_transaction_content_row");
-	var createTransactionModalContentLength=$("#transaction_create_input_length");	//todo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	var createTransactionModalCreateBtn=$("#create_log_modal_create_btn");
+	// “+” 按钮的初始化
+	var createTransactionModalContentLength=$("#transaction_create_input_length");
 	var addTransactionBtn=$("#addTransactionBtn");
-	var createTime=new Date();
-	var createTransactionIC=InputController.creatNew(createTransactionModalContentTextarea,1000);
 	addTransactionBtn.attr("data-toggle","modal");
 	addTransactionBtn.attr("data-target","#create_transaction_modal");
 	addTransactionBtn.bind("click",function(){
 		createTransactionIC.empty();
+		createTransactionModalContentLength.html("1000字");
 	});
 
+	//初始化CreateTransactionModal中的TableSelect列表
+	var createTransactionModalTableSelect=$("#create_log_modal_tableSelect");
 	$.each(attentionTableAry,function(index,value){
 		if(value.isManager()){
 			createTransactionModalTableSelect.append("<option value="+value.getTableId()+">"+value.getTableName()+"</option>");
 		}
 	});
+
+	//设置CreateTransactionModal中的“创建”按钮被点击时的响应
+	var createTransactionModalLoaderScope=$("#create_transaction_modal_loader_scope");
+	var createTransactionModalLoader=LoaderPiano.creatNew();
+	createTransactionModalLoader.appendTo(createTransactionModalLoaderScope);
+	createTransactionModalLoader.hide();
+	var createTransactionModalCreateBtn=$("#create_log_modal_create_btn");
 	createTransactionModalCreateBtn.bind("click",function(){
+		var createTransactionModal=$("#create_transaction_modal");
 		if(createTransactionIC.verify()){
 			var content=createTransactionIC.getContent();
 			var time=createTime.getTime();
@@ -97,25 +110,21 @@ function host(){
 					var transactionItem=createTransactionItem(data,tableId,content,time);
 					insertTransactionItem(transactionItem);
 					refreshDaylogManager();
+					createTransactionModalLoader.hide();
 					createTransactionModal.modal('hide');
 				}
 			});
 			createTransactionNET.launch();
+			createTransactionModalLoader.show();
 		}
 		else{
 			//do nothing if varification failed 
 		}
 	});
 
-	createTransactionIC.onChange(function(){
-		if(createTransactionIC.verify()){
-			contentOk(createTransactionModalcontentRow);
-		}
-		else{
-			contentError(createTransactionModalcontentRow);
-		}
-	});
 
+	//TimmPicker初始化
+	var timePicker=$("#timePicker");
 	timePicker.datetimepicker({
 		startDate:createTime,
 		autoclose:true,
@@ -129,39 +138,44 @@ function host(){
 		createTime=ev.date;
 	});
 
-	function contentOk(ELEMENT){
-		ELEMENT.removeClass('has-error');
-	}
-
-	function contentError(ELEMENT){
-		ELEMENT.addClass('has-error');
-	}
-
 	function refreshDaylogManager(){
-		daylogManager.clear();
-		$.each(transactionItemAryAry,function(index, el) {
-			if(el.length > 1){
-				var timeSameTransactionItem=TimeSameTransactionItem.creatNew(el);
-				timeSameTransactionItem.setAttribute("data-toggle","modal");
-				timeSameTransactionItem.setAttribute("data-target","#time_same_transaction_modal");
-				timeSameTransactionItem.onClick(function(){
-					$.each(el,function(index, vel) {
-						vel.show();
-						vel.appendTo(transactionScope);
-					});
-					timeSameTransactionModal.on("hidden.bs.modal",function(){
+		if(!isTimeSameModalShow && !isInfoModalShow){
+			var timeSameTransactionScopeInModal=$("#time_same_transaction_scope");
+			var timeSameTransactionModal=$("#time_same_transaction_modal");
+			daylogManager.clear();
+			$.each(transactionItemAryAry,function(index, el) {
+				if(el.length > 1){
+					var timeSameTransactionItem=TimeSameTransactionItem.creatNew(el);
+					timeSameTransactionItem.setAttribute("data-toggle","modal");
+					timeSameTransactionItem.setAttribute("data-target","#time_same_transaction_modal");
+					timeSameTransactionItem.onClick(function(){
+						//当timeSameTransaction被点击的时候，将其内容添加到modal的相应位置中
+						//并把TimeSameModal的显示标志改为true
+						isTimeSameModalShow=true;
 						$.each(el,function(index, vel) {
-							vel.hide();
+							vel.show();
+							vel.appendTo(timeSameTransactionScopeInModal);
+						});
+
+						//重置timeSameModal隐藏时的行为
+						//timeSameTransactionModal被隐藏的时候，把添加到其中的Item也隐藏
+						timeSameTransactionModal.on("hide.bs.modal",function(){
+							isTimeSameModalShow=false;
+							$.each(el,function(index, vel) {
+								vel.hide();
+							});
+							refreshDaylogManager();
 						});
 					});
-				});
-				daylogManager.addTransactionItem(timeSameTransactionItem);
-			}
-			else{
-				daylogManager.addTransactionItem(el[0]);
-			}
-		});
-		daylogManager.refreshUI();
+					daylogManager.addTransactionItem(timeSameTransactionItem);
+				}
+				else{
+					daylogManager.addTransactionItem(el[0]);
+				}
+			});
+			daylogManager.refreshUI();
+		}
+	
 	}
 
 	function insertTransactionItem(transactionItem){
@@ -186,6 +200,9 @@ function host(){
 			$.each(el,function(ind, vel) {
 				if(vel.getTransactionId() != TRANSACTION_ID){
 					ary.push(vel);
+				}
+				else{
+					vel.hide();
 				}
 			});
 			if(ary.length>0){
@@ -212,7 +229,7 @@ function host(){
 		return transactionItem;
 	}
 
-
+	//TransactionInfoModal的初始化
 	var e_withdrawal=function(){};
 	var confirmBtn=$("#checkAction_btn");
 	var confirmModal=$("#checkAction_Modal");
@@ -225,8 +242,8 @@ function host(){
 	});
 	function initTransactionInfoModal(ID,SOURCE_NODE_NAME,PATH,TIME,CONTENT,IS_SHOW_WITHDRAWAL_BTN){
 		// console.log(TIME);
+		isInfoModalShow=true;
 		var transactionInfoModal=$("#transaction_info_modal");
-		
 		var transactionSourceNode=$("#transaction_info_modal_source");
 		var transactionPath=$("#transaction_info_modal_path");
 		var transactionTime=$("#transaction_info_modal_time");
@@ -264,19 +281,14 @@ function host(){
 		else{
 			withdrawalBtn.addClass('hide');
 		}
+
+		transactionInfoModal.on("hide.bs.modal",function(){
+			isInfoModalShow=false;
+		});
 	}
 
 
-
-
-
-
-
-
-
-
-
-
+	//历史清单的初始化
 	var pagination=$("#pagination");
 	var historyList=$("#history-list");
 	if(0 < historyCountOfTransaction){
@@ -336,18 +348,15 @@ function host(){
 
 
 
-
-
-
-
+	//filterInput的测试代码
 	var filter=$("#filterInput");
 	var inputController=InputController.creatNew(filter,20);
 	inputController.onChange(function(){
 		var content=inputController.getContent();
 		var str=/\*(.+)|\^(.+)/;
 		var resultAry=content.match(str);
-		console.log(resultAry);
-		console.log("节点名称是："+resultAry[1]);
+		// console.log(resultAry);
+		// console.log("节点名称是："+resultAry[1]);
 	});
 }
 

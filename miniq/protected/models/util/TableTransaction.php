@@ -1,4 +1,19 @@
 <?php
+	/**
+	 * TableTransaction()
+	 * 		getInfoByTableIdAndTime(int tableId,long beginTime,int dayNUM)
+	 * 		getCountOfHistory(array $tableIdAry)
+	 * 		getHistoryTransactionAry(array $tableIdAry,int $page)
+	 * 		getTransactionAry(array $tableIdAry)
+	 * 		
+	 * 		insertOneData(int $tableId,long $time,String $content)
+	 * 		
+	 * 		changeOneData(int $id,long $time,String $content)
+	 * 		
+	 * 		deleteOneData(int $id)
+	 * 		
+	 * 		removeAllByTableId(int $tableId)
+	 */
 	class TableTransaction{
 		private $aDay=86400000;
 

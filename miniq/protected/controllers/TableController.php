@@ -1,5 +1,7 @@
 <?php
-	class TableController extends Controller{
+	include_once("protected/controllers/my-controller/MiniqController.php");
+	
+	class TableController extends MiniqController{
 		
 		public function actionTableInfo(){
 			$this->render('TableInfo');

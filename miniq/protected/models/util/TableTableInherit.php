@@ -2,9 +2,13 @@
 	/**
 	 * TableTableInherit()
 	 * 		add(childTableId,parentTableId)	向继承表中添加一条数据,插入成功返回新数据ID，保存失败返回-1，已存在返回-2，循环继承错误返回-3,
+	 * 		
 	 * 		remove(childTableId,parentTableId)	从继承表中移除一条数据，成功返回true，失败返回false
 	 * 		removeAllAsParentTable(parentTableId)	移除所有以此表为父表的数据，成功放回true，失败返回false
 	 * 		removeAllAsChildTable(childTableId)		移除所有以此表为子表的数据，成功返回true，失败返回false
+	 *
+	 * 		getInheritLink(int childTableId)	//返回一个二维索引数组，这个二维数组存储了该table的所有上层继承关系。
+	 * 												其中，第二维的两个元素，前者代表子表，后者代表父表
 	 * 		getParentTableId(childTableId)	查询某个表是否具有父表，如果有返回其所有父表的ID组成的数组，没有返回空数组
 	 * 		getAllParentTableId(childTableId)	查询某个表是否具有父表，如果有返回其所有"继承结构上层"的ID组成的数组，没有返回空数组
 	 * 		getChildTableId(parentTableId)	查询某个表是否具有子表，如果有返回其所有子表的ID组成的数组，没有返回空数组
@@ -13,7 +17,7 @@
 	class TableTableInherit{
 
 		public function __construct(){
-
+			
 		}
 
 		public function add($childTableId,$parentTableId){
@@ -101,6 +105,32 @@
 				$result=array_merge($result,$this->getAllParentTableId($value));
 			}
 			return array_unique($result);
+		}
+
+		public function getInheritLink($childTableId){
+			return $this->getParentInheritLink($childTableId);
+		}
+
+		private function getParentInheritLink($childTableId){
+			$result=$this->getInheritCouple($childTableId);
+			foreach ($result as $key => $value) {
+				$result=array_merge($result,$this->getParentInheritLink($value[1]));
+			}
+			return $result;
+		}
+		
+		private function getInheritCouple($childTableId){
+			$result=$this->getParentTableId($childTableId);
+			$parentTableIdAry=array();
+			if(!empty($result)){
+				foreach ($result as $key => $value) {
+					$attentionTable=array();
+					$attentionTable[]=$childTableId;
+					$attentionTable[]=$value;
+					$parentTableIdAry[]=$attentionTable;
+				}
+			}
+			return $parentTableIdAry;
 		}
 
 		public function getParentTableId($childTableId){

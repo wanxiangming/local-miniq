@@ -13,10 +13,12 @@
 	 * 
 	 * 		insertTable(String $openId,String $tableName)	//返回tableId
 	 * 		insertLink(int $tableId,String $openId)			//关注table，返回boolean
-	 * 		insertInherit(int $tableId,int $parentTableId)	//返回int。[添加成功返回新继承链的id，保存失败返回-1，已存在该继承结构返回-2，循环继承返回-3]
+	 * 		insertInherit(int $tableId,int $parentTableId)	//返回int,添加成功返回新继承链的id，保存失败返回-1，
+	 * 															已存在该继承结构返回-2，循环继承返回-3
 	 * 	 	insertManager(int $tableId,int $userId)	//返回boolean
 	 * 	 	insertTransaction(int $tableId,long $time,String content)	//成功放回TransactionId，失败返回-1
 	 * 	 	insertUser(String $openId)				//返回boolean
+	 * 	 	insertInviteMassage(int inviterUserId,int inviteeUserId,int tableId)	//返回int 1表示发送成功，2表示该请求已存在
 	 * 	 	
 	 * 		isExistTheTableLink(int $tableId,String $openId)	//检查是否存在这样的TableLink数据，返回Boolean
 	 * 		isUserExist(String $openId)				//返回boolean
@@ -27,16 +29,19 @@
 	 * 		deleteManager(int $tableId,int $userId)	//返回boolean
 	 * 		
 	 * 		getAttentionTableAry(String $openId)	//返回AttentionTable对象数组
-	 * 		getInheritLink(int $tableId)			//
+	 * 		getInheritLink(int $tableId)			//返回一个二维索引数组，这个二维数组存储了该table的所有上层继承关系。
+	 * 													其中，第二维的两个元素，前者代表子表，后者代表父表
 	 * 		getTableInfo(int $tableId)				//返回TableInfo对象,如果不存在该table，则返回NULL
 	 * 		getTableFollowerAry(int $tableId)		//返回TableFollower对象数组
 	 * 		getUserInfo(String $openId)				//返回UserInfo对象
 	 * 		getHistoryCountOfTransaction(array tableIdAry)		//返回int
 	 * 		getHistoryTransactionAry(array tableIdAry,int page)	//return object Transaction
 	 * 		getTransactionAry(array tableIdAry)		//和getHistoryTransactionAry的区别在于，这是获取未来的transaction
+	 * 		
+	 * 		unreadPasonalMassageCount()				//return int
 	 *
 	 * 		linkTurnToInherit()
-	 *
+	 *   
 	 * 	private methods
 	 */
 
@@ -46,16 +51,17 @@
 	include_once("protected/models/util/TableTransaction.php");
 	include_once("protected/models/util/TableTableInherit.php");
 	include_once("protected/models/util/TableTableManagerGroup.php");
+	include_once("protected/models/util/TableManagerInviteMassage.php");
 
-	include_once("protected/models/datastructure/table/Table.php");
-	include_once("protected/models/datastructure/table/TableInfo.php");
-	include_once("protected/models/datastructure/table/AttentionTable.php");
+	// include_once("protected/models/datastructure/table/Table.php");
+	// include_once("protected/models/datastructure/table/TableInfo.php");
+	// include_once("protected/models/datastructure/table/AttentionTable.php");
 
-	include_once("protected/models/datastructure/user/User.php");
-	include_once("protected/models/datastructure/user/UserInfo.php");
-	include_once("protected/models/datastructure/user/TableFollower.php");
+	// include_once("protected/models/datastructure/user/User.php");
+	// include_once("protected/models/datastructure/user/UserInfo.php");
+	// include_once("protected/models/datastructure/user/TableFollower.php");
 
-	include_once("protected/models/datastructure/transaction/Transaction.php");
+	// include_once("protected/models/datastructure/transaction/Transaction.php");
 
 
 	class MiniqDB{
@@ -112,31 +118,10 @@
 
 		public function getInheritLink($childTableId){
 			$tableInherit=new TableTableInherit();
-			return $this->getParentInheritLink($tableInherit,$childTableId);
+			return $tableInherit->getInheritLink($childTableId);
 		}
 
-		private function getParentInheritLink($db,$childTableId){
-			$result=$this->getParentTableId($db,$childTableId);
-			foreach ($result as $key => $value) {
-				$result=array_merge($result,$this->getParentInheritLink($db,$value[1]));
-			}
-			return $result;
-		}
-		
-		private function getParentTableId($db,$childTableId){
-			$result=$db->getParentTableId($childTableId);
-			$parentTableIdAry=array();
-			if(!empty($result)){
-				foreach ($result as $key => $value) {
-					$attentionTable=array();
-					$attentionTable[]=$childTableId;
-					$attentionTable[]=$value;
-					$parentTableIdAry[]=$attentionTable;
-				}
-			}
-			return $parentTableIdAry;
-		}
-
+		//分解到controller中去
 		public function getTableInfo($tableId){
 			$result=array();
 			$tableTable=new TableTable();
@@ -397,6 +382,10 @@
 				
 				print_r("</br>");
 			}
+		}
+
+		public function insertInviteMassage($inviterUserId,$inviteeUserId,$tableId){
+			$tableManagerInviteMassage=new TableManagerInviteMassage();
 		}
 	}
 

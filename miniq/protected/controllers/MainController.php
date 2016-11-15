@@ -1,6 +1,6 @@
 <?php
 	include_once("protected/controllers/my-controller/MiniqController.php");
-	include_once("protected/models/database/MiniqDB.php");
+	// include_once("protected/models/database/MiniqDB.php");
 	include_once("protected/models/util/Cookie.php");
 
 	class MainController extends MiniqController{
@@ -11,20 +11,21 @@
 			$openId=$cookie->getAccount();
 			$attentionTableAry=array();
 			$inheritTableLinkAry=array();
-			$miniqDB=new MiniqDB();
+			// $miniqDB=new MiniqDB();
 			$tableIdAry=array();
-			foreach ($miniqDB->getAttentionTableAry($openId) as $key => $value) {
+			$tableFacade=new TableFacade($openId);
+			foreach ($tableFacade->getAllAssociationTable($openId) as $key => $value) {
 				$attentionTable=array();
 				$attentionTable['tableId']=$value->getTableId();
 				$attentionTable['tableName']=$value->getTableName();
-				$attentionTable['isManager']=$value->isManager();
+				$attentionTable['isManager']=true;
 				$tableIdAry[]=$value->getTableId();
 
-				$inheritTableLink=$miniqDB->getInheritLink($value->getTableId());
+				$inheritTableLink=$tableFacade->getEntranceChain($value->getTableId());
 				$inheritTableLinkAry[]=$inheritTableLink;
 
 				$inheritTableAry=array();
-				foreach ($value->getInheritTableAry() as $key => $val) {
+				foreach ($tableFacade->getAllTopTable($value->getTableId()) as $key => $val) {
 					$inheritTable=array();
 					$inheritTable['tableId']=$val->getTableId();
 					$inheritTable['tableName']=$val->getTableName();
@@ -35,7 +36,8 @@
 				$attentionTableAry[]=$attentionTable;
 			}
 
-			$historyCountOfTransaction=$miniqDB->getHistoryCountOfTransaction($tableIdAry);
+			$facHistoryTransaction=new FACHistoryTransaction($tableIdAry,20);
+			$historyCountOfTransaction=$facHistoryTransaction->count();
 
 			$this->render('Main',array('attentionTableAry'=>$attentionTableAry,'historyCountOfTransaction'=>$historyCountOfTransaction,'tableInheritLinkAry'=>$inheritTableLinkAry));
 		}

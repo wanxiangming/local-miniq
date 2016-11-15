@@ -1,6 +1,6 @@
 <?php
 	
-	class InheriteChildTableIdCriteria implements MQCriteria{
+	class ChildTableIdCriteria implements MQCriteria{
 		private $criteria;
 
 		public function __construct($childTableId){

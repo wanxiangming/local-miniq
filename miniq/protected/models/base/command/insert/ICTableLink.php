@@ -1,12 +1,12 @@
 <?php
 	/**
-	 * ICTableLink(String userId,int tableId)
+	 * ICTableLink(int tableId,String userId)
 	 */
 	class ICTableLink implements InsertCommand{
 		private $userId;
 		private $tableId;
 
-		public function __construct($userId,$tableId){
+		public function __construct($tableId,$userId){
 			$this->userId=$userId;
 			$this->tableId=$tableId;
 		}

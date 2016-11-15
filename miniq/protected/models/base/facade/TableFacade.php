@@ -1,15 +1,13 @@
 <?php
 	/**
-	 * 除了get...方法，其他方法在执行前都需要确认用户的操作权限，如果不符合就不执行业务处理
-	 * 
 	 * TableFacade(string openId or int userId)
 	 * 		createTable(string tableName)	//return int
 	 * 		destroyTable(int tableId)		//return boolean
 	 *
 	 * 		openTable(int tableId)	//return boolean
 	 *
-	 * 		addManager(int tableId,int managerId)
-	 * 		removeManager(int tableId,int managerId)
+	 * 		addManager(int tableId,int or string managerId)
+	 * 		removeManager(int tableId,int or string managerId)
 	 *
 	 * 		buildEntrance(int tableId,int entranceTableId)		//return boolean
 	 * 		breakEntrance(int tableId,int entranceTableId)		//return boolean
@@ -23,49 +21,69 @@
 	 * 		getEntranceChain(int tableId)		//return array
 	 */
 	class TableFacade{
-		private $openId=NULL;
 		private $userId=NULL;
-		private $isUserExist=false;
+		private $tableOperater=NULL;
+		private $tableFinder=NULL;
 
 		public function __construct($userId){
-			$fcUser=new FCUser($userId);
-			$userInfo=$fcUser->find();
-			if($userInfo != NULL){
-				$this->openId=$userInfo->getOpenId();
-				$this->userId=$userInfo->getUserId();
-				return $this->isUserExist=true;
-			}
+			$this->userId=$userId;
+			$this->tableOperater=new TableOperateSystem($userId);
+			$this->tableFinder=new TableFindSystem();
 		}
 
-		/**
-		 * 创建新表(节点)
-		 * @param  [string] $openId    [description]
-		 * @param  [string] $tableName [description]
-		 * @return [int]   创建成功返回新table的ID，失败返回-1
-		 */
 		public function createTable($tableName){
-			if($this->isUserExist){
-				$icTable=new ICTable($this->openId,$tableName);
-				$tableId=$icTable->execute();
-				if($tableId > 0){
-					$icTableLink=new ICTableLink($this->openId,$tableId);
-					if($icTableLink->execute() > 0){
-						return $tableId;
-					}
-					else{
-						return -1;
-					}
-				}
-				else{
-					return -1;
-				}
-			}
-			else{
-				return -1;
-			}
+			return $this->tableOperater->createTable($tableName);
 		}
 
-		public function getAllEntranceTable(){
-			$linkTableAry=array();
+		public function destroyTable($tableId){
+			return $this->tableOperater->destroyTable($tableId);
+		}
+
+		public function openTable($tableId){
+			return $this->tableOperater->openTable($tableId);
+		}
+
+		public function addManager($tableId,$managerId){
+			return $this->tableOperater->addManager($tableId,$managerId);
+		}
+
+		public function removeManager($tableId,$managerId){
+			return $this->tableOperater->removeManager($tableId,$managerId);
+		}
+
+		public function buildEntrance($tableId,$entranceTableId){
+			return $this->tableOperater->buildEntrance($tableId,$entranceTableId);
+		}
+
+		public function breakEntrance($tableId,$entranceTableId){
+			return $this->tableOperater->breakEntrance($tableId,$entranceTableId);
+		}
+
+		public function getTable($tableId){
+			return $this->tableFinder->getTable($tableId);
+		}
+
+		public function getAllAssociationUser($tableId){
+			return $this->tableFinder->getAllAssociationUser($tableId);
+		}
+
+		public function getAllAssociationTable(){
+			return $this->tableFinder->getAllAssociationTable($this->userId);
+		}
+
+		public function getAllTopTable($tableId){
+			return $this->tableFinder->getAllTopTable($tableId);
+		}
+
+		public function getAllEntranceTable($tableId){
+			return $this->tableFinder->getAllEntranceTable($tableId);
+		}
+
+		public function getEntranceChain($tableId){
+			return $this->tableFinder->getEntranceChain($tableId);
+		}
+
+		public function getAllExportTable($tableId){
+			return $this->tableFinder->getAllExportTable($tableId);
 		}
 	}

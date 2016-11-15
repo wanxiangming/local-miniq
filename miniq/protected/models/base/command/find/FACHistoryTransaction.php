@@ -8,14 +8,12 @@
 	 * 		count()	//int count of history transaction
 	 */
 	class FACHistoryTransaction{
-		private $pageSize;
 		private $criteria;
 		private $count;
 
-		public function __construct($tableIdAry,$pageSize){
+		public function __construct($tableIdAry){
 			$MQcriteria=new HistoryTransactionCriteria($tableIdAry);
 			$this->criteria=$MQcriteria->getCriteria();
-			$this->pageSize=$pageSize;
 			$this->count=MysqlTransaction::model()->count($this->criteria);
 		}
 
@@ -23,9 +21,9 @@
 			return $this->count;
 		}
 
-		public function findAllByPage($currentPage){
+		public function findAllByPage($pageSize,$currentPage){
 			$pages=new CPagination($this->count);
-			$pages->pageSize=$this->pageSize;
+			$pages->pageSize=$pageSize;
 			$pages->CurrentPage=(int)$currentPage-1;
 			$pages->applyLimit($this->criteria);
 			$result=MysqlTransaction::model()->findAll($this->criteria);

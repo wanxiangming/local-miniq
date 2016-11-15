@@ -6,7 +6,7 @@
 	 *   	setTableName(String $tableName)
 	 * 		setVisibilityState(int visibilityState)
 	 *		setCreatorId(mixed creatorId)
-	 *		setCreatorTime(long $createTime)
+	 *		setCreateTime(long $createTime)
 	 * 	
 	 * 		getCreatorId()
 	 * 		getCreateTime()
@@ -49,7 +49,7 @@
 			return $this->creatorId;
 		}
 
-		public function setCreatorTime($createTime){
+		public function setCreateTime($createTime){
 			$this->createTime=$createTime;
 		}
 
